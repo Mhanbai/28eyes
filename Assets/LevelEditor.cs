@@ -17,7 +17,7 @@ public class LevelEditor : MonoBehaviour {
 	[SerializeField] [Range(1, 100)] public int density = 1;
 	[SerializeField] public GameObject bottomLeftBoundary;
 	[SerializeField] public GameObject topRightBoundary;
-	[SerializeField] public bool ShowBoundariesInEditor = true;
+	[SerializeField] public bool ShowBoundaries = true;
 	[NonSerialized] public bool CorrectOrder = true;
 	[NonSerialized] public Vector3 bottomLeft;
 	[NonSerialized] public Vector3 bottomRight;
@@ -56,7 +56,7 @@ public class LevelEditor : MonoBehaviour {
 			Gizmos.color = Color.red;
 		}
 
-		if (ShowBoundariesInEditor == true) {
+		if (ShowBoundaries == true) {
 			Gizmos.DrawLine (bottomLeft, bottomRight);
 			Gizmos.DrawLine (bottomRight, topRight);
 			Gizmos.DrawLine (topRight, topLeft);

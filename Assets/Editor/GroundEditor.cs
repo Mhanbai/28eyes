@@ -5,7 +5,7 @@ using UnityEditor;
 
 public class GroundEditor : Editor {
 	//Script to run when button is pressed
-	[MenuItem("28Eyes Tools/2. Generate Ground")]
+	[MenuItem("28Eyes Tools/Generate Ground")]
 	public static void CreateGround () {
 
 		//Reference for prop

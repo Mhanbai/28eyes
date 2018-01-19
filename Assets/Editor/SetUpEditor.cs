@@ -8,9 +8,9 @@ public class SetUpEditor : Editor {
 	public static void AddTools() {
 		//Create the neccessary gameobjects
 		GameObject levelEditor = new GameObject ("Level Editor");
-		GameObject topRightBoundary = new GameObject ("ClutterTopRightBoundary");
+		GameObject topRightBoundary = new GameObject ("BoxTopRight");
 		topRightBoundary.transform.SetParent (levelEditor.transform);
-		GameObject bottomLeftBoundary = new GameObject ("ClutterBottomLeftBoundary");
+		GameObject bottomLeftBoundary = new GameObject ("BoxBottomLeft");
 		bottomLeftBoundary.transform.SetParent (levelEditor.transform);
 
 		//Add the level editor script

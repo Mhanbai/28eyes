@@ -27,7 +27,7 @@ public class MonsterGenerator : MonoBehaviour {
 
 		combinedBounds = monster.head.sprite.bounds;
 		combinedBounds.Encapsulate (monster.body.sprite.bounds);
-		combinedBounds.Encapsulate (monster.tail.sprite.bounds);
+		//combinedBounds.Encapsulate (monster.tail.sprite.bounds);
 		combinedBounds.Encapsulate (monster.fLeg1.sprite.bounds);
 		combinedBounds.Encapsulate (monster.fLeg2.sprite.bounds);
 		combinedBounds.Encapsulate (monster.bLeg1.sprite.bounds);

@@ -310,7 +310,7 @@ MonoBehaviour:
   m_RestoreDefaultPose: 1
   m_OrientChild: 1
   iterations: 10
-  damping: 0.8
+  damping: 0.95
   m_Solver:
     m_RootBone: {fileID: 0}
     m_RootBoneTransform: {fileID: 4730654066419024}

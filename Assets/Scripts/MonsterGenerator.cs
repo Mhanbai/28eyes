@@ -32,7 +32,9 @@ public class MonsterGenerator : MonoBehaviour {
 		int tail = Random.Range (0, tailParts.Length);
 		int legs = Random.Range (0, frontLegParts.Length);
 
-		MonsterClass monster = monsterBase.GetComponent<MonsterClass> ();
+		GameObject toSpawn = GameObject.Instantiate(monsterBase, new Vector3(this.transform.position.x, 0.0f, this.transform.position.z), Quaternion.Euler(25.0f, 0.0f, 0.0f));
+		MonsterClass monster = toSpawn.GetComponent<MonsterClass> ();
+
 		monster.UpdateParts (headParts [head], bodyParts [body], tailParts [tail], frontLegParts [legs], backLegParts [legs]);
 
 		combinedBounds = monster.head.GetComponent<Anima2D.SpriteMeshInstance> ().spriteMesh.sprite.bounds;
@@ -43,7 +45,8 @@ public class MonsterGenerator : MonoBehaviour {
 		combinedBounds.Encapsulate (monster.bLeg1.GetComponent<Anima2D.SpriteMeshInstance> ().spriteMesh.sprite.bounds);
 		combinedBounds.Encapsulate (monster.bLeg2.GetComponent<Anima2D.SpriteMeshInstance> ().spriteMesh.sprite.bounds);
 
-		GameObject.Instantiate(monsterBase, new Vector3(this.transform.position.x, combinedBounds.extents.y * 2, this.transform.position.z), Quaternion.identity);
+		toSpawn.transform.position = new Vector3 (toSpawn.transform.position.x, combinedBounds.extents.y * 2, toSpawn.transform.position.z);
+
 		Debug.Log ("Bounds: " + combinedBounds);
 	}
 }

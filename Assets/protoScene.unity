@@ -479,7 +479,7 @@ Camera:
   far clip plane: 1000
   field of view: 60.8
   orthographic: 1
-  orthographic size: 15
+  orthographic size: 12
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -521,22 +521,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   headParts:
-  - {fileID: 1104311401248092, guid: 83ab837191eb2d54dadbdcc7e9884fcd, type: 2}
-  - {fileID: 1166285785527138, guid: b7dce32579f89824684a3218b3870a32, type: 2}
-  - {fileID: 1407251828630282, guid: 5f22edd669a7ec14a9a20a3364945b43, type: 2}
+  - {fileID: 1807885312139480, guid: 8cac2315a879c174bbf5c32af56784ea, type: 2}
+  - {fileID: 1027391028075762, guid: ce80b9f830328e24ab94869473d8be2d, type: 2}
+  - {fileID: 1626131125459054, guid: f4bca0374b8bda4478de261f7d09b2d0, type: 2}
   bodyParts:
-  - {fileID: 1083163427469502, guid: 08a84b516c0b50e45a0087dee054fd8d, type: 2}
-  - {fileID: 1361605963241552, guid: 62d2891cc820192438379dd3a73f85fa, type: 2}
-  - {fileID: 1783669445408056, guid: d5ec499f1716cb549ad9d30bbe35398b, type: 2}
+  - {fileID: 1797523482798614, guid: e492f0c885614f34aa8068665f6c9646, type: 2}
+  - {fileID: 1559491034477138, guid: 0a1e4aedfb061144392e55bf9c32f225, type: 2}
+  - {fileID: 1353421113660504, guid: 0d92980807dd54a4784f78fb9a197e2b, type: 2}
   tailParts:
-  - {fileID: 1593488497736034, guid: 61d668d79a2d17f40b22bce50ac8c07a, type: 2}
+  - {fileID: 1127012109461676, guid: f2e26eac911dab54f845ba9cd6717663, type: 2}
+  - {fileID: 1170621629085964, guid: b969284e0d4b5dc43b9dadd495b15e83, type: 2}
   frontLegParts:
-  - {fileID: 1930404987380840, guid: dda52ac62a4990042a0dd3cde6ea07a1, type: 2}
-  - {fileID: 1867909092338618, guid: ff7803adbeb68224eb5b711639848142, type: 2}
+  - {fileID: 1070986011468188, guid: bdbdddb1ff6ae664890b3ccfaaad5342, type: 2}
+  - {fileID: 1125596875986576, guid: 919f942c0b4a9b341809df6a5b702c0f, type: 2}
   backLegParts:
-  - {fileID: 1118666831248478, guid: 80c90f93b35fa9340b0cab3adcceacca, type: 2}
-  - {fileID: 1697960751724672, guid: f2c2ed3bb6329ba49a65403745abaeca, type: 2}
-  monsterBase: {fileID: 1866554835103062, guid: 84ee6688b134f3941a58248209e7b77e,
+  - {fileID: 1070986011468188, guid: bdbdddb1ff6ae664890b3ccfaaad5342, type: 2}
+  - {fileID: 1125596875986576, guid: 919f942c0b4a9b341809df6a5b702c0f, type: 2}
+  monsterBase: {fileID: 1391176906803390, guid: a716ff5dfa00fce41999195ff121ff97,
     type: 2}
 --- !u!4 &2076824710
 Transform:

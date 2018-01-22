@@ -4,38 +4,44 @@ using UnityEngine;
 using UnityEditor;
 
 public class GroundEditor : Editor {
+	protected static int placements = 0;
+
 	//Script to run when button is pressed
 	[MenuItem("28Eyes Tools/Generate Ground")]
 	public static void CreateGround () {
 
 		//Reference for prop
-		GameObject groundTile = GameObject.Find("Level Editor").GetComponent<LevelEditor>().groundTile;
+		LevelEditor editor = GameObject.Find("Level Editor").GetComponent<LevelEditor>();
 
-		if (groundTile == null) {
+		if (editor.groundTile == null) {
 			EditorUtility.DisplayDialog ("Warning", "User has not indicated a ground tile to use", "Okay");
 		} else {
-
-			//Adjustable width and depth for level
-			int levelWidth = GameObject.Find ("Level Editor").GetComponent<LevelEditor> ().levelWidth;
-			int levelDepth = GameObject.Find ("Level Editor").GetComponent<LevelEditor> ().levelDepth;
-
 			//Constant values that indicate the X and Z scale of the tile
-			float tileScaleX = groundTile.transform.localScale.x;
-			float tileScaleZ = groundTile.transform.localScale.z;
+			float tileScaleX = editor.groundTile.transform.localScale.x;
+			float tileScaleZ = editor.groundTile.transform.localScale.z;
 
-			//Find the location of the bottom left of the level
-			float startXOffset = (levelWidth / 2) * tileScaleX;
-			float startZOffset = (levelDepth / 2) * tileScaleZ;
-			Vector3 startPos = new Vector3 (0 - startXOffset, 0, 0 - startZOffset);
+			//Find the diminsions of the ground to be placed
+			Vector3 startPos = new Vector3(editor.bottomLeft.x + (tileScaleX / 2), editor.bottomLeft.y, editor.bottomLeft.z + (tileScaleZ / 2));
+			float placementWidth = Vector3.Distance (editor.bottomLeft, editor.bottomRight) / tileScaleX;
+			float placementDepth = Vector3.Distance (editor.bottomLeft, editor.topLeft) / tileScaleZ;
 
-			//Create a new empty GameObject to store the ground tiles
-			GameObject ground = new GameObject ("Ground");
+			//Find GameObject that contains ground tiles
+			GameObject container = GameObject.Find("Ground");
+
+			//If no such GameObject exists, create one
+			if (container == null) {
+				container = new GameObject ("Ground");
+			}
+
+			//Create a new GameObject as a child of container that will take the new tiles
+			GameObject currentPlacement = GameObject.Instantiate(editor.bottomLeftBoundary, container.transform);
+			currentPlacement.name = "Placement" + placements++;
 
 			//Instantiate new tiles as per the Width and Depth defined by the user
-			for (int i = 0; i < levelWidth; i++) {
-				for (int j = 0; j < levelDepth; j++) {
-					Vector3 pos = new Vector3 (startPos.x + (i * tileScaleX), groundTile.transform.position.y, startPos.z + (j * tileScaleZ));
-					GameObject.Instantiate (groundTile, pos, Quaternion.identity, ground.transform);
+			for (int i = 0; i < placementWidth; i++) {
+				for (int j = 0; j < placementDepth; j++) {
+					Vector3 pos = new Vector3 (startPos.x + (i * tileScaleX), editor.groundTile.transform.position.y, startPos.z + (j * tileScaleZ));
+					GameObject.Instantiate (editor.groundTile, pos, Quaternion.identity, currentPlacement.transform);
 				}
 			}
 		}

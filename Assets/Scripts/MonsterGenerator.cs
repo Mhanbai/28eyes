@@ -3,17 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MonsterGenerator : MonoBehaviour {
-	public GameObject[] headParts;
-	public GameObject[] bodyParts;
-	public GameObject[] tailParts;
-	public GameObject[] frontLegParts;
-	public GameObject[] backLegParts;
+	public GameObject[]headParts;
+	public GameObject[]bodyParts;
+	public GameObject[]tailParts;
+	public GameObject[]frontLegParts;
+	public GameObject[]backLegParts;
 
 	[SerializeField] protected GameObject monsterBase;
 	protected Bounds combinedBounds;
 
+	float time = 0.0f;
+
 	void Start() {
 		CreateMonster ();
+	}
+
+	void Update() {
+		time += Time.deltaTime;
+		if (time > 3.0f) {
+			CreateMonster ();
+			time = 0.0f;
+		}
 	}
 
 	void CreateMonster() {
@@ -25,15 +35,15 @@ public class MonsterGenerator : MonoBehaviour {
 		MonsterClass monster = monsterBase.GetComponent<MonsterClass> ();
 		monster.UpdateParts (headParts [head], bodyParts [body], tailParts [tail], frontLegParts [legs], backLegParts [legs]);
 
-		combinedBounds = monster.head.sprite.bounds;
-		combinedBounds.Encapsulate (monster.body.sprite.bounds);
-		//combinedBounds.Encapsulate (monster.tail.sprite.bounds);
-		combinedBounds.Encapsulate (monster.fLeg1.sprite.bounds);
-		combinedBounds.Encapsulate (monster.fLeg2.sprite.bounds);
-		combinedBounds.Encapsulate (monster.bLeg1.sprite.bounds);
-		combinedBounds.Encapsulate (monster.bLeg2.sprite.bounds);
+		combinedBounds = monster.head.GetComponent<Anima2D.SpriteMeshInstance> ().spriteMesh.sprite.bounds;
+		combinedBounds.Encapsulate (monster.body.GetComponent<Anima2D.SpriteMeshInstance> ().spriteMesh.sprite.bounds);
+		combinedBounds.Encapsulate (monster.tail.GetComponent<Anima2D.SpriteMeshInstance> ().spriteMesh.sprite.bounds);
+		combinedBounds.Encapsulate (monster.fLeg1.GetComponent<Anima2D.SpriteMeshInstance> ().spriteMesh.sprite.bounds);
+		combinedBounds.Encapsulate (monster.fLeg2.GetComponent<Anima2D.SpriteMeshInstance> ().spriteMesh.sprite.bounds);
+		combinedBounds.Encapsulate (monster.bLeg1.GetComponent<Anima2D.SpriteMeshInstance> ().spriteMesh.sprite.bounds);
+		combinedBounds.Encapsulate (monster.bLeg2.GetComponent<Anima2D.SpriteMeshInstance> ().spriteMesh.sprite.bounds);
 
-		GameObject.Instantiate(monsterBase, new Vector3(this.transform.position.x, combinedBounds.extents.y * 2, this.transform.position.z), Quaternion.Euler(25.0f, 0.0f, 0.0f));
+		GameObject.Instantiate(monsterBase, new Vector3(this.transform.position.x, combinedBounds.extents.y * 2, this.transform.position.z), Quaternion.identity);
 		Debug.Log ("Bounds: " + combinedBounds);
 	}
 }

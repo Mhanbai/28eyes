@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CharController : MonoBehaviour {
-	public Camera mainCam;
 	public Animator animController;
 	public SpriteRenderer sprite;
 	public GameObject player;

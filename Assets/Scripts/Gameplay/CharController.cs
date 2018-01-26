@@ -7,7 +7,7 @@ public class CharController : MonoBehaviour {
 	public SpriteRenderer sprite;
 	public GameObject player;
 
-	public float speed;
+	protected float speed;
 
 	protected float velX;
 	protected float velZ;
@@ -17,7 +17,7 @@ public class CharController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		UpdateSpeed ();
 	}
 	
 	// Update is called once per frame
@@ -65,5 +65,9 @@ public class CharController : MonoBehaviour {
 		}
 
 		player.transform.position = new Vector3 (player.transform.position.x + velX, player.transform.position.y, player.transform.position.z + velZ);
+	}
+
+	void UpdateSpeed() {
+		speed = PlayerInfo.Instance.Speed ();
 	}
 }

@@ -25,6 +25,8 @@ public class PlayerInfo : MonoBehaviour {
 	[SerializeField] protected float attackRate = 1.0f; //Projectiles per second
 	[SerializeField] protected int attackStyle = 1; //Defined in CharController class
 
+	public Item[] inventory = new Item[6];
+
 	//Functions for combat
 
 	public void Hit(float damage) {
@@ -41,9 +43,9 @@ public class PlayerInfo : MonoBehaviour {
 
 	//Functions for pickups
 
-	public void ChangeAttack(float atk_rate_in, int attackStyle_in) {
-		attackRate = atk_rate_in;
-		attackStyle = attackStyle_in;
+	public void ChangeAttack(ref float atk_rate_in, ref int attackStyle_in) {
+		atk_rate_in = attackRate;
+		attackStyle_in = attackStyle;
 	}
 
 	public float Speed() {

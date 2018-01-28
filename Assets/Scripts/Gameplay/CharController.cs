@@ -8,6 +8,9 @@ public class CharController : MonoBehaviour {
 	public GameObject player;
 
 	protected float speed;
+	protected float maxHealth;
+	protected float attackSpeed;
+	protected int attackStyle;
 
 	protected float velX;
 	protected float velZ;
@@ -18,6 +21,14 @@ public class CharController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		UpdateSpeed ();
+		UpdateMaxHealth ();
+		UpdateAtack ();
+		PlayerInfo.Instance.inventory [0] = null;
+		PlayerInfo.Instance.inventory [1] = ItemList.Instance.ghoulClaw;
+		PlayerInfo.Instance.inventory [2] = ItemList.Instance.unicornLeg;
+		PlayerInfo.Instance.inventory [3] = ItemList.Instance.redPortalStone;
+		PlayerInfo.Instance.inventory [4] = ItemList.Instance.bluePortalStone;
+		PlayerInfo.Instance.inventory [5] = ItemList.Instance.greenPortalStone;
 	}
 	
 	// Update is called once per frame
@@ -69,5 +80,13 @@ public class CharController : MonoBehaviour {
 
 	void UpdateSpeed() {
 		speed = PlayerInfo.Instance.Speed ();
+	}
+
+	void UpdateMaxHealth() {
+		maxHealth = PlayerInfo.Instance.MaxHealth ();
+	}
+
+	void UpdateAtack() {
+		PlayerInfo.Instance.ChangeAttack (ref attackSpeed, ref attackStyle); 
 	}
 }

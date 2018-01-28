@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Item : MonoBehaviour {
+public class Item {
 	private string[] playerStats = 
 	{
 		" speed by ",		//0
@@ -19,16 +19,16 @@ public class Item : MonoBehaviour {
 	string description;
 	public Sprite picture;
 
-	public Item(bool objective_in, string name_in, int statToRaise_in, int raisePercent_in, int statToLower_in, int lowerPercent_in) {
+	public Item(bool objective_in, string name_in, Sprite picture_in, int statToRaise_in = 0, int raisePercent_in = 0, int statToLower_in = 0, int lowerPercent_in = 0) {
 		isObjective = objective_in; 
 		itemName = name_in;
-		//picture
-		statToRaise = statToRaise_in;
-		statToRaisePercent = raisePercent_in;
-		statToLower = statToLower_in;
-		statToLowerPercent = statToLower;
+		picture = picture_in;
 		if (isObjective == false) {
 			description = "Consuming will increase" + playerStats[statToRaise] + statToRaisePercent.ToString () + "%, and lower" + playerStats[statToLower] + statToLowerPercent.ToString () + "%";
+			statToRaise = statToRaise_in;
+			statToRaisePercent = raisePercent_in;
+			statToLower = statToLower_in;
+			statToLowerPercent = statToLower;
 		} else {
 			description = "An essential component required to open a portal out of here!";
 		}

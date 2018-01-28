@@ -47,6 +47,6 @@ public class MonsterGenerator : MonoBehaviour {
 
 		toSpawn.transform.position = new Vector3 (toSpawn.transform.position.x, combinedBounds.extents.y * 2, toSpawn.transform.position.z);
 
-		Debug.Log ("Bounds: " + combinedBounds);
+		//Debug.Log ("Bounds: " + combinedBounds);
 	}
 }

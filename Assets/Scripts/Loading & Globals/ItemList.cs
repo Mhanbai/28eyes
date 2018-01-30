@@ -25,11 +25,11 @@ public class ItemList : MonoBehaviour {
 	[System.NonSerialized] public Item greenPortalStone;
 
 	void Start() {
-		unicornLeg = new Item(false, "Unicorn Leg", itemPictures[0], (int)Stats.Speed, 20, (int)Stats.Health, 10);
+		unicornLeg = new Item(false, "Unicorn Leg", itemPictures[1], (int)Stats.Speed, 20, (int)Stats.Health, 10);
 		dryadHeart = new Item(false, "Dryad Heart", itemPictures[1], (int)Stats.Health, 20, (int)Stats.AttackSpeed, 10);
-		ghoulClaw = new Item(false, "Kraken Claw", itemPictures[2], (int)Stats.AttackSpeed, 20, (int)Stats.Speed, 10);
-		redPortalStone = new Item (true, "Red Portal Stone", itemPictures[3]);
-		bluePortalStone = new Item (true, "Blue Portal Stone", itemPictures[4]);
-		greenPortalStone = new Item (true, "Green Portal Stone", itemPictures[5]);
+		ghoulClaw = new Item(false, "Kraken Claw", itemPictures[1], (int)Stats.AttackSpeed, 20, (int)Stats.Speed, 10);
+		redPortalStone = new Item (true, "Red Portal Stone", itemPictures[4]);
+		bluePortalStone = new Item (true, "Blue Portal Stone", itemPictures[5]);
+		greenPortalStone = new Item (true, "Green Portal Stone", itemPictures[6]);
 	}
 }

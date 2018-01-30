@@ -18,12 +18,12 @@ public class PlayerInfo : MonoBehaviour {
 	/// Class: PlayerInfo
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+	//TODO: Change stats based on design
 	[SerializeField] protected float maxHealth = 100.0f; //Percentage
 	[SerializeField] protected float currentHealth = 100.0f; //Percentage
-	[SerializeField] protected float speed = 0.25f; //Pixels per second
+	[SerializeField] protected float maxSpeed = 0.25f; //Pixels per second
 	[SerializeField] protected float minimumSpeed = 0.1f; 
-	[SerializeField] protected float attackRate = 1.0f; //Projectiles per second
-	[SerializeField] protected int attackStyle = 1; //Defined in CharController class
+	protected int attackStyle = 0; //Defined in CharController class
 
 	public Item[] inventory = new Item[6];
 
@@ -43,20 +43,20 @@ public class PlayerInfo : MonoBehaviour {
 
 	//Functions for pickups
 
-	public void ChangeAttack(ref float atk_rate_in, ref int attackStyle_in) {
-		atk_rate_in = attackRate;
-		attackStyle_in = attackStyle;
+	public int AttackStyle() {
+		return attackStyle;
 	}
+
 
 	public float Speed() {
-		return speed;
+		return maxSpeed;
 	}
 
-	public void SetSpeed(float speed_in) {
-		speed = speed_in;
+	public void SetMaxSpeed(float speed_in) {
+		maxSpeed = speed_in;
 
-		if (speed < minimumSpeed) {
-			speed = minimumSpeed;
+		if (maxSpeed < minimumSpeed) {
+			maxSpeed = minimumSpeed;
 		}
 	}
 

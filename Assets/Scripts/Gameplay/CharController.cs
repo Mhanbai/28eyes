@@ -9,7 +9,6 @@ public class CharController : MonoBehaviour {
 
 	protected float speed;
 	protected float maxHealth;
-	protected float attackSpeed;
 	protected int attackStyle;
 
 	protected float velX;
@@ -18,12 +17,20 @@ public class CharController : MonoBehaviour {
 	protected bool isRunningX = false;
 	protected bool isRunningZ = false;
 
+	Canvas UI;
+	Camera cam;
+
+	int layer_mask;
+
 	// Use this for initialization
 	void Start () {
+		UI = GameObject.Find ("UI").GetComponent<Canvas> ();
+		cam = GameObject.Find ("Main Camera").GetComponent<Camera> ();
+		layer_mask = LayerMask.GetMask ("Ground");
+
 		UpdateSpeed ();
 		UpdateMaxHealth ();
-		UpdateAtack ();
-		PlayerInfo.Instance.inventory [0] = null;
+		PlayerInfo.Instance.inventory [0] = ItemList.Instance.dryadHeart;
 		PlayerInfo.Instance.inventory [1] = ItemList.Instance.ghoulClaw;
 		PlayerInfo.Instance.inventory [2] = ItemList.Instance.unicornLeg;
 		PlayerInfo.Instance.inventory [3] = ItemList.Instance.redPortalStone;
@@ -33,14 +40,15 @@ public class CharController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKey (KeyCode.LeftArrow)) {
+		//Moving Code
+		if (Input.GetKey (KeyCode.A)) {
 			//Set Sprite and Animation
 			animController.SetBool ("arrowPressed", true);
 			sprite.flipX = true;
 			//Move Avatar
 			velX = -speed;
 			isRunningX = true;
-		} else if (Input.GetKey (KeyCode.RightArrow)) {
+		} else if (Input.GetKey (KeyCode.D)) {
 			//Set Sprite and Animation
 			animController.SetBool ("arrowPressed", true);
 			sprite.flipX = false;
@@ -52,13 +60,13 @@ public class CharController : MonoBehaviour {
 			isRunningX = false;
 		}
 
-		if (Input.GetKey (KeyCode.UpArrow)) {
+		if (Input.GetKey (KeyCode.W)) {
 			//Set Sprite and Animation
 			animController.SetBool ("arrowPressed", true);
 			//Move Avatar
 			velZ = speed;
 			isRunningZ = true;
-		} else if (Input.GetKey (KeyCode.DownArrow)) {
+		} else if (Input.GetKey (KeyCode.S)) {
 			//Set Sprite and Animation
 			animController.SetBool ("arrowPressed", true);
 			//Move Avatar
@@ -76,6 +84,18 @@ public class CharController : MonoBehaviour {
 		}
 
 		player.transform.position = new Vector3 (player.transform.position.x + velX, player.transform.position.y, player.transform.position.z + velZ);
+
+		//Attacking code
+		if (Input.GetMouseButtonDown (0)) {
+			if (!IsPressOverUIObject (Input.mousePosition)) {
+				RaycastHit result;
+				Ray ray = cam.ScreenPointToRay (Input.mousePosition);
+				//Debug.DrawRay (ray.origin, ray.direction * 100.0f, Color.green, 90.0f);
+				if (Physics.Raycast (ray, out result, Mathf.Infinity, layer_mask)) {
+					Attack (result.point);
+				}
+			}
+		}
 	}
 
 	void UpdateSpeed() {
@@ -86,7 +106,47 @@ public class CharController : MonoBehaviour {
 		maxHealth = PlayerInfo.Instance.MaxHealth ();
 	}
 
-	void UpdateAtack() {
-		PlayerInfo.Instance.ChangeAttack (ref attackSpeed, ref attackStyle); 
+	public bool IsRunningOrShooting() {
+		if ((velZ != 0.0f) || (velX != 0.0f)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	private bool IsPressOverUIObject (Vector2 screenPosition) {
+		UnityEngine.EventSystems.PointerEventData eventDataCurrentPosition = new UnityEngine.EventSystems.PointerEventData (UnityEngine.EventSystems.EventSystem.current);
+		eventDataCurrentPosition.position = screenPosition;
+
+		UnityEngine.UI.GraphicRaycaster uiRaycaster = UI.GetComponent<UnityEngine.UI.GraphicRaycaster> ();
+		List <UnityEngine.EventSystems.RaycastResult> results = new List<UnityEngine.EventSystems.RaycastResult> ();
+		uiRaycaster.Raycast (eventDataCurrentPosition, results);
+		return results.Count > 0;
+	}
+
+	private void Attack(Vector3 point) {
+		Vector3 attackPt0 = new Vector3 (player.transform.position.x, 0.0f, player.transform.position.z);
+		Vector3 attackPt1 = new Vector3 (player.transform.position.x, 1.0f, player.transform.position.z);
+		Vector3 attackPt2 = new Vector3 (player.transform.position.x, 2.0f, player.transform.position.z);
+		Vector3 attackPt3 = new Vector3 (player.transform.position.x, 3.0f, player.transform.position.z);
+
+		RaycastHit result;
+		Vector3 direction = point - attackPt0;
+
+		switch(PlayerInfo.Instance.AttackStyle()) {
+		case 0:
+			Debug.DrawRay (attackPt2, direction, Color.red, 0.1f);
+
+			if (Physics.Raycast (attackPt1, direction, out result)) {
+				result.transform.GetComponentInParent<MonsterClass> ().TakeHit ();
+			} else if (Physics.Raycast (attackPt2, direction, out result)) {
+				result.transform.GetComponentInParent<MonsterClass> ().TakeHit ();
+			} else if (Physics.Raycast (attackPt3, direction, out result)) {
+				result.transform.GetComponentInParent<MonsterClass> ().TakeHit ();
+			}
+			break;
+		default:
+			break;
+		}
 	}
 }

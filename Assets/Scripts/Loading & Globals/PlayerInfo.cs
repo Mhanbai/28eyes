@@ -23,6 +23,7 @@ public class PlayerInfo : MonoBehaviour {
 	[SerializeField] protected float currentHealth = 100.0f; //Percentage
 	[SerializeField] protected float maxSpeed = 0.25f; //Pixels per second
 	[SerializeField] protected float minimumSpeed = 0.1f; 
+	[SerializeField] protected float attackCooldown = 0.5f;
 	protected int attackStyle = 0; //Defined in CharController class
 
 	public Item[] inventory = new Item[6];
@@ -78,5 +79,13 @@ public class PlayerInfo : MonoBehaviour {
 
 	public float CurrentHealth() {
 		return currentHealth;
+	}
+
+	public void SetAttackCooldown(float cooldown_in) {
+		attackCooldown = cooldown_in;
+	}
+
+	public float AttackCooldown() {
+		return attackCooldown;
 	}
 }

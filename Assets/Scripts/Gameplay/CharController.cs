@@ -7,15 +7,16 @@ public class CharController : MonoBehaviour {
 	public SpriteRenderer sprite;
 	public GameObject player;
 
-	protected float speed;
-	protected float maxHealth;
 	protected int attackStyle;
+	protected float attackCooldown;
+	protected float attackCooldownCount = 0.0f;
 
 	protected float velX;
 	protected float velZ;
 
 	protected bool isRunningX = false;
 	protected bool isRunningZ = false;
+	protected bool attackReady = true;
 
 	Canvas UI;
 	Camera cam;
@@ -28,8 +29,6 @@ public class CharController : MonoBehaviour {
 		cam = GameObject.Find ("Main Camera").GetComponent<Camera> ();
 		layer_mask = LayerMask.GetMask ("Ground");
 
-		UpdateSpeed ();
-		UpdateMaxHealth ();
 		PlayerInfo.Instance.inventory [0] = ItemList.Instance.dryadHeart;
 		PlayerInfo.Instance.inventory [1] = ItemList.Instance.ghoulClaw;
 		PlayerInfo.Instance.inventory [2] = ItemList.Instance.unicornLeg;
@@ -46,14 +45,14 @@ public class CharController : MonoBehaviour {
 			animController.SetBool ("arrowPressed", true);
 			sprite.flipX = true;
 			//Move Avatar
-			velX = -speed;
+			velX = -PlayerInfo.Instance.Speed();
 			isRunningX = true;
 		} else if (Input.GetKey (KeyCode.D)) {
 			//Set Sprite and Animation
 			animController.SetBool ("arrowPressed", true);
 			sprite.flipX = false;
 			//Move Avatar
-			velX = speed;
+			velX = PlayerInfo.Instance.Speed();
 			isRunningX = true;
 		} else {
 			velX = 0.0f;
@@ -64,13 +63,13 @@ public class CharController : MonoBehaviour {
 			//Set Sprite and Animation
 			animController.SetBool ("arrowPressed", true);
 			//Move Avatar
-			velZ = speed;
+			velZ = PlayerInfo.Instance.Speed();
 			isRunningZ = true;
 		} else if (Input.GetKey (KeyCode.S)) {
 			//Set Sprite and Animation
 			animController.SetBool ("arrowPressed", true);
 			//Move Avatar
-			velZ = -speed;
+			velZ = -PlayerInfo.Instance.Speed();
 			isRunningZ = true;
 		} else {
 			velZ = 0.0f;
@@ -86,24 +85,25 @@ public class CharController : MonoBehaviour {
 		player.transform.position = new Vector3 (player.transform.position.x + velX, player.transform.position.y, player.transform.position.z + velZ);
 
 		//Attacking code
-		if (Input.GetMouseButtonDown (0)) {
+		if ((Input.GetMouseButtonDown (0)) && (attackReady == true)) {
 			if (!IsPressOverUIObject (Input.mousePosition)) {
 				RaycastHit result;
 				Ray ray = cam.ScreenPointToRay (Input.mousePosition);
 				//Debug.DrawRay (ray.origin, ray.direction * 100.0f, Color.green, 90.0f);
 				if (Physics.Raycast (ray, out result, Mathf.Infinity, layer_mask)) {
 					Attack (result.point);
+					attackReady = false;
 				}
 			}
 		}
-	}
 
-	void UpdateSpeed() {
-		speed = PlayerInfo.Instance.Speed ();
-	}
-
-	void UpdateMaxHealth() {
-		maxHealth = PlayerInfo.Instance.MaxHealth ();
+		if (attackReady == false) {
+			attackCooldownCount += Time.deltaTime;
+			if (attackCooldownCount > PlayerInfo.Instance.AttackCooldown ()) {
+				attackCooldownCount = 0.0f;
+				attackReady = true;
+			}
+		}
 	}
 
 	public bool IsRunningOrShooting() {
@@ -148,5 +148,9 @@ public class CharController : MonoBehaviour {
 		default:
 			break;
 		}
+	}
+
+	public bool IsAttackReady(){
+		return attackReady;
 	}
 }

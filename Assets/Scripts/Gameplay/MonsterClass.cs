@@ -21,6 +21,10 @@ public class MonsterClass : MonoBehaviour {
 		bLeg2.SetActive(false);
 	}
 
+	public void TakeHit() {
+		GameObject.Destroy (gameObject);
+	}
+
 	// Update is called once per frame
 	public void UpdateParts (GameObject head_in, GameObject body_in, GameObject tail_in, GameObject f_leg_in, GameObject b_leg_in) {
 		GameObject.Instantiate (head_in, head.transform.position, head.transform.rotation, transform);

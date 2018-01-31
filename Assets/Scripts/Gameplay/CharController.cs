@@ -16,7 +16,6 @@ public class CharController : MonoBehaviour {
 
 	protected bool isRunningX = false;
 	protected bool isRunningZ = false;
-	protected bool attackReady = true;
 
 	Canvas UI;
 	Camera cam;
@@ -25,7 +24,7 @@ public class CharController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		UI = GameObject.Find ("UI").GetComponent<Canvas> ();
+		UI = GameObject.Find ("UI(Clone)").GetComponent<Canvas> ();
 		cam = GameObject.Find ("Main Camera").GetComponent<Camera> ();
 		layer_mask = LayerMask.GetMask ("Ground");
 
@@ -85,24 +84,30 @@ public class CharController : MonoBehaviour {
 		player.transform.position = new Vector3 (player.transform.position.x + velX, player.transform.position.y, player.transform.position.z + velZ);
 
 		//Attacking code
-		if ((Input.GetMouseButtonDown (0)) && (attackReady == true)) {
+		if ((Input.GetMouseButtonDown (0)) && (PlayerInfo.Instance.IsAttackReady() == true)) {
 			if (!IsPressOverUIObject (Input.mousePosition)) {
 				RaycastHit result;
 				Ray ray = cam.ScreenPointToRay (Input.mousePosition);
 				//Debug.DrawRay (ray.origin, ray.direction * 100.0f, Color.green, 90.0f);
 				if (Physics.Raycast (ray, out result, Mathf.Infinity, layer_mask)) {
 					Attack (result.point);
-					attackReady = false;
+					PlayerInfo.Instance.SetAttackReady(false);
 				}
 			}
 		}
 
-		if (attackReady == false) {
+		if (PlayerInfo.Instance.IsAttackReady() == false) {
 			attackCooldownCount += Time.deltaTime;
 			if (attackCooldownCount > PlayerInfo.Instance.AttackCooldown ()) {
 				attackCooldownCount = 0.0f;
-				attackReady = true;
+				PlayerInfo.Instance.SetAttackReady(true);
 			}
+		}
+
+		if (IsRunningOrShooting ()) {
+			PlayerInfo.Instance.SetPlayerActive (true);
+		} else {
+			PlayerInfo.Instance.SetPlayerActive (false);
 		}
 	}
 
@@ -148,9 +153,5 @@ public class CharController : MonoBehaviour {
 		default:
 			break;
 		}
-	}
-
-	public bool IsAttackReady(){
-		return attackReady;
 	}
 }

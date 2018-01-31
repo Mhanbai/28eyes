@@ -6,7 +6,7 @@ using UnityEditor;
 public class ReorientateCamera : Editor {
 	[MenuItem("28Eyes Tools/Reorientate Camera")]
 	public static void MoveCamera() {
-		Transform bestView = GameObject.Find ("Main Camera").GetComponent<Camera> ().transform;
+		Transform bestView = GameObject.Find ("Level Editor").GetComponent<LevelEditor> ().viewReference.transform;
 		SceneView.lastActiveSceneView.AlignViewToObject (bestView);
 	}
 }

@@ -103,6 +103,7 @@ GameObject:
   - component: {fileID: 1378583541}
   - component: {fileID: 1378583542}
   - component: {fileID: 1378583543}
+  - component: {fileID: 1378583544}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -158,10 +159,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 100
-  speed: 0.25
+  maxSpeed: 0.25
   minimumSpeed: 0.1
-  attackRate: 1
-  attackStyle: 1
+  attackCooldown: 0.5
 --- !u!114 &1378583543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,3 +181,16 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 5f2e60c31d66e8c4e8721764fd250b28, type: 3}
   - {fileID: 21300000, guid: 1789bdede765eed49867f6e294a8c634, type: 3}
   - {fileID: 21300000, guid: eb0b39ac0bbc15847af85468d7675787, type: 3}
+--- !u!114 &1378583544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1378583538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d2817eac69d7434c99f949cbf23e3b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UI: {fileID: 1013852966311228, guid: 1b8e343aa56915f4cad661057d68135f, type: 2}
+  Player: {fileID: 1407000789401970, guid: 56225e71cf5adac4286622aee4a996f5, type: 2}

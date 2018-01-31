@@ -25,6 +25,8 @@ public class PlayerInfo : MonoBehaviour {
 	[SerializeField] protected float minimumSpeed = 0.1f; 
 	[SerializeField] protected float attackCooldown = 0.5f;
 	protected int attackStyle = 0; //Defined in CharController class
+	protected bool playerIsActive = false;
+	protected bool attackIsReady = true;
 
 	public Item[] inventory = new Item[6];
 
@@ -87,5 +89,21 @@ public class PlayerInfo : MonoBehaviour {
 
 	public float AttackCooldown() {
 		return attackCooldown;
+	}
+
+	public bool IsRunningOrShooting() {
+		return playerIsActive;
+	}
+
+	public void SetPlayerActive(bool isActive) {
+		playerIsActive = isActive;
+	}
+
+	public bool IsAttackReady() {
+		return attackIsReady;
+	}
+
+	public void SetAttackReady(bool attackState) {
+		attackIsReady = attackState;
 	}
 }

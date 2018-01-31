@@ -5,6 +5,12 @@ using UnityEngine;
 
 [ExecuteInEditMode]
 public class LevelEditor : MonoBehaviour {
+	[Header("SpawnPoint")]
+	[SerializeField] public GameObject spawnPointLocation;
+
+	[Header("CamView")]
+	[SerializeField] public GameObject viewReference;
+
 	[Header("Bounding Box")]
 	//Variables that are used to show a bounding box for placing assets
 	[SerializeField] public GameObject bottomLeftBoundary;
@@ -34,6 +40,7 @@ public class LevelEditor : MonoBehaviour {
 		//Reset Y values for both boundaries to 0
 		bottomLeftBoundary.transform.position = new Vector3 (bottomLeftBoundary.transform.position.x, 0.0f, bottomLeftBoundary.transform.position.z);
 		topRightBoundary.transform.position = new Vector3 (topRightBoundary.transform.position.x, 0.0f, topRightBoundary.transform.position.z);
+		spawnPointLocation.transform.position = new Vector3 (spawnPointLocation.transform.position.x, 3.0f, spawnPointLocation.transform.position.z);
 
 		//Find the four corners of the bounding box
 		bottomLeft = bottomLeftBoundary.transform.position;

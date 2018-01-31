@@ -12,7 +12,7 @@ public class SceneSelection : MonoBehaviour {
 	public Canvas canvas;
 
 	void Awake () {
-		int sceneCount = SceneManager.sceneCountInBuildSettings;
+		int sceneCount = UnityEngine.SceneManagement.SceneManager.sceneCountInBuildSettings;
 		scenes = new string[sceneCount];
 
 		for (int i = 0; i < sceneCount; i++) {
@@ -34,6 +34,6 @@ public class SceneSelection : MonoBehaviour {
 	}
 
 	void OnButtonPress(int sceneToLoad) {
-		SceneManager.LoadScene (sceneToLoad);
+		UnityEngine.SceneManagement.SceneManager.LoadScene (sceneToLoad);
 	}
 }

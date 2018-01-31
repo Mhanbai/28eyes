@@ -5,6 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class LoadGame : MonoBehaviour {
 	void Start () {
-		SceneManager.LoadScene (1);
+		UnityEngine.SceneManagement.SceneManager.LoadScene (1);
 	}
 }

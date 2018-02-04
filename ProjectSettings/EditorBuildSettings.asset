@@ -11,5 +11,3 @@ EditorBuildSettings:
     path: Assets/Scenes/_mainmenu.unity
   - enabled: 1
     path: Assets/Scenes/TestEnvironment.unity
-  - enabled: 1
-    path: Assets/Scenes/PipelineTest.unity

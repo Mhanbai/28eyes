@@ -17,6 +17,8 @@ public class CharController : MonoBehaviour {
 	protected bool isRunningX = false;
 	protected bool isRunningZ = false;
 
+	protected Vector3 forwardVector;
+
 	Canvas UI;
 	Camera cam;
 
@@ -27,6 +29,8 @@ public class CharController : MonoBehaviour {
 		UI = GameObject.Find ("UI(Clone)").GetComponent<Canvas> ();
 		cam = GameObject.Find ("Main Camera").GetComponent<Camera> ();
 		layer_mask = LayerMask.GetMask ("Ground");
+
+		forwardVector = new Vector3 (1.0f, 0.0f, 0.0f);
 
 		PlayerInfo.Instance.inventory [0] = ItemList.Instance.dryadHeart;
 		PlayerInfo.Instance.inventory [1] = ItemList.Instance.ghoulClaw;
@@ -44,15 +48,17 @@ public class CharController : MonoBehaviour {
 			animController.SetBool ("arrowPressed", true);
 			sprite.flipX = true;
 			//Move Avatar
-			velX = -PlayerInfo.Instance.Speed();
+			velX = -PlayerInfo.Instance.Speed() * Time.deltaTime;
+			forwardVector = new Vector3 (-1.0f, 0.0f, forwardVector.z);
 			isRunningX = true;
 		} else if (Input.GetKey (KeyCode.D)) {
 			//Set Sprite and Animation
 			animController.SetBool ("arrowPressed", true);
 			sprite.flipX = false;
 			//Move Avatar
-			velX = PlayerInfo.Instance.Speed();
+			velX = PlayerInfo.Instance.Speed() * Time.deltaTime;
 			isRunningX = true;
+			forwardVector = new Vector3 (1.0f, 0.0f, forwardVector.z);
 		} else {
 			velX = 0.0f;
 			isRunningX = false;
@@ -62,20 +68,24 @@ public class CharController : MonoBehaviour {
 			//Set Sprite and Animation
 			animController.SetBool ("arrowPressed", true);
 			//Move Avatar
-			velZ = PlayerInfo.Instance.Speed();
+			velZ = PlayerInfo.Instance.Speed() * Time.deltaTime;
+			forwardVector = new Vector3 (forwardVector.x, 0.0f, 1.0f);
 			isRunningZ = true;
 		} else if (Input.GetKey (KeyCode.S)) {
 			//Set Sprite and Animation
 			animController.SetBool ("arrowPressed", true);
 			//Move Avatar
-			velZ = -PlayerInfo.Instance.Speed();
+			velZ = -PlayerInfo.Instance.Speed() * Time.deltaTime;
+			forwardVector = new Vector3 (forwardVector.x, 0.0f, -1.0f);
 			isRunningZ = true;
 		} else {
 			velZ = 0.0f;
 			isRunningZ = false;
 		}
-	
 
+		forwardVector.Normalize ();
+		//Debug.Log (forwardVector);
+	
 		if ((isRunningX == false) && (isRunningZ == false)){
 			//Stop animation
 			animController.SetBool ("arrowPressed", false);
@@ -153,5 +163,13 @@ public class CharController : MonoBehaviour {
 		default:
 			break;
 		}
+	}
+
+	public Vector3 GetForwardVector() {
+		return forwardVector;
+	}
+
+	public float GetSpeed() {
+		return Vector3.Magnitude(new Vector3(velX, 0.0f, velZ));
 	}
 }

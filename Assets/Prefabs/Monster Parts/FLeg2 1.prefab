@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4272618575995528}
   - component: {fileID: 114802906925783948}
-  - component: {fileID: 114238277901079340}
   m_Layer: 0
   m_Name: New Ik CCD
   m_TagString: Untagged
@@ -153,17 +152,6 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 4107265245493584}
   - {fileID: 4213115065265012}
---- !u!114 &114238277901079340
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1076776412433430}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: efaa37a228b4fad4396922d846276571, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114802906925783948
 MonoBehaviour:
   m_ObjectHideFlags: 1

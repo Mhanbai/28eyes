@@ -21,7 +21,7 @@ public class PlayerInfo : MonoBehaviour {
 	//TODO: Change stats based on design
 	[SerializeField] protected float maxHealth = 100.0f; //Percentage
 	[SerializeField] protected float currentHealth = 100.0f; //Percentage
-	[SerializeField] protected float maxSpeed = 0.25f; //Pixels per second
+	[SerializeField] protected float maxSpeed = 3.0f; //Pixels per second
 	[SerializeField] protected float minimumSpeed = 0.1f; 
 	[SerializeField] protected float attackCooldown = 0.5f;
 	protected int attackStyle = 0; //Defined in CharController class

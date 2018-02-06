@@ -17,7 +17,7 @@ public class SceneManager : MonoBehaviour {
 		if ((scene.name != "_preload") && (scene.name != "_mainmenu")) {
 			GameObject.Instantiate (UI);
 			GameObject spawnPoint = GameObject.Find ("PlayerSpawnPoint");
-			GameObject.Instantiate (Player, spawnPoint.transform.position, Quaternion.Euler(25.0f, 0.0f, 0.0f));
+			GameObject.Instantiate (Player, spawnPoint.transform.position, Quaternion.identity);
 			spawnPoint.SetActive (false);
 		}
 	}

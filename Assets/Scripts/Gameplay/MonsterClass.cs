@@ -3,38 +3,57 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MonsterClass : MonoBehaviour {
-	public GameObject head;
-	public GameObject body;
-	public GameObject tail;
-	public GameObject fLeg1;
-	public GameObject fLeg2;
-	public GameObject bLeg1;
-	public GameObject bLeg2;
+	Vector3 topLeftBoundary;
+	Vector3 bottomLeftBoundary;
+	Vector3 topRightBoundary;
+	Vector3 bottomRightBoundary;
+
+	Vector3 targetPosition;
+
+	NPCMovement myMovement;
+	NPCMovement player;
+
+	int state = 0;
 
 	void Start() {
-		head.SetActive(false);
-		body.SetActive(false);
-		tail.SetActive(false);
-		fLeg1.SetActive(false);
-		fLeg2.SetActive(false);
-		bLeg1.SetActive(false);
-		bLeg2.SetActive(false);
+		myMovement = GetComponent<NPCMovement> ();
+		player = GameObject.Find ("Player(Clone)").GetComponent<NPCMovement> ();
+		targetPosition = PickNewTarget ();
+	}
+
+	void Update() {
+		if (Vector3.Magnitude (transform.position - player.transform.position) > 50.0f) {
+			state = 0;
+		} else {
+			state = 1;
+		}
+
+		switch(state) {
+		case 0:
+			if (Vector3.Magnitude (transform.position - targetPosition) > 2.0f) {
+				myMovement.CalculateSteering (targetPosition);
+			} else {
+				targetPosition = PickNewTarget ();
+			}
+			break;
+		case 1:
+			myMovement.CalculateSteering (player);
+			break;
+		}
 	}
 
 	public void TakeHit() {
 		GameObject.Destroy (gameObject);
 	}
 
-	// Update is called once per frame
-	public void UpdateParts (GameObject head_in, GameObject body_in, GameObject tail_in, GameObject f_leg_in, GameObject b_leg_in) {
-		GameObject.Instantiate (head_in, head.transform.position, head.transform.rotation, transform);
-		GameObject.Instantiate (body_in, body.transform.position, body.transform.rotation, transform); 
-		GameObject.Instantiate (tail_in, tail.transform.position, tail.transform.rotation, transform); 
-		GameObject.Instantiate (f_leg_in, fLeg1.transform.position, fLeg1.transform.rotation, transform); 
-		GameObject.Instantiate (f_leg_in, fLeg2.transform.position, fLeg2.transform.rotation, transform); 
-		GameObject.Instantiate (b_leg_in, bLeg1.transform.position, bLeg1.transform.rotation, transform); 
-		GameObject.Instantiate (b_leg_in, bLeg2.transform.position, bLeg2.transform.rotation, transform);
+	public void EstablishBoundaries(Vector3 topRight, Vector3 bottomLeft) {
+		bottomLeftBoundary = bottomLeft;
+		bottomRightBoundary = new Vector3 (topRight.x, 0, bottomLeft.z);
+		topLeftBoundary = new Vector3 (bottomLeft.x, 0, topRight.z);
+		topRightBoundary = topRight;
+	}
 
-		transform.localScale = new Vector3 (1.5f, 1.5f, 1.5f);
+	Vector3 PickNewTarget() {
+		return new Vector3 (Random.Range (bottomLeftBoundary.x, bottomRightBoundary.x), 0.0f, Random.Range (bottomLeftBoundary.z, topLeftBoundary.z));
 	}
 }

@@ -159,7 +159,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 100
-  maxSpeed: 0.25
+  maxSpeed: 10
   minimumSpeed: 0.1
   attackCooldown: 0.5
 --- !u!114 &1378583543
@@ -193,4 +193,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UI: {fileID: 1013852966311228, guid: 1b8e343aa56915f4cad661057d68135f, type: 2}
-  Player: {fileID: 1407000789401970, guid: 56225e71cf5adac4286622aee4a996f5, type: 2}
+  Player: {fileID: 1547660120476760, guid: 7e03e52dee0f2c9448555a4d8d3402e0, type: 2}

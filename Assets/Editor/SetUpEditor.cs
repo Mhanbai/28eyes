@@ -13,7 +13,7 @@ public class SetUpEditor : Editor {
 		GameObject bottomLeftBoundary = new GameObject ("BoxBottomLeft");
 		bottomLeftBoundary.transform.SetParent (levelEditor.transform);
 
-		GameObject spawnPoint = Instantiate(Resources.Load ("PlayerSpawnPoint", typeof(GameObject))) as GameObject;
+		GameObject spawnPoint = Instantiate(Resources.Load ("Tools/PlayerSpawnPoint", typeof(GameObject))) as GameObject;
 		spawnPoint.name = "PlayerSpawnPoint";
 		spawnPoint.transform.position = new Vector3 (0.0f, 0.0f, 0.0f);
 		spawnPoint.transform.SetParent (levelEditor.transform);
@@ -31,5 +31,8 @@ public class SetUpEditor : Editor {
 		LE.topRightBoundary = topRightBoundary;
 		LE.spawnPointLocation = spawnPoint;
 		LE.viewReference = viewReference;
+
+		Snap s1 = LE.bottomLeftBoundary.AddComponent (typeof(Snap)) as Snap;
+		Snap s2 = LE.topRightBoundary.AddComponent (typeof(Snap)) as Snap;
 	}
 }

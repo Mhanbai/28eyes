@@ -19,6 +19,8 @@ public class CharController : MonoBehaviour {
 
 	protected Vector3 forwardVector;
 
+	CharacterController characterController;
+
 	Canvas UI;
 	Camera cam;
 
@@ -41,9 +43,11 @@ public class CharController : MonoBehaviour {
 
 		forwardVector = new Vector3 (1.0f, 0.0f, 0.0f);
 
-		PlayerInfo.Instance.inventory [0] = ItemList.Instance.redPortalStone;
-		PlayerInfo.Instance.inventory [1] = ItemList.Instance.bluePortalStone;
-		PlayerInfo.Instance.inventory [2] = ItemList.Instance.greenPortalStone;
+		characterController = GetComponent<CharacterController> ();
+
+		PlayerInfo.Instance.inventory [0] = ItemList.Instance.portalOneItems[0];
+		PlayerInfo.Instance.inventory [1] = ItemList.Instance.portalTwoItems[0];
+		PlayerInfo.Instance.inventory [2] = ItemList.Instance.portalThreeItems[0];
 	}
 	
 	// Update is called once per frame
@@ -90,21 +94,19 @@ public class CharController : MonoBehaviour {
 		}
 
 		forwardVector.Normalize ();
-		//Debug.Log (forwardVector);
 	
 		if ((isRunningX == false) && (isRunningZ == false)){
 			//Stop animation
 			animController.SetBool ("arrowPressed", false);
 		}
 
-		player.transform.position = new Vector3 (player.transform.position.x + velX, player.transform.position.y, player.transform.position.z + velZ);
+		characterController.Move(new Vector3(velX, 0.0f, velZ));
 
 		if (inLevel == true) {
 			if ((Input.GetMouseButtonDown (0)) && (PlayerInfo.Instance.IsAttackReady () == true)) {
 				if (!IsPressOverUIObject (Input.mousePosition)) {
 					RaycastHit result;
 					Ray ray = cam.ScreenPointToRay (Input.mousePosition);
-					//Debug.DrawRay (ray.origin, ray.direction * 100.0f, Color.green, 90.0f);
 					if (Physics.Raycast (ray, out result, Mathf.Infinity, layer_mask)) {
 						Attack (result.point);
 						PlayerInfo.Instance.SetAttackReady (false);
@@ -160,11 +162,23 @@ public class CharController : MonoBehaviour {
 			Debug.DrawRay (attackPt2, direction, Color.red, 0.1f);
 
 			if (Physics.Raycast (attackPt1, direction, out result)) {
-				result.transform.GetComponentInParent<MonsterClass> ().TakeHit ();
+				try {
+				result.transform.GetComponent<MonsterClass> ().TakeHit ();
+				}
+				catch {
+				}
 			} else if (Physics.Raycast (attackPt2, direction, out result)) {
-				result.transform.GetComponentInParent<MonsterClass> ().TakeHit ();
+				try {
+				result.transform.GetComponent<MonsterClass> ().TakeHit ();
+				}
+				catch {
+				}
 			} else if (Physics.Raycast (attackPt3, direction, out result)) {
-				result.transform.GetComponentInParent<MonsterClass> ().TakeHit ();
+				try {
+				result.transform.GetComponent<MonsterClass> ().TakeHit ();
+				}
+				catch {
+				}
 			}
 			break;
 		default:

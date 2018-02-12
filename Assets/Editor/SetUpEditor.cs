@@ -20,8 +20,12 @@ public class SetUpEditor : Editor {
 
 		GameObject viewReference = new GameObject ("ViewReference");
 		viewReference.transform.position = new Vector3 (0.0f, 18.5f, -41.0f);
-		viewReference.transform.rotation = Quaternion.Euler (25.0f, 0.0f, 0.0f);
+		viewReference.transform.rotation = Quaternion.Euler (45.0f, 0.0f, 0.0f);
 		viewReference.transform.SetParent (levelEditor.transform);
+
+		GameObject lighting = Instantiate(Resources.Load ("Tools/Light", typeof(GameObject))) as GameObject;
+		lighting.name = "Lighting";
+		lighting.transform.position = new Vector3 (0.0f, 100.0f, -70.0f);
 
 		//Add the level editor script
 		LevelEditor LE = levelEditor.AddComponent (typeof(LevelEditor)) as LevelEditor;

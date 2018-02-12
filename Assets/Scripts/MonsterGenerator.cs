@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MonsterGenerator : MonoBehaviour {
-	[SerializeField] protected GameObject monsterBase;
+	[SerializeField] protected GameObject[] monsters;
 	[SerializeField] protected GameObject bottomLeftBoundary;
 	[SerializeField] protected GameObject topRightBoundary;
 
@@ -22,7 +22,8 @@ public class MonsterGenerator : MonoBehaviour {
 	}
 
 	void CreateMonster() {
-		GameObject toSpawn = GameObject.Instantiate(monsterBase, new Vector3(this.transform.position.x, 1.75f, this.transform.position.z), Quaternion.identity);
+		int selection = Random.Range (0, monsters.Length);
+		GameObject toSpawn = GameObject.Instantiate(monsters[selection], new Vector3(this.transform.position.x, 1.75f, this.transform.position.z), Quaternion.identity);
 		toSpawn.GetComponent<MonsterClass> ().EstablishBoundaries(topRightBoundary.transform.position, bottomLeftBoundary.transform.position);
 	}
 }

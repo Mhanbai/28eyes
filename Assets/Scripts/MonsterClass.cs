@@ -17,7 +17,7 @@ public class MonsterClass : MonoBehaviour {
 
 	void Start() {
 		myMovement = GetComponent<NPCMovement> ();
-		player = GameObject.Find ("Player(Clone)").GetComponent<NPCMovement> ();
+		player = GameObject.Find ("Player").GetComponent<NPCMovement> ();
 		targetPosition = PickNewTarget ();
 	}
 

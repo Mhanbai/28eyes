@@ -50,19 +50,10 @@ public class NPCMovement : MonoBehaviour {
 			}
 
 			characterController.Move (velocityVector * Time.deltaTime);
-			//transform.position += (velocityVector * Time.deltaTime);
 		} else {
 			forwardVector = myPlayer.GetForwardVector ();
 			maxSpeed = myPlayer.GetSpeed ();
 		}
-	}
-
-	public void CalculateSteering(Vector3 target) {
-		steeringForce = Seek(target);
-	}
-
-	public void CalculateSteering(NPCMovement target) {
-		steeringForce = Pursue(target);
 	}
 
 	public Vector3 Seek(Vector3 targetPos) {
@@ -98,5 +89,9 @@ public class NPCMovement : MonoBehaviour {
 		float predictionTime = distanceToTarget.magnitude / (maxSpeed + target.maxSpeed);
 
 		return Flee (target.transform.position + (target.velocityVector * predictionTime));
+	}
+
+	public void SetSteeringForce(Vector3 force_in) {
+		steeringForce = force_in;
 	}
 }

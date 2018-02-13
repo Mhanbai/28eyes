@@ -31,13 +31,13 @@ public class MonsterClass : MonoBehaviour {
 		switch(state) {
 		case 0:
 			if (Vector3.Magnitude (transform.position - targetPosition) > 2.0f) {
-				myMovement.CalculateSteering (targetPosition);
+				myMovement.SetSteeringForce (myMovement.Seek (targetPosition));
 			} else {
 				targetPosition = PickNewTarget ();
 			}
 			break;
 		case 1:
-			myMovement.CalculateSteering (player);
+			myMovement.SetSteeringForce (myMovement.Pursue (player));
 			break;
 		}
 	}

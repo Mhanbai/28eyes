@@ -207,4 +207,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectiles:
-  - {fileID: 21300000, guid: fe7e583410355794b8c4e779d7bc82b2, type: 3}
+  - {fileID: 1106232674436886, guid: 8b94588e584718d43ab4dc64a742ec95, type: 2}
+  - {fileID: 1562679912356188, guid: f9095ae24ee6e38498419b50579063eb, type: 2}

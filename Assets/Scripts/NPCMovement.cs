@@ -22,6 +22,12 @@ public class NPCMovement : MonoBehaviour {
 	NPCMovement player; //Debug
 	Vector3 targetInput; //Debug
 
+	bool slowed = false;
+	float slowCounter = 0.0f;
+	float slowTime = 5.0f;
+
+	public float slowSeverity = 2.0f;
+
 	void Start() {
 		if (playerControlled == true) {
 			myPlayer = GetComponentInParent<CharController> ();
@@ -53,6 +59,16 @@ public class NPCMovement : MonoBehaviour {
 		} else {
 			forwardVector = myPlayer.GetForwardVector ();
 			maxSpeed = myPlayer.GetSpeed ();
+		}
+
+		if (slowed == true) {
+			slowCounter = slowCounter + Time.deltaTime;
+		}
+
+		if (slowCounter > slowTime) {
+			slowCounter = 0.0f;
+			slowed = false;
+			maxSpeed = maxSpeed * 2;
 		}
 	}
 
@@ -93,5 +109,12 @@ public class NPCMovement : MonoBehaviour {
 
 	public void SetSteeringForce(Vector3 force_in) {
 		steeringForce = force_in;
+	}
+
+	public void Slow() {
+		if (slowed != true) {
+			maxSpeed = maxSpeed / slowSeverity;
+			slowed = true;
+		}
 	}
 }

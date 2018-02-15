@@ -21,6 +21,8 @@ public class CharController : MonoBehaviour {
 	//Determines whether or not UI needs updating
 	bool inLevel;
 
+	Attack equippedAttack;
+
 	// Use this for initialization
 	void Start () {
 		//Find the players Character Controller
@@ -28,6 +30,8 @@ public class CharController : MonoBehaviour {
 
 		//Find the camera
 		cam = GameObject.Find("Main Camera").GetComponent<Camera>();
+
+		equippedAttack = AttackList.Instance.attackType [0];
 
 		//Try to find UI
 		try {
@@ -106,7 +110,7 @@ public class CharController : MonoBehaviour {
 			//Shoot a ray from this point in the direction the camera is facing
 			if (Physics.Raycast (ray, out info, Mathf.Infinity, ground)) {
 				//Get direction between player and resulting point 
-				Vector3 direction = Vector3.Normalize (info.point - player.transform.position);
+				Vector3 direction = Vector3.Normalize (new Vector3(info.point.x, player.transform.position.y, info.point.z) - player.transform.position);
 				//Attack in direction
 				Attack (direction);
 			}
@@ -114,7 +118,21 @@ public class CharController : MonoBehaviour {
 	}
 
 	void Attack(Vector3 direction) {
-		Debug.DrawRay (player.transform.position, direction * 200.0f, Color.red, 100.0f);
+		GameObject projectileObject = GameObject.Instantiate (equippedAttack.Projectile);
+		ProjectileBehaviour projectileBehaviour = projectileObject.GetComponent<ProjectileBehaviour> ();
+
+		projectileObject.transform.position = player.transform.position;
+		projectileBehaviour.startingLocation = player.transform.position;
+		projectileBehaviour.speed = equippedAttack.ProjectileSpeed;
+		projectileBehaviour.direction = direction;
+		projectileBehaviour.range = equippedAttack.Range;
+		projectileBehaviour.trajectoryType = equippedAttack.TrajectoryType;
+
+		projectileBehaviour.damage = equippedAttack.Damage;
+		projectileBehaviour.causesPosion = equippedAttack.Poison;
+		projectileBehaviour.causesBleed = equippedAttack.Bleed;
+		projectileBehaviour.causesSlow = equippedAttack.Slow;
+
 	}
 
 	public bool IsRunningOrShooting() {

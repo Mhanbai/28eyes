@@ -14,10 +14,11 @@ public class AttackList : MonoBehaviour {
 		}
 	}
 
-	public Attack[] attackType;
-	[SerializeField] Sprite[] projectiles;
+	[SerializeField] GameObject[] projectiles;
+	public Attack[] attackType = new Attack[2];
 
 	void Start() {
-		attackType[0] = new Attack ("Gun", 5.0f, 20.0f, 1, 6, 2.0f, projectiles[0], false, false, false);
+		attackType [0] 	= new Attack ("Gun", 5.0f, 150.0f, 50.0f, 0, 1, 6, 2.0f, projectiles [0], true, false, false);
+		attackType[1] 	= new Attack ("Web", 1.0f, 15.0f, 15.0f, 1, 1, 6, 2.0f, projectiles[1], false, true, false);
 	}
 }

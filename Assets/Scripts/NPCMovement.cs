@@ -22,7 +22,17 @@ public class NPCMovement : MonoBehaviour {
 	NPCMovement player; //Debug
 	Vector3 targetInput; //Debug
 
+	bool slowed = false;
+	float slowCounter = 0.0f;
+	float slowTime = 5.0f;
+
+	float yPos;
+
+	public float slowSeverity = 2.0f;
+
 	void Start() {
+		yPos = gameObject.GetComponent<Collider> ().bounds.size.y / 2;
+
 		if (playerControlled == true) {
 			myPlayer = GetComponentInParent<CharController> ();
 		} else {
@@ -50,19 +60,22 @@ public class NPCMovement : MonoBehaviour {
 			}
 
 			characterController.Move (velocityVector * Time.deltaTime);
-			//transform.position += (velocityVector * Time.deltaTime);
 		} else {
 			forwardVector = myPlayer.GetForwardVector ();
 			maxSpeed = myPlayer.GetSpeed ();
 		}
-	}
 
-	public void CalculateSteering(Vector3 target) {
-		steeringForce = Seek(target);
-	}
+		if (slowed == true) {
+			slowCounter = slowCounter + Time.deltaTime;
+		}
 
-	public void CalculateSteering(NPCMovement target) {
-		steeringForce = Pursue(target);
+		if (slowCounter > slowTime) {
+			slowCounter = 0.0f;
+			slowed = false;
+			maxSpeed = maxSpeed * 2;
+		}
+
+		transform.position = new Vector3 (transform.position.x, yPos + 0.1f, transform.position.z);
 	}
 
 	public Vector3 Seek(Vector3 targetPos) {
@@ -98,5 +111,22 @@ public class NPCMovement : MonoBehaviour {
 		float predictionTime = distanceToTarget.magnitude / (maxSpeed + target.maxSpeed);
 
 		return Flee (target.transform.position + (target.velocityVector * predictionTime));
+	}
+
+	public void SetSteeringForce(Vector3 force_in) {
+		steeringForce = force_in;
+	}
+
+	public void Slow() {
+		if (slowed != true) {
+			maxSpeed = maxSpeed / slowSeverity;
+			slowed = true;
+		} else {
+			slowCounter = 0.0f;
+		}
+	}
+
+	public Vector3 GetSteeringForce() {
+		return steeringForce;
 	}
 }

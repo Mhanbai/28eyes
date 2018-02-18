@@ -107,6 +107,7 @@ MonoBehaviour:
   legPower: 10
   turnSpeed: 3
   fleeDistance: 20
+  slowSeverity: 2
 --- !u!114 &114940033076385536
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -118,6 +119,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0679736df97a1924480a27870bd61319, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 100
+  bleedDamage: 0.5
+  bleedTime: 5
+  poisonDamage: 10
+  poisonFrequency: 5
+  poisonHits: 5
+  deathTimer: 2
+  attackStrength: 10
+  attackTimer: 1
+  attackRange: 5
+  delayBetweenAttacks: 0.5
+  shouldMoveWhileAttacking: 0
 --- !u!143 &143019985175343576
 CharacterController:
   m_ObjectHideFlags: 1

@@ -23,10 +23,12 @@ public class PlayerInfo : MonoBehaviour {
 	[SerializeField] protected float currentHealth = 100.0f; //Percentage
 	[SerializeField] protected float maxSpeed = 3.0f; //Pixels per second
 	[SerializeField] protected float minimumSpeed = 0.1f; 
-	[SerializeField] protected float attackCooldown = 0.5f;
-	protected int attackStyle = 0; //Defined in CharController class
 	protected bool playerIsActive = false;
 	protected bool attackIsReady = true;
+
+	public int attackCount = 0;
+	public Attack equippedAttack;
+	public float reloadTimer = 0.0f;
 
 	public Item[] inventory = new Item[6];
 
@@ -46,8 +48,8 @@ public class PlayerInfo : MonoBehaviour {
 
 	//Functions for pickups
 
-	public int AttackStyle() {
-		return attackStyle;
+	public Attack AttackStyle() {
+		return equippedAttack;
 	}
 
 
@@ -83,14 +85,6 @@ public class PlayerInfo : MonoBehaviour {
 		return currentHealth;
 	}
 
-	public void SetAttackCooldown(float cooldown_in) {
-		attackCooldown = cooldown_in;
-	}
-
-	public float AttackCooldown() {
-		return attackCooldown;
-	}
-
 	public bool IsRunningOrShooting() {
 		return playerIsActive;
 	}
@@ -105,5 +99,9 @@ public class PlayerInfo : MonoBehaviour {
 
 	public void SetAttackReady(bool attackState) {
 		attackIsReady = attackState;
+	}
+
+	public void TakeHit(float damage) {
+		currentHealth -= damage;
 	}
 }

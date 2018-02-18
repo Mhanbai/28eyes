@@ -31,15 +31,15 @@ public class Attack {
 		trajectoryType = trajectoryType_in;
 	}
 		
-	public int NoOfProjectiles { get { return noOfProjectiles; } } 
+	public int NoOfProjectiles { get { return noOfProjectiles; } }
 	public int Uses	{ get { return uses; } }
 	public float ReloadTime	{ get { return reloadTime; } }
-	public float Damage	{ get { return damage; } } //
-	public bool Bleed { get { return bleed; } } //
-	public bool Poison { get { return poison; } } //
-	public bool Slow { get { return slow; } } //
-	public float ProjectileSpeed { get { return  projectileSpeed; } } //
-	public GameObject Projectile { get { return projectile; } } //
-	public float Range { get { return range; } } //
-	public int TrajectoryType { get { return trajectoryType; } } //
+	public float Damage	{ get { return damage; } }
+	public bool Bleed { get { return bleed; } }
+	public bool Poison { get { return poison; } }
+	public bool Slow { get { return slow; } }
+	public float ProjectileSpeed { get { return  projectileSpeed; } }
+	public GameObject Projectile { get { return projectile; } }
+	public float Range { get { return range; } }
+	public int TrajectoryType { get { return trajectoryType; } }
 }

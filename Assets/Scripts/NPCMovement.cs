@@ -26,9 +26,13 @@ public class NPCMovement : MonoBehaviour {
 	float slowCounter = 0.0f;
 	float slowTime = 5.0f;
 
+	float yPos;
+
 	public float slowSeverity = 2.0f;
 
 	void Start() {
+		yPos = gameObject.GetComponent<Collider> ().bounds.size.y / 2;
+
 		if (playerControlled == true) {
 			myPlayer = GetComponentInParent<CharController> ();
 		} else {
@@ -70,6 +74,8 @@ public class NPCMovement : MonoBehaviour {
 			slowed = false;
 			maxSpeed = maxSpeed * 2;
 		}
+
+		transform.position = new Vector3 (transform.position.x, yPos + 0.1f, transform.position.z);
 	}
 
 	public Vector3 Seek(Vector3 targetPos) {
@@ -115,6 +121,12 @@ public class NPCMovement : MonoBehaviour {
 		if (slowed != true) {
 			maxSpeed = maxSpeed / slowSeverity;
 			slowed = true;
+		} else {
+			slowCounter = 0.0f;
 		}
+	}
+
+	public Vector3 GetSteeringForce() {
+		return steeringForce;
 	}
 }

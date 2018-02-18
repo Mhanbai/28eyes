@@ -19,8 +19,10 @@ public class ProjectileBehaviour : MonoBehaviour {
 	float circumferenceDistancePerSecond;
 	float unitsToMove;
 
+	SpriteRenderer mySprite;
+
 	void Start() {
-		
+		mySprite = gameObject.GetComponent<SpriteRenderer> ();
 	}
 
 	// Update is called once per frame
@@ -42,6 +44,10 @@ public class ProjectileBehaviour : MonoBehaviour {
 			transform.position += direction * speed * Time.deltaTime;
 			transform.position = new Vector3 (transform.position.x, yPos, transform.position.z);
 			break;
+		}
+
+		if (direction.x < 0) {
+			mySprite.flipX = true;
 		}
 
 		if (distance > range) {

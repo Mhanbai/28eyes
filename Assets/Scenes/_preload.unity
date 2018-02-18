@@ -162,7 +162,8 @@ MonoBehaviour:
   currentHealth: 100
   maxSpeed: 10
   minimumSpeed: 0.1
-  attackCooldown: 0.5
+  attackCount: 0
+  reloadTimer: 0
 --- !u!114 &1378583543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,7 +194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d2817eac69d7434c99f949cbf23e3b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI: {fileID: 1013852966311228, guid: 1b8e343aa56915f4cad661057d68135f, type: 2}
+  UI: {fileID: 1744820049693348, guid: c8e5384024236134682c1e38863c5a83, type: 2}
   Player: {fileID: 1679101855362128, guid: 1cee3e6d9d0ad8646947c8661cc75fa8, type: 2}
 --- !u!114 &1378583545
 MonoBehaviour:
@@ -209,3 +210,4 @@ MonoBehaviour:
   projectiles:
   - {fileID: 1106232674436886, guid: 8b94588e584718d43ab4dc64a742ec95, type: 2}
   - {fileID: 1562679912356188, guid: f9095ae24ee6e38498419b50579063eb, type: 2}
+  - {fileID: 1584505040572538, guid: 95ad2b2034bac6944b74227bab479d1a, type: 2}

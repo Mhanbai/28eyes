@@ -21,17 +21,15 @@ public class CharController : MonoBehaviour {
 	//Determines whether or not UI needs updating
 	bool inLevel;
 
-	Attack equippedAttack;
-
 	// Use this for initialization
 	void Start () {
+		PlayerInfo.Instance.equippedAttack = AttackList.Instance.attackType [2];
+
 		//Find the players Character Controller
 		characterController = GetComponent<CharacterController> ();
 
 		//Find the camera
 		cam = GameObject.Find("Main Camera").GetComponent<Camera>();
-
-		equippedAttack = AttackList.Instance.attackType [0];
 
 		//Try to find UI
 		try {
@@ -101,7 +99,7 @@ public class CharController : MonoBehaviour {
 		characterController.Move (new Vector3 (velX, 0.0f, velZ));
 
 		//Attacking Code
-		if ((Input.GetMouseButtonDown(0)) && (!UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())) {
+		if ((Input.GetMouseButtonDown(0)) && (PlayerInfo.Instance.attackCount < PlayerInfo.Instance.AttackStyle().Uses) && (!UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())) {
 			//Storage variables to use with fucntions
 			RaycastHit info;
 			LayerMask ground = LayerMask.GetMask("Ground");
@@ -110,29 +108,46 @@ public class CharController : MonoBehaviour {
 			//Shoot a ray from this point in the direction the camera is facing
 			if (Physics.Raycast (ray, out info, Mathf.Infinity, ground)) {
 				//Get direction between player and resulting point 
-				Vector3 direction = Vector3.Normalize (new Vector3(info.point.x, player.transform.position.y, info.point.z) - player.transform.position);
+				Vector3 clickDistance = new Vector3(info.point.x, player.transform.position.y, info.point.z) - player.transform.position;
 				//Attack in direction
-				Attack (direction);
+				Attack (Vector3.Normalize (clickDistance), clickDistance);
+				PlayerInfo.Instance.attackCount++;
+			}
+		}
+
+		if (PlayerInfo.Instance.attackCount >= PlayerInfo.Instance.AttackStyle().Uses) {
+			PlayerInfo.Instance.SetAttackReady(false);
+			PlayerInfo.Instance.reloadTimer += Time.deltaTime;
+			if (PlayerInfo.Instance.reloadTimer > PlayerInfo.Instance.AttackStyle().ReloadTime) {
+				PlayerInfo.Instance.reloadTimer = 0.0f;
+				PlayerInfo.Instance.attackCount = 0;
+				PlayerInfo.Instance.SetAttackReady(true);
 			}
 		}
 	}
 
-	void Attack(Vector3 direction) {
-		GameObject projectileObject = GameObject.Instantiate (equippedAttack.Projectile);
-		ProjectileBehaviour projectileBehaviour = projectileObject.GetComponent<ProjectileBehaviour> ();
+	void Attack(Vector3 direction, Vector3 clickDistance) {
+		for (int i = 0; i < PlayerInfo.Instance.AttackStyle().NoOfProjectiles; i++) {
+			GameObject projectileObject = GameObject.Instantiate (PlayerInfo.Instance.AttackStyle().Projectile);
+			ProjectileBehaviour projectileBehaviour = projectileObject.GetComponent<ProjectileBehaviour> ();
 
-		projectileObject.transform.position = player.transform.position;
-		projectileBehaviour.startingLocation = player.transform.position;
-		projectileBehaviour.speed = equippedAttack.ProjectileSpeed;
-		projectileBehaviour.direction = direction;
-		projectileBehaviour.range = equippedAttack.Range;
-		projectileBehaviour.trajectoryType = equippedAttack.TrajectoryType;
+			projectileObject.transform.position = player.transform.position;
+			projectileBehaviour.startingLocation = player.transform.position;
+			projectileBehaviour.speed = PlayerInfo.Instance.AttackStyle().ProjectileSpeed - (i * 2);
+			projectileBehaviour.direction = direction;
+			projectileBehaviour.trajectoryType = PlayerInfo.Instance.AttackStyle().TrajectoryType;
 
-		projectileBehaviour.damage = equippedAttack.Damage;
-		projectileBehaviour.causesPosion = equippedAttack.Poison;
-		projectileBehaviour.causesBleed = equippedAttack.Bleed;
-		projectileBehaviour.causesSlow = equippedAttack.Slow;
+			if (projectileBehaviour.trajectoryType == 1) {
+				projectileBehaviour.range = Mathf.Clamp (Vector3.Magnitude (clickDistance), 0.0f, PlayerInfo.Instance.AttackStyle().Range);
+			} else {
+				projectileBehaviour.range = PlayerInfo.Instance.AttackStyle().Range;
+			}
 
+			projectileBehaviour.damage = PlayerInfo.Instance.AttackStyle().Damage;
+			projectileBehaviour.causesPosion = PlayerInfo.Instance.AttackStyle().Poison;
+			projectileBehaviour.causesBleed = PlayerInfo.Instance.AttackStyle().Bleed;
+			projectileBehaviour.causesSlow = PlayerInfo.Instance.AttackStyle().Slow;
+		}
 	}
 
 	public bool IsRunningOrShooting() {

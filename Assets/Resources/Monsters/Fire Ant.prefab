@@ -131,6 +131,8 @@ MonoBehaviour:
   attackRange: 5
   delayBetweenAttacks: 0.5
   shouldMoveWhileAttacking: 0
+  levelToAppear: 1
+  dropChance: 10
 --- !u!143 &143019985175343576
 CharacterController:
   m_ObjectHideFlags: 1

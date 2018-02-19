@@ -16,7 +16,7 @@ public class Portal : MonoBehaviour {
 	}
 
 	void Update() {
-		if (player.IsRunningOrShooting ()) {
+		if (PlayerInfo.Instance.IsRunningOrShooting ()) {
 			hubUI.gameObject.SetActive (false);
 		}
 	}

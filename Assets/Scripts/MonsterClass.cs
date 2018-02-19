@@ -17,6 +17,9 @@ public class MonsterClass : MonoBehaviour {
 	public float delayBetweenAttacks = 1.0f;
 	public bool shouldMoveWhileAttacking;
 
+	public int levelToAppear = -1;
+	public int dropChance = 10;
+
 	float attackOngoingTime;
 	float attackDelayTime;
 
@@ -151,6 +154,12 @@ public class MonsterClass : MonoBehaviour {
 			corpseTimer += Time.deltaTime;
 
 			if (corpseTimer > deathTimer) {
+				if (Random.Range(0, 100) < dropChance) {
+					int itemToDrop = Random.Range (0, ItemList.Instance.LevelItems (levelToAppear).Length);
+					GameObject droppedItem = GameObject.Instantiate (ItemList.Instance.pickup, transform.position, Quaternion.identity);
+					droppedItem.GetComponent<Pickup>().AssignItem (ItemList.Instance.LevelItems(levelToAppear)[itemToDrop]); //Change depending on level
+				}
+
 				GameObject.Destroy (gameObject);
 			}
 		}

@@ -14,11 +14,11 @@ public class MonsterGenerator : MonoBehaviour {
 	}
 
 	void Update() {
-		/*time += Time.deltaTime;
-		if (time > 3.0f) {
+		time += Time.deltaTime;
+		if (time > 10.0f) {
 			CreateMonster ();
 			time = 0.0f;
-		}*/
+		}
 	}
 
 	void CreateMonster() {

@@ -94,6 +94,9 @@ public class CharController : MonoBehaviour {
 		if ((isRunningX == false) && (isRunningZ == false)) {
 			//Stop animation
 			animController.SetBool ("arrowPressed", false);
+			PlayerInfo.Instance.SetPlayerActive (false);
+		} else {
+			PlayerInfo.Instance.SetPlayerActive (true);
 		}
 
 		characterController.Move (new Vector3 (velX, 0.0f, velZ));
@@ -127,6 +130,7 @@ public class CharController : MonoBehaviour {
 	}
 
 	void Attack(Vector3 direction, Vector3 clickDistance) {
+		PlayerInfo.Instance.SetPlayerActive (true);
 		for (int i = 0; i < PlayerInfo.Instance.AttackStyle().NoOfProjectiles; i++) {
 			GameObject projectileObject = GameObject.Instantiate (PlayerInfo.Instance.AttackStyle().Projectile);
 			ProjectileBehaviour projectileBehaviour = projectileObject.GetComponent<ProjectileBehaviour> ();
@@ -147,14 +151,6 @@ public class CharController : MonoBehaviour {
 			projectileBehaviour.causesPosion = PlayerInfo.Instance.AttackStyle().Poison;
 			projectileBehaviour.causesBleed = PlayerInfo.Instance.AttackStyle().Bleed;
 			projectileBehaviour.causesSlow = PlayerInfo.Instance.AttackStyle().Slow;
-		}
-	}
-
-	public bool IsRunningOrShooting() {
-		if ((velZ != 0.0f) || (velX != 0.0f)) {
-			return true;
-		} else {
-			return false;
 		}
 	}
 

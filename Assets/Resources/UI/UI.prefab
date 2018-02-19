@@ -1502,6 +1502,7 @@ MonoBehaviour:
   - {fileID: 114577004686027016}
   description: {fileID: 1185849716502992}
   dropButton: {fileID: 1582978352293614}
+  pickup: {fileID: 1236209199646484, guid: 5b31c49f0087cb24396a5df6be153cae, type: 2}
 --- !u!114 &114739858174846610
 MonoBehaviour:
   m_ObjectHideFlags: 1

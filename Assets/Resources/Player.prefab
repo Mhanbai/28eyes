@@ -220,6 +220,7 @@ MonoBehaviour:
   legPower: 0
   turnSpeed: 0
   fleeDistance: 0
+  slowSeverity: 2
 --- !u!124 &124989498057548884
 Behaviour:
   m_ObjectHideFlags: 1

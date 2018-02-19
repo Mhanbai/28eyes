@@ -104,4 +104,18 @@ public class PlayerInfo : MonoBehaviour {
 	public void TakeHit(float damage) {
 		currentHealth -= damage;
 	}
+
+	public bool AddToInventory(Item toAdd) {
+		int index = -1;
+		foreach (Item item in inventory) {
+			index++;
+			if (item == null) {
+				Debug.Log (index);
+				inventory [index] = toAdd;
+				return true;
+			}
+		}
+
+		return false;
+	}
 }

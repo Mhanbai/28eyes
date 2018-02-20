@@ -17,7 +17,7 @@ public class MonsterClass : MonoBehaviour {
 	public float delayBetweenAttacks = 1.0f;
 	public bool shouldMoveWhileAttacking;
 
-	public int levelToAppear = -1;
+	public int lootList = -1;
 	public int dropChance = 10;
 
 	float attackOngoingTime;
@@ -65,9 +65,9 @@ public class MonsterClass : MonoBehaviour {
 			}
 
 			if (myMovement.GetSteeringForce ().x < 0) {
-				mySprite.flipX = true;
-			} else {
 				mySprite.flipX = false;
+			} else {
+				mySprite.flipX = true;
 			}
 
 			switch (state) {
@@ -97,9 +97,9 @@ public class MonsterClass : MonoBehaviour {
 				}
 
 				if (player.transform.position.x < transform.position.x) {
-					mySprite.flipX = true;
-				} else {
 					mySprite.flipX = false;
+				} else {
+					mySprite.flipX = true;
 				}
 
 				myAnimator.SetBool ("isAttacking", true);
@@ -155,9 +155,9 @@ public class MonsterClass : MonoBehaviour {
 
 			if (corpseTimer > deathTimer) {
 				if (Random.Range(0, 100) < dropChance) {
-					int itemToDrop = Random.Range (0, ItemList.Instance.LevelItems (levelToAppear).Length);
+					int itemToDrop = Random.Range (0, ItemList.Instance.LevelItems (lootList).Length);
 					GameObject droppedItem = GameObject.Instantiate (ItemList.Instance.pickup, transform.position, Quaternion.identity);
-					droppedItem.GetComponent<Pickup>().AssignItem (ItemList.Instance.LevelItems(levelToAppear)[itemToDrop]); //Change depending on level
+					droppedItem.GetComponent<Pickup>().AssignItem (ItemList.Instance.LevelItems(lootList)[itemToDrop]); //Change depending on level
 				}
 
 				GameObject.Destroy (gameObject);

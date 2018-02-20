@@ -27,25 +27,25 @@ public class ItemList : MonoBehaviour {
 	public Item[] levelThreeItems = new Item[3];
 
 	void Start() {
-		levelOneItems[0] = new Item(false, "Unicorn Leg", itemPictures[1], (int)Stats.Speed, 20, (int)Stats.Health, 10);
-		levelOneItems[1] = new Item(false, "Dryad Heart", itemPictures[1], (int)Stats.Health, 20, (int)Stats.AttackSpeed, 10);
-		levelOneItems[2] = new Item(false, "Kraken Claw", itemPictures[1], (int)Stats.AttackSpeed, 20, (int)Stats.Speed, 10);
+		levelOneItems[0] = new Item(false, "Unicorn Leg", itemPictures[1], 1);
+		levelOneItems[1] = new Item(false, "Dryad Heart", itemPictures[1], 2);
+		levelOneItems[2] = new Item(false, "Kraken Claw", itemPictures[1], 3);
 
-		levelTwoItems[0] = new Item(false, "Unicorn Leg", itemPictures[1], (int)Stats.Speed, 20, (int)Stats.Health, 10);
-		levelTwoItems[1] = new Item(false, "Dryad Heart", itemPictures[1], (int)Stats.Health, 20, (int)Stats.AttackSpeed, 10);
-		levelTwoItems[2] = new Item(false, "Kraken Claw", itemPictures[1], (int)Stats.AttackSpeed, 20, (int)Stats.Speed, 10);
+		levelTwoItems[0] = new Item(false, "Unicorn Leg", itemPictures[1], 1);
+		levelTwoItems[1] = new Item(false, "Dryad Heart", itemPictures[1], 2);
+		levelTwoItems[2] = new Item(false, "Kraken Claw", itemPictures[1], 3);
 
-		levelThreeItems[0] = new Item(false, "Unicorn Leg", itemPictures[1], (int)Stats.Speed, 20, (int)Stats.Health, 10);
-		levelThreeItems[1] = new Item(false, "Dryad Heart", itemPictures[1], (int)Stats.Health, 20, (int)Stats.AttackSpeed, 10);
-		levelThreeItems[2] = new Item(false, "Kraken Claw", itemPictures[1], (int)Stats.AttackSpeed, 20, (int)Stats.Speed, 10);
+		levelThreeItems[0] = new Item(false, "Unicorn Leg", itemPictures[1], 1);
+		levelThreeItems[1] = new Item(false, "Dryad Heart", itemPictures[1], 2);
+		levelThreeItems[2] = new Item(false, "Kraken Claw", itemPictures[1], 3);
 
-		portalOneItems[0] = new Item (true, "Red Portal Stone", itemPictures[4]);
-		portalTwoItems[0] = new Item (true, "Blue Portal Stone", itemPictures[5]);
-		portalThreeItems[0] = new Item (true, "Green Portal Stone", itemPictures[6]);
+		portalOneItems[0] = new Item (true, "Red Portal Stone", itemPictures[4], -1);
+		portalTwoItems[0] = new Item (true, "Blue Portal Stone", itemPictures[5], -1);
+		portalThreeItems[0] = new Item (true, "Green Portal Stone", itemPictures[6], -1);
 	}
 
-	public Item[] LevelItems(int levelNo) {
-		switch (levelNo) {
+	public Item[] LevelItems(int listNo) {
+		switch (listNo) {
 		case 1:
 			return levelOneItems;
 		case 2:

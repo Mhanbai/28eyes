@@ -18,7 +18,7 @@ public class NPCMovement : MonoBehaviour {
 	[SerializeField] protected float fleeDistance;
 
 	CharController myPlayer;
-	CharacterController characterController;
+	Rigidbody characterController;
 	NPCMovement player; //Debug
 	Vector3 targetInput; //Debug
 
@@ -38,7 +38,7 @@ public class NPCMovement : MonoBehaviour {
 		} else {
 			fleeDistance = fleeDistance * fleeDistance;
 			player = GameObject.Find ("Player").GetComponent<NPCMovement> (); //Debug
-			characterController = transform.GetComponent<CharacterController>();
+			characterController = transform.GetComponent<Rigidbody>();
 		}
 	}
 
@@ -59,7 +59,7 @@ public class NPCMovement : MonoBehaviour {
 				rightVector = new Vector3 (forwardVector.x, forwardVector.y, -forwardVector.x);
 			}
 
-			characterController.Move (velocityVector * Time.deltaTime);
+			characterController.AddForce (velocityVector * Time.deltaTime);
 		} else {
 			forwardVector = myPlayer.GetForwardVector ();
 			maxSpeed = myPlayer.GetSpeed ();

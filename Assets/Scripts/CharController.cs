@@ -40,11 +40,6 @@ public class CharController : MonoBehaviour {
 		catch (System.Exception) {
 			inLevel = false;
 		}
-
-		//Debug add items
-		PlayerInfo.Instance.inventory [0] = ItemList.Instance.portalOneItems[0];
-		PlayerInfo.Instance.inventory [1] = ItemList.Instance.portalTwoItems[0];
-		PlayerInfo.Instance.inventory [2] = ItemList.Instance.portalThreeItems[0];
 	}
 
 	void Update () {

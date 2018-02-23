@@ -1,17 +1,17 @@
 fileFormatVersion: 2
-guid: f85fb466dda05f343ab2d15fa10beca6
-timeCreated: 1519400972
+guid: ff17cb6c9f3149743a8c8094d94781b9
+timeCreated: 1519426949
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: character sheet final_0
-    21300002: character sheet final_1
-    21300004: character sheet final_2
-    21300006: character sheet final_3
-    21300008: character sheet final_4
-    21300010: character sheet final_5
-    21300012: character sheet final_6
-    21300014: character sheet final_7
+    21300000: M_head
+    21300002: Body
+    21300004: F_Head
+    21300006: L_Hand
+    21300008: Reload
+    21300010: R_Hand
+    21300012: L_Leg
+    21300014: R_Leg
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -88,12 +88,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: character sheet final_0
+      name: M_head
       rect:
         serializedVersion: 2
         x: 0
         y: 2163
-        width: 880
+        width: 881
         height: 1176
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -102,7 +102,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: character sheet final_1
+      name: Body
       rect:
         serializedVersion: 2
         x: 927
@@ -116,12 +116,12 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: character sheet final_2
+      name: F_Head
       rect:
         serializedVersion: 2
-        x: 1700
-        y: 2163
-        width: 991
+        x: 1707
+        y: 2177
+        width: 994
         height: 1138
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -130,40 +130,12 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: character sheet final_3
+      name: L_Hand
       rect:
         serializedVersion: 2
         x: 1676
-        y: 1762
-        width: 1169
-        height: 185
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: character sheet final_4
-      rect:
-        serializedVersion: 2
-        x: 301
-        y: 1331
-        width: 171
-        height: 21
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: character sheet final_5
-      rect:
-        serializedVersion: 2
-        x: 1672
-        y: 1250
-        width: 1173
+        y: 1747
+        width: 1168
         height: 186
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -172,12 +144,40 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: character sheet final_6
+      name: Reload
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 1331
+        width: 172
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: R_Hand
+      rect:
+        serializedVersion: 2
+        x: 1672
+        y: 1250
+        width: 1172
+        height: 186
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: L_Leg
       rect:
         serializedVersion: 2
         x: 929
         y: 0
-        width: 234
+        width: 233
         height: 673
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -186,12 +186,12 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: character sheet final_7
+      name: R_Leg
       rect:
         serializedVersion: 2
-        x: 1219
+        x: 1218
         y: 0
-        width: 232
+        width: 233
         height: 673
       alignment: 0
       pivot: {x: 0, y: 0}

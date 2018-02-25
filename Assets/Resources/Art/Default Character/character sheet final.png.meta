@@ -1,14 +1,14 @@
 fileFormatVersion: 2
 guid: ff17cb6c9f3149743a8c8094d94781b9
-timeCreated: 1519426949
+timeCreated: 1519599430
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: M_head
+    21300000: M_Head
     21300002: Body
     21300004: F_Head
     21300006: L_Hand
-    21300008: Reload
+    21300008: character sheet final_4
     21300010: R_Hand
     21300012: L_Leg
     21300014: R_Leg
@@ -88,15 +88,15 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: M_head
+      name: M_Head
       rect:
         serializedVersion: 2
         x: 0
-        y: 2163
-        width: 881
-        height: 1176
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        y: 2155.6155
+        width: 887.01654
+        height: 1183.3845
+      alignment: 9
+      pivot: {x: 0.46483284, y: 0.03679095}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -105,12 +105,12 @@ TextureImporter:
       name: Body
       rect:
         serializedVersion: 2
-        x: 927
-        y: 818
-        width: 621
-        height: 1623
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 919.8879
+        y: 810.5948
+        width: 634.5413
+        height: 1637.3948
+      alignment: 9
+      pivot: {x: 0.50053793, y: 0.028086288}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -119,12 +119,12 @@ TextureImporter:
       name: F_Head
       rect:
         serializedVersion: 2
-        x: 1707
-        y: 2177
-        width: 994
-        height: 1138
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1692.195
+        y: 2155.205
+        width: 1006.33093
+        height: 1153.0901
+      alignment: 9
+      pivot: {x: 0.5574087, y: 0.049241412}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -133,18 +133,18 @@ TextureImporter:
       name: L_Hand
       rect:
         serializedVersion: 2
-        x: 1676
-        y: 1747
-        width: 1168
-        height: 186
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1669.1267
+        y: 1756.5206
+        width: 1213.8733
+        height: 200.78674
+      alignment: 9
+      pivot: {x: 0.99863, y: 0.41683868}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Reload
+      name: character sheet final_4
       rect:
         serializedVersion: 2
         x: 300
@@ -152,7 +152,7 @@ TextureImporter:
         width: 172
         height: 21
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -161,12 +161,12 @@ TextureImporter:
       name: R_Hand
       rect:
         serializedVersion: 2
-        x: 1672
-        y: 1250
-        width: 1172
-        height: 186
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1666.442
+        y: 1242.3618
+        width: 1216.558
+        height: 200.78687
+      alignment: 9
+      pivot: {x: 0.99370223, y: 0.41073814}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -175,12 +175,12 @@ TextureImporter:
       name: L_Leg
       rect:
         serializedVersion: 2
-        x: 929
+        x: 924.01685
         y: 0
-        width: 233
-        height: 673
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 247.2998
+        height: 680.0867
+      alignment: 9
+      pivot: {x: 0.7753678, y: 0.9700524}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -189,12 +189,12 @@ TextureImporter:
       name: R_Leg
       rect:
         serializedVersion: 2
-        x: 1218
+        x: 1212.7975
         y: 0
-        width: 233
-        height: 673
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 246.44507
+        height: 680.08673
+      alignment: 9
+      pivot: {x: 0.5793664, y: 0.97005236}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -202,6 +202,6 @@ TextureImporter:
     outline: []
     physicsShape: []
   spritePackingTag: 
-  userData: 
+  userData: 99588461878416
   assetBundleName: 
   assetBundleVariant: 

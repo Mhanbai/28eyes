@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: ff17cb6c9f3149743a8c8094d94781b9
-timeCreated: 1519599430
+timeCreated: 1519650170
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -162,11 +162,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1666.442
-        y: 1242.3618
+        y: 1238.0444
         width: 1216.558
-        height: 200.78687
+        height: 205.10425
       alignment: 9
-      pivot: {x: 0.99370223, y: 0.41073814}
+      pivot: {x: 0.99370223, y: 0.42314196}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -177,10 +177,10 @@ TextureImporter:
         serializedVersion: 2
         x: 924.01685
         y: 0
-        width: 247.2998
+        width: 246.44519
         height: 680.0867
       alignment: 9
-      pivot: {x: 0.7753678, y: 0.9700524}
+      pivot: {x: 0.77805656, y: 0.9700524}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -194,7 +194,7 @@ TextureImporter:
         width: 246.44507
         height: 680.08673
       alignment: 9
-      pivot: {x: 0.5793664, y: 0.97005236}
+      pivot: {x: 0.62620574, y: 0.97288126}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -202,6 +202,6 @@ TextureImporter:
     outline: []
     physicsShape: []
   spritePackingTag: 
-  userData: 99588461878416
+  userData: 99591791390299
   assetBundleName: 
   assetBundleVariant: 

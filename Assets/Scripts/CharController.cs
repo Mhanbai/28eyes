@@ -23,7 +23,7 @@ public class CharController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		PlayerInfo.Instance.equippedAttack = AttackList.Instance.attackType [2];
+		PlayerInfo.Instance.equippedAttack = AttackList.Instance.attackType [0];
 
 		//Find the players Character Controller
 		characterController = GetComponent<CharacterController> ();

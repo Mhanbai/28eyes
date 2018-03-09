@@ -30,6 +30,10 @@ public class LevelEditor : MonoBehaviour {
 	[SerializeField] public GameObject prop;
 	[SerializeField] [Range(1, 100)] public int density = 1;
 
+	[Header("Assets To Swap")]
+	[SerializeField] public GameObject assetsToSwap;
+	[SerializeField] public GameObject swapTo;
+
 	void Update() {
 		
 		//********Update for Clutter editor********

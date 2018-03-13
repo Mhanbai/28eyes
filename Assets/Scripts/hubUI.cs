@@ -16,7 +16,7 @@ public class hubUI : MonoBehaviour {
 
 		int i = 0;
 		foreach (Item item in requiredItems) {
-			itemImages [i].sprite = item.Picture ();
+			itemImages [i].sprite = item.picture;
 			i++;
 		}
 
@@ -26,7 +26,7 @@ public class hubUI : MonoBehaviour {
 
 		for (int j = 0; j < 6; j++) {
 			if (PlayerInfo.Instance.inventory [j] != null) {
-				inventoryImages [j].sprite = PlayerInfo.Instance.inventory [j].Picture ();
+				inventoryImages [j].sprite = PlayerInfo.Instance.inventory [j].picture;
 			} else {
 				inventoryImages [j].sprite = ItemList.Instance.itemPictures [0];
 			}

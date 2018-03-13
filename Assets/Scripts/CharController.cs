@@ -113,10 +113,10 @@ public class CharController : MonoBehaviour {
 			}
 		}
 
-		if (PlayerInfo.Instance.attackCount >= PlayerInfo.Instance.AttackStyle().Uses) {
+		if (PlayerInfo.Instance.attackCount >= (PlayerInfo.Instance.AttackStyle().Uses +  PlayerInfo.Instance.ammoDiff)) {
 			PlayerInfo.Instance.SetAttackReady(false);
 			PlayerInfo.Instance.reloadTimer += Time.deltaTime;
-			if (PlayerInfo.Instance.reloadTimer > PlayerInfo.Instance.AttackStyle().ReloadTime) {
+			if (PlayerInfo.Instance.reloadTimer > (PlayerInfo.Instance.AttackStyle().ReloadTime + (PlayerInfo.Instance.AttackStyle().ReloadTime * PlayerInfo.Instance.reloadDiff))) {
 				PlayerInfo.Instance.reloadTimer = 0.0f;
 				PlayerInfo.Instance.attackCount = 0;
 				PlayerInfo.Instance.SetAttackReady(true);
@@ -137,9 +137,9 @@ public class CharController : MonoBehaviour {
 			projectileBehaviour.trajectoryType = PlayerInfo.Instance.AttackStyle().TrajectoryType;
 
 			if (projectileBehaviour.trajectoryType == 1) {
-				projectileBehaviour.range = Mathf.Clamp (Vector3.Magnitude (clickDistance), 0.0f, PlayerInfo.Instance.AttackStyle().Range);
+				projectileBehaviour.range = Mathf.Clamp (Vector3.Magnitude (clickDistance), 0.0f, (PlayerInfo.Instance.AttackStyle().Range + (PlayerInfo.Instance.AttackStyle().Range * PlayerInfo.Instance.rangeDiff)));
 			} else {
-				projectileBehaviour.range = PlayerInfo.Instance.AttackStyle().Range;
+				projectileBehaviour.range = (PlayerInfo.Instance.AttackStyle().Range + (PlayerInfo.Instance.AttackStyle().Range * PlayerInfo.Instance.rangeDiff));
 			}
 
 			projectileBehaviour.damage = PlayerInfo.Instance.AttackStyle().Damage;

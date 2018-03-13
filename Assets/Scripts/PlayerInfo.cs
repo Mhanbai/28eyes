@@ -32,8 +32,16 @@ public class PlayerInfo : MonoBehaviour {
 
 	public Item[] inventory = new Item[6];
 
-	//Functions for combat
+	Item headItem;
+	Item bodyItem;
+	Item armItem;
+	Item legItem;
 
+	public int ammoDiff = 0;
+	public float reloadDiff = 0.0f;
+	public float rangeDiff = 0.0f;
+
+	//Functions for combat
 	public void Hit(float damage) {
 		currentHealth = currentHealth - damage;
 	}
@@ -117,5 +125,52 @@ public class PlayerInfo : MonoBehaviour {
 		}
 
 		return false;
+	}
+
+	public void UseItem(Item toUse) {
+		switch (toUse.itemSet) {
+		case 0:
+			if (headItem != null) {
+				SetMaxHealth (maxHealth + (maxHealth * -toUse.healthChange));
+				SetMaxSpeed (maxSpeed + (maxSpeed * -toUse.speedChange));
+			}
+
+			headItem = toUse;
+			break;
+		case 1:
+			if (bodyItem != null) {
+				SetMaxHealth (maxHealth + (maxHealth * -toUse.healthChange));
+				SetMaxSpeed (maxSpeed + (maxSpeed * -toUse.speedChange));
+			}
+
+			bodyItem = toUse;
+			break;
+		case 2:
+			if (armItem != null) {
+				SetMaxHealth (maxHealth + (maxHealth * -toUse.healthChange));
+				SetMaxSpeed (maxSpeed + (maxSpeed * -toUse.speedChange));
+			}
+
+			armItem = toUse;
+			break;
+		case 3:
+			if (legItem != null) {
+				SetMaxHealth (maxHealth + (maxHealth * -toUse.healthChange));
+				SetMaxSpeed (maxSpeed + (maxSpeed * -toUse.speedChange));
+			}
+
+			legItem = toUse;
+			break;
+		}
+
+		SetMaxHealth (maxHealth + (maxHealth * toUse.healthChange));
+		SetMaxSpeed (maxSpeed + (maxSpeed * toUse.speedChange));
+		ammoDiff = toUse.ammoChange;
+		reloadDiff = toUse.reloadChange;
+		rangeDiff = toUse.rangeChange;
+
+		if (toUse.attackType != -1) {
+			equippedAttack = PlayerInfo.Instance.equippedAttack = AttackList.Instance.attackType [toUse.attackType];
+		}
 	}
 }

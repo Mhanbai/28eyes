@@ -131,32 +131,32 @@ public class PlayerInfo : MonoBehaviour {
 		switch (toUse.itemSet) {
 		case 0:
 			if (headItem != null) {
-				SetMaxHealth (maxHealth + (maxHealth * -toUse.healthChange));
-				SetMaxSpeed (maxSpeed + (maxSpeed * -toUse.speedChange));
+				SetMaxHealth (maxHealth + (maxHealth * -headItem.healthChange));
+				SetMaxSpeed (maxSpeed + (maxSpeed * -headItem.speedChange));
 			}
 
 			headItem = toUse;
 			break;
 		case 1:
 			if (bodyItem != null) {
-				SetMaxHealth (maxHealth + (maxHealth * -toUse.healthChange));
-				SetMaxSpeed (maxSpeed + (maxSpeed * -toUse.speedChange));
+				SetMaxHealth (maxHealth + (maxHealth * -bodyItem.healthChange));
+				SetMaxSpeed (maxSpeed + (maxSpeed * -bodyItem.speedChange));
 			}
 
 			bodyItem = toUse;
 			break;
 		case 2:
 			if (armItem != null) {
-				SetMaxHealth (maxHealth + (maxHealth * -toUse.healthChange));
-				SetMaxSpeed (maxSpeed + (maxSpeed * -toUse.speedChange));
+				SetMaxHealth (maxHealth + (maxHealth * -armItem.healthChange));
+				SetMaxSpeed (maxSpeed + (maxSpeed * -armItem.speedChange));
 			}
 
 			armItem = toUse;
 			break;
 		case 3:
 			if (legItem != null) {
-				SetMaxHealth (maxHealth + (maxHealth * -toUse.healthChange));
-				SetMaxSpeed (maxSpeed + (maxSpeed * -toUse.speedChange));
+				SetMaxHealth (maxHealth + (maxHealth * -legItem.healthChange));
+				SetMaxSpeed (maxSpeed + (maxSpeed * -legItem.speedChange));
 			}
 
 			legItem = toUse;

@@ -160,7 +160,7 @@ MonoBehaviour:
   delayBetweenAttacks: 0.5
   shouldMoveWhileAttacking: 0
   lootList: 1
-  dropChance: 10
+  dropChance: 90
 --- !u!212 &212029402860059966
 SpriteRenderer:
   m_ObjectHideFlags: 1

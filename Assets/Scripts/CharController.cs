@@ -122,6 +122,10 @@ public class CharController : MonoBehaviour {
 				PlayerInfo.Instance.SetAttackReady(true);
 			}
 		}
+
+		if (PlayerInfo.Instance.CurrentHealth () <= 0.0f) {
+			SceneManager.Instance.GameOver ();
+		}
 	}
 
 	void Attack(Vector3 direction, Vector3 clickDistance) {

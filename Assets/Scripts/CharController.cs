@@ -23,7 +23,9 @@ public class CharController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		PlayerInfo.Instance.equippedAttack = AttackList.Instance.attackType [0];
+		if (PlayerInfo.Instance.equippedAttack == null) {
+			PlayerInfo.Instance.equippedAttack = AttackList.Instance.attackType [0];
+		}
 
 		//Find the players Character Controller
 		characterController = GetComponent<CharacterController> ();
@@ -124,7 +126,7 @@ public class CharController : MonoBehaviour {
 		}
 
 		if (PlayerInfo.Instance.CurrentHealth () <= 0.0f) {
-			SceneManager.Instance.GameOver ();
+			PlayerInfo.Instance.Die ();
 		}
 	}
 

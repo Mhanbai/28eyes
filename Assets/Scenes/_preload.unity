@@ -105,6 +105,7 @@ GameObject:
   - component: {fileID: 1378583543}
   - component: {fileID: 1378583544}
   - component: {fileID: 1378583545}
+  - component: {fileID: 1378583546}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -164,6 +165,111 @@ MonoBehaviour:
   minimumSpeed: 0.1
   attackCount: 0
   reloadTimer: 0
+  inventory:
+  - isObjective: 0
+    description: 
+    picRef: 0
+    itemSet: 0
+    healthChange: 0
+    speedChange: 0
+    ammoChange: 0
+    reloadChange: 0
+    rangeChange: 0
+    attackType: 0
+  - isObjective: 0
+    description: 
+    picRef: 0
+    itemSet: 0
+    healthChange: 0
+    speedChange: 0
+    ammoChange: 0
+    reloadChange: 0
+    rangeChange: 0
+    attackType: 0
+  - isObjective: 0
+    description: 
+    picRef: 0
+    itemSet: 0
+    healthChange: 0
+    speedChange: 0
+    ammoChange: 0
+    reloadChange: 0
+    rangeChange: 0
+    attackType: 0
+  - isObjective: 0
+    description: 
+    picRef: 0
+    itemSet: 0
+    healthChange: 0
+    speedChange: 0
+    ammoChange: 0
+    reloadChange: 0
+    rangeChange: 0
+    attackType: 0
+  - isObjective: 0
+    description: 
+    picRef: 0
+    itemSet: 0
+    healthChange: 0
+    speedChange: 0
+    ammoChange: 0
+    reloadChange: 0
+    rangeChange: 0
+    attackType: 0
+  - isObjective: 0
+    description: 
+    picRef: 0
+    itemSet: 0
+    healthChange: 0
+    speedChange: 0
+    ammoChange: 0
+    reloadChange: 0
+    rangeChange: 0
+    attackType: 0
+  headItem:
+    isObjective: 0
+    description: 
+    picRef: 0
+    itemSet: 0
+    healthChange: 0
+    speedChange: 0
+    ammoChange: 0
+    reloadChange: 0
+    rangeChange: 0
+    attackType: 0
+  bodyItem:
+    isObjective: 0
+    description: 
+    picRef: 0
+    itemSet: 0
+    healthChange: 0
+    speedChange: 0
+    ammoChange: 0
+    reloadChange: 0
+    rangeChange: 0
+    attackType: 0
+  armItem:
+    isObjective: 0
+    description: 
+    picRef: 0
+    itemSet: 0
+    healthChange: 0
+    speedChange: 0
+    ammoChange: 0
+    reloadChange: 0
+    rangeChange: 0
+    attackType: 0
+  legItem:
+    isObjective: 0
+    description: 
+    picRef: 0
+    itemSet: 0
+    healthChange: 0
+    speedChange: 0
+    ammoChange: 0
+    reloadChange: 0
+    rangeChange: 0
+    attackType: 0
   ammoDiff: 0
   reloadDiff: 0
   rangeDiff: 0
@@ -187,6 +293,132 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 5f2e60c31d66e8c4e8721764fd250b28, type: 3}
   - {fileID: 21300000, guid: 1789bdede765eed49867f6e294a8c634, type: 3}
   - {fileID: 21300000, guid: eb0b39ac0bbc15847af85468d7675787, type: 3}
+  portalOneItems:
+  - isObjective: 0
+    description: 
+    picRef: 0
+    itemSet: 0
+    healthChange: 0
+    speedChange: 0
+    ammoChange: 0
+    reloadChange: 0
+    rangeChange: 0
+    attackType: 0
+  portalTwoItems:
+  - isObjective: 0
+    description: 
+    picRef: 0
+    itemSet: 0
+    healthChange: 0
+    speedChange: 0
+    ammoChange: 0
+    reloadChange: 0
+    rangeChange: 0
+    attackType: 0
+  portalThreeItems:
+  - isObjective: 0
+    description: 
+    picRef: 0
+    itemSet: 0
+    healthChange: 0
+    speedChange: 0
+    ammoChange: 0
+    reloadChange: 0
+    rangeChange: 0
+    attackType: 0
+  levelOneItems:
+  - isObjective: 0
+    description: 
+    picRef: 0
+    itemSet: 0
+    healthChange: 0
+    speedChange: 0
+    ammoChange: 0
+    reloadChange: 0
+    rangeChange: 0
+    attackType: 0
+  - isObjective: 0
+    description: 
+    picRef: 0
+    itemSet: 0
+    healthChange: 0
+    speedChange: 0
+    ammoChange: 0
+    reloadChange: 0
+    rangeChange: 0
+    attackType: 0
+  - isObjective: 0
+    description: 
+    picRef: 0
+    itemSet: 0
+    healthChange: 0
+    speedChange: 0
+    ammoChange: 0
+    reloadChange: 0
+    rangeChange: 0
+    attackType: 0
+  levelTwoItems:
+  - isObjective: 0
+    description: 
+    picRef: 0
+    itemSet: 0
+    healthChange: 0
+    speedChange: 0
+    ammoChange: 0
+    reloadChange: 0
+    rangeChange: 0
+    attackType: 0
+  - isObjective: 0
+    description: 
+    picRef: 0
+    itemSet: 0
+    healthChange: 0
+    speedChange: 0
+    ammoChange: 0
+    reloadChange: 0
+    rangeChange: 0
+    attackType: 0
+  - isObjective: 0
+    description: 
+    picRef: 0
+    itemSet: 0
+    healthChange: 0
+    speedChange: 0
+    ammoChange: 0
+    reloadChange: 0
+    rangeChange: 0
+    attackType: 0
+  levelThreeItems:
+  - isObjective: 0
+    description: 
+    picRef: 0
+    itemSet: 0
+    healthChange: 0
+    speedChange: 0
+    ammoChange: 0
+    reloadChange: 0
+    rangeChange: 0
+    attackType: 0
+  - isObjective: 0
+    description: 
+    picRef: 0
+    itemSet: 0
+    healthChange: 0
+    speedChange: 0
+    ammoChange: 0
+    reloadChange: 0
+    rangeChange: 0
+    attackType: 0
+  - isObjective: 0
+    description: 
+    picRef: 0
+    itemSet: 0
+    healthChange: 0
+    speedChange: 0
+    ammoChange: 0
+    reloadChange: 0
+    rangeChange: 0
+    attackType: 0
 --- !u!114 &1378583544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,3 +447,14 @@ MonoBehaviour:
   - {fileID: 1106232674436886, guid: 8b94588e584718d43ab4dc64a742ec95, type: 2}
   - {fileID: 1562679912356188, guid: f9095ae24ee6e38498419b50579063eb, type: 2}
   - {fileID: 1584505040572538, guid: 95ad2b2034bac6944b74227bab479d1a, type: 2}
+--- !u!114 &1378583546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1378583538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ceefdedf4b18374ab45ed4cd562cd23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

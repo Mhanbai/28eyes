@@ -32,14 +32,25 @@ public class PlayerInfo : MonoBehaviour {
 
 	public Item[] inventory = new Item[6];
 
-	Item headItem;
-	Item bodyItem;
-	Item armItem;
-	Item legItem;
+	public Item headItem;
+	public Item bodyItem;
+	public Item armItem;
+	public Item legItem;
 
 	public int ammoDiff = 0;
 	public float reloadDiff = 0.0f;
 	public float rangeDiff = 0.0f;
+
+	void OnDestroy() {
+		DataManager.Instance.Save ();
+	}
+
+	void Start() {
+		DataManager.Instance.Load ();
+		for (int i = 0; i < 6; i++) {
+			inventory [i] = null;
+		}
+	}
 
 	//Functions for combat
 	public void Hit(float damage) {
@@ -55,7 +66,6 @@ public class PlayerInfo : MonoBehaviour {
 	}
 
 	//Functions for pickups
-
 	public Attack AttackStyle() {
 		return equippedAttack;
 	}
@@ -172,5 +182,47 @@ public class PlayerInfo : MonoBehaviour {
 		if (toUse.attackType != -1) {
 			equippedAttack = PlayerInfo.Instance.equippedAttack = AttackList.Instance.attackType [toUse.attackType];
 		}
+	}
+
+	public void Load(float health_in, Item[] inventory_in, Item headPart_in, Item bodyPart_in, Item armPart_in, Item legPart_in) {
+		UseItem (headPart_in);
+		UseItem (bodyPart_in);
+		UseItem (armPart_in);
+		UseItem (legPart_in);
+		currentHealth = health_in;
+		for (int i = 0; i < 6; i++) {
+			inventory[i] = inventory_in[i];
+		}
+	}
+
+	public void Die() {
+		SceneManager.Instance.GameOver ();
+		currentHealth = maxHealth;
+		inventory = new Item[6];
+		if (headItem != null) {
+			SetMaxHealth (maxHealth + (maxHealth * -headItem.healthChange));
+			SetMaxSpeed (maxSpeed + (maxSpeed * -headItem.speedChange));
+			headItem = null;
+		}
+		if (bodyItem != null) {
+			SetMaxHealth (maxHealth + (maxHealth * -bodyItem.healthChange));
+			SetMaxSpeed (maxSpeed + (maxSpeed * -bodyItem.speedChange));
+			bodyItem = null;
+		}
+		if (armItem != null) {
+			SetMaxHealth (maxHealth + (maxHealth * -armItem.healthChange));
+			SetMaxSpeed (maxSpeed + (maxSpeed * -armItem.speedChange));
+			armItem = null;
+		}
+		if (legItem != null) {
+			SetMaxHealth (maxHealth + (maxHealth * -legItem.healthChange));
+			SetMaxSpeed (maxSpeed + (maxSpeed * -legItem.speedChange));
+			legItem = null;
+		}
+		ammoDiff = 0;
+		reloadDiff = 0.0f;
+		rangeDiff = 0.0f;
+		equippedAttack = AttackList.Instance.attackType [0];
+		DataManager.Instance.Save ();
 	}
 }

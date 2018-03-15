@@ -34,7 +34,7 @@ public class Pickup : MonoBehaviour {
 	}
 
 	public void AssignItem(Item item_in) {
-		sprite.sprite = item_in.picture;
+		sprite.sprite = ItemList.Instance.itemPictures [item_in.picRef];
 		myItem = item_in;
 	}
 }

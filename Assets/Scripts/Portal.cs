@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Portal : MonoBehaviour {
-	[SerializeField] bool isLocked = true;
 	[SerializeField] Canvas hubUI;
 	[Range(0, 2)][SerializeField] int portalNumber;
 	Item[] requiredToOpen;
@@ -24,7 +23,7 @@ public class Portal : MonoBehaviour {
 	// Update is called once per frame
 	void OnTriggerStay () {
 		if (Input.GetKeyDown (KeyCode.E)) {
-			if (isLocked == true) {
+			if (DataManager.Instance.IsPortalUnlocked(portalNumber) == true) {
 				FlipShowItems ();
 				hubUI.GetComponent<hubUI> ().UpdatePortal (requiredToOpen, portalNumber);
 			} else {
@@ -42,6 +41,6 @@ public class Portal : MonoBehaviour {
 	}
 
 	public void Unlock() {
-		isLocked = false;
+		DataManager.Instance.SetPortalUnlocked (portalNumber, true);
 	}
 }

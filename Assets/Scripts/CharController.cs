@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class CharController : MonoBehaviour {
 	//References
-	public Animator animController;
-	public SpriteRenderer sprite;
 	public GameObject player;
 	Canvas UI;
 	Camera cam;
 
 	//Values for movement
+	bool initialSetup = false;
 	protected float velX;
 	protected float velZ;
 	protected bool isRunningX = false;
@@ -27,11 +26,13 @@ public class CharController : MonoBehaviour {
 			PlayerInfo.Instance.equippedAttack = AttackList.Instance.attackType [0];
 		}
 
+		player.GetComponentInChildren<PartManager> ().ActivateBody (PlayerInfo.Instance.bodyPart);
+
 		//Find the players Character Controller
 		characterController = GetComponent<CharacterController> ();
 
 		//Find the camera
-		cam = GameObject.Find("Main Camera").GetComponent<Camera>();
+		cam = Camera.main;
 
 		//Try to find UI
 		try {
@@ -45,19 +46,26 @@ public class CharController : MonoBehaviour {
 	}
 
 	void Update () {
+		if (!initialSetup) {
+			player.GetComponentInChildren<PartManager> ().ActivateHead (PlayerInfo.Instance.headPart);
+			player.GetComponentInChildren<PartManager> ().ActivateArms (PlayerInfo.Instance.armPart);
+			player.GetComponentInChildren<PartManager> ().ActivateLegs (PlayerInfo.Instance.legPart);
+			initialSetup = true;
+		}
+
 		//Moving Code
 		if (Input.GetKey (KeyCode.A)) {
 			//Set Sprite and Animation
-			animController.SetBool ("arrowPressed", true);
-			sprite.flipX = true;
+			//////////////////////////////////////////////////////animController.SetBool ("arrowPressed", true);
+			//////////////////////////////////////////////////////sprite.flipX = true;
 			//Move Avatar
 			velX = -PlayerInfo.Instance.Speed () * Time.deltaTime;
 			forwardVector = new Vector3 (-1.0f, 0.0f, forwardVector.z);
 			isRunningX = true;
 		} else if (Input.GetKey (KeyCode.D)) {
 			//Set Sprite and Animation
-			animController.SetBool ("arrowPressed", true);
-			sprite.flipX = false;
+			//////////////////////////////////////////////////////animController.SetBool ("arrowPressed", true);
+			//////////////////////////////////////////////////////sprite.flipX = false;
 			//Move Avatar
 			velX = PlayerInfo.Instance.Speed () * Time.deltaTime;
 			isRunningX = true;
@@ -69,14 +77,14 @@ public class CharController : MonoBehaviour {
 
 		if (Input.GetKey (KeyCode.W)) {
 			//Set Sprite and Animation
-			animController.SetBool ("arrowPressed", true);
+			/////////////////////////////////////////////////////animController.SetBool ("arrowPressed", true);
 			//Move Avatar
 			velZ = PlayerInfo.Instance.Speed () * Time.deltaTime;
 			forwardVector = new Vector3 (forwardVector.x, 0.0f, 1.0f);
 			isRunningZ = true;
 		} else if (Input.GetKey (KeyCode.S)) {
 			//Set Sprite and Animation
-			animController.SetBool ("arrowPressed", true);
+			////////////////////////////////////////////////////animController.SetBool ("arrowPressed", true);
 			//Move Avatar
 			velZ = -PlayerInfo.Instance.Speed () * Time.deltaTime;
 			forwardVector = new Vector3 (forwardVector.x, 0.0f, -1.0f);
@@ -90,7 +98,7 @@ public class CharController : MonoBehaviour {
 	
 		if ((isRunningX == false) && (isRunningZ == false)) {
 			//Stop animation
-			animController.SetBool ("arrowPressed", false);
+			//////////////////////////////////////////////////animController.SetBool ("arrowPressed", false);
 			PlayerInfo.Instance.SetPlayerActive (false);
 		} else {
 			PlayerInfo.Instance.SetPlayerActive (true);

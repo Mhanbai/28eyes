@@ -41,6 +41,11 @@ public class PlayerInfo : MonoBehaviour {
 	public float reloadDiff = 0.0f;
 	public float rangeDiff = 0.0f;
 
+	public int bodyPart = 0;
+	public int headPart = 0;
+	public int armPart = 0;
+	public int legPart = 0;
+
 	void OnDestroy() {
 		DataManager.Instance.Save ();
 	}

@@ -99,7 +99,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 12.291779, y: 5.1081657, z: 2.1389585}
+  m_Size: {x: 17.29178, y: 7.108166, z: 3.138958}
   m_Center: {x: -0.394989, y: 0.20729542, z: -0.007282257}
 --- !u!95 &95454177755604722
 Animator:
@@ -148,11 +148,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  bleedDamage: 0.5
-  bleedTime: 5
+  bleedDamage: 0.2
+  bleedTime: 3
   poisonDamage: 10
-  poisonFrequency: 5
-  poisonHits: 5
+  poisonFrequency: 2
+  poisonHits: 4
   deathTimer: 2
   attackStrength: 10
   attackTimer: 1
@@ -191,8 +191,15 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 02a4c8b1833186d41b28006bbcc8830a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0

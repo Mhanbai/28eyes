@@ -133,7 +133,6 @@ public class PlayerInfo : MonoBehaviour {
 		foreach (Item item in inventory) {
 			index++;
 			if (item == null) {
-				Debug.Log (index);
 				inventory [index] = toAdd;
 				return true;
 			}
@@ -143,11 +142,20 @@ public class PlayerInfo : MonoBehaviour {
 	}
 
 	public void UseItem(Item toUse) {
+		PartManager partManager = null;
+		GameObject player = GameObject.Find("Character");
+		if (player != null) {
+			partManager = player.GetComponentInChildren<PartManager> ();
+		}
 		switch (toUse.itemSet) {
 		case 0:
 			if (headItem != null) {
 				SetMaxHealth (maxHealth + (maxHealth * -headItem.healthChange));
 				SetMaxSpeed (maxSpeed + (maxSpeed * -headItem.speedChange));
+				headPart = toUse.bodyPart;
+				if (partManager != null) {
+					partManager.ActivateHead (headPart);
+				}
 			}
 
 			headItem = toUse;
@@ -156,6 +164,13 @@ public class PlayerInfo : MonoBehaviour {
 			if (bodyItem != null) {
 				SetMaxHealth (maxHealth + (maxHealth * -bodyItem.healthChange));
 				SetMaxSpeed (maxSpeed + (maxSpeed * -bodyItem.speedChange));
+				bodyPart = toUse.bodyPart;
+				if (partManager != null) {
+					partManager.ActivateBody (bodyPart);
+					partManager.ActivateHead (headPart);
+					partManager.ActivateArms (armPart);
+					partManager.ActivateLegs (legPart);
+				}
 			}
 
 			bodyItem = toUse;
@@ -164,6 +179,10 @@ public class PlayerInfo : MonoBehaviour {
 			if (armItem != null) {
 				SetMaxHealth (maxHealth + (maxHealth * -armItem.healthChange));
 				SetMaxSpeed (maxSpeed + (maxSpeed * -armItem.speedChange));
+				armPart = toUse.bodyPart;
+				if (partManager != null) {
+					partManager.ActivateArms (armPart);
+				}
 			}
 
 			armItem = toUse;
@@ -172,6 +191,10 @@ public class PlayerInfo : MonoBehaviour {
 			if (legItem != null) {
 				SetMaxHealth (maxHealth + (maxHealth * -legItem.healthChange));
 				SetMaxSpeed (maxSpeed + (maxSpeed * -legItem.speedChange));
+				legPart = toUse.bodyPart;
+				if (partManager != null) {
+					partManager.ActivateLegs (legPart);
+				}
 			}
 
 			legItem = toUse;
@@ -189,11 +212,15 @@ public class PlayerInfo : MonoBehaviour {
 		}
 	}
 
-	public void Load(float health_in, Item[] inventory_in, Item headPart_in, Item bodyPart_in, Item armPart_in, Item legPart_in) {
+	public void Load(float health_in, Item[] inventory_in, Item headPart_in, Item bodyPart_in, Item armPart_in, Item legPart_in, int headSprite_in, int bodySprite_in, int armSprite_in, int legSprite_in) {
 		UseItem (headPart_in);
 		UseItem (bodyPart_in);
 		UseItem (armPart_in);
 		UseItem (legPart_in);
+		headPart = headSprite_in;
+		bodyPart = bodySprite_in;
+		armPart = armSprite_in;
+		legPart = legSprite_in;
 		currentHealth = health_in;
 		for (int i = 0; i < 6; i++) {
 			inventory[i] = inventory_in[i];
@@ -208,26 +235,34 @@ public class PlayerInfo : MonoBehaviour {
 			SetMaxHealth (maxHealth + (maxHealth * -headItem.healthChange));
 			SetMaxSpeed (maxSpeed + (maxSpeed * -headItem.speedChange));
 			headItem = null;
+			headPart = 0;
 		}
 		if (bodyItem != null) {
 			SetMaxHealth (maxHealth + (maxHealth * -bodyItem.healthChange));
 			SetMaxSpeed (maxSpeed + (maxSpeed * -bodyItem.speedChange));
 			bodyItem = null;
+			bodyPart = 0;
 		}
 		if (armItem != null) {
 			SetMaxHealth (maxHealth + (maxHealth * -armItem.healthChange));
 			SetMaxSpeed (maxSpeed + (maxSpeed * -armItem.speedChange));
 			armItem = null;
+			armPart = 0;
 		}
 		if (legItem != null) {
 			SetMaxHealth (maxHealth + (maxHealth * -legItem.healthChange));
 			SetMaxSpeed (maxSpeed + (maxSpeed * -legItem.speedChange));
 			legItem = null;
+			legPart = 0;
 		}
 		ammoDiff = 0;
 		reloadDiff = 0.0f;
 		rangeDiff = 0.0f;
 		equippedAttack = AttackList.Instance.attackType [0];
+		headPart = 0;
+		armPart = 0;
+		bodyPart = 0;
+		legPart = 0;
 		DataManager.Instance.Save ();
 	}
 }

@@ -34,7 +34,8 @@ public class DataManager : MonoBehaviour {
 			DataFile data = (DataFile)bf.Deserialize (file);
 			file.Close ();
 
-			PlayerInfo.Instance.Load (data.health, data.inventory, data.headPart, data.bodyPart, data.armPart, data.legPart);
+			PlayerInfo.Instance.Load (data.health, data.inventory, data.headPart, data.bodyPart, data.armPart, 
+										data.legPart, data.headSprite, data.bodySprite, data.armSprite, data.legSprite);
 			portal1Unlocked = data.portalOneUnlock;
 			portal2Unlocked = data.portalTwoUnlock;
 			portal3Unlocked = data.portalThreeUnlock;
@@ -55,6 +56,10 @@ public class DataManager : MonoBehaviour {
 		data.portalOneUnlock = portal1Unlocked;
 		data.portalTwoUnlock = portal2Unlocked;
 		data.portalThreeUnlock = portal3Unlocked;
+		data.headSprite = PlayerInfo.Instance.headPart;
+		data.bodySprite = PlayerInfo.Instance.bodyPart;
+		data.armSprite  = PlayerInfo.Instance.armPart;
+		data.legSprite  = PlayerInfo.Instance.legPart;
 
 		bf.Serialize (file, data);
 		file.Close ();
@@ -102,6 +107,10 @@ class DataFile {
 	public Item bodyPart;
 	public Item armPart;
 	public Item legPart;
+	public int headSprite;
+	public int bodySprite;
+	public int armSprite;
+	public int legSprite;
 	public bool portalOneUnlock;
 	public bool portalTwoUnlock;
 	public bool portalThreeUnlock;

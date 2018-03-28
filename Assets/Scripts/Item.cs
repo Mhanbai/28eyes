@@ -14,9 +14,10 @@ public class Item {
 	public float reloadChange;
 	public float rangeChange;
 	public int attackType;
+	public int bodyPart;
 
 	public Item(string description_in, bool objective_in, int picRef_in, int itemSet_in = -1, 
-				float healthChange_in = 0.0f, float speedChange_in = 0.0f, int ammoChange_in = 0, float reloadChange_in = 0.0f, float rangeChange_in = 0.0f, int attackType_in = -1) {
+		float healthChange_in = 0.0f, float speedChange_in = 0.0f, int ammoChange_in = 0, float reloadChange_in = 0.0f, float rangeChange_in = 0.0f, int attackType_in = -1, int bodyPart_in = -1) {
 
 		isObjective = objective_in; 
 		description = description_in;
@@ -29,6 +30,7 @@ public class Item {
 			reloadChange = reloadChange_in;
 			rangeChange = rangeChange_in;
 			attackType = attackType_in;
+			bodyPart = bodyPart_in;
 		}
 	}
 }

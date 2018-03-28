@@ -3244,6 +3244,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1576944184645172}
+  headAnimator: {fileID: 0}
+  bodyAnimator: {fileID: 0}
+  rArmAnimator: {fileID: 0}
+  lArmAnimator: {fileID: 0}
+  rLegAnimator: {fileID: 0}
+  lLegAnimator: {fileID: 0}
 --- !u!114 &114966875048070206
 MonoBehaviour:
   m_ObjectHideFlags: 1

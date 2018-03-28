@@ -3709,7 +3709,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 43597061544591320, guid: 6454e0a74ce6a914a85689cb92657611, type: 2}
   m_Bones:
   - {fileID: 4274987972131396}
   - {fileID: 4594067228801434}
@@ -3756,7 +3756,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 43597061544591320, guid: 6454e0a74ce6a914a85689cb92657611, type: 2}
   m_Bones:
   - {fileID: 4615166362020902}
   - {fileID: 4133242332355966}
@@ -3803,7 +3803,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 43714739080095290, guid: d4185b1113e7b5f419a8d91fd5a6e346, type: 2}
   m_Bones:
   - {fileID: 4817368649247300}
   - {fileID: 4848871456056666}
@@ -3850,7 +3850,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 43132014762863374, guid: 94fd47797dd24f64e84731ad22633b97, type: 2}
   m_Bones:
   - {fileID: 4442529279221408}
   - {fileID: 4851227513221532}
@@ -3897,7 +3897,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 43531472370490872, guid: fa2c3f7802e97004ba354a6e186ca657, type: 2}
   m_Bones:
   - {fileID: 4159296550231776}
   - {fileID: 4534534356359318}
@@ -3944,7 +3944,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 43766682091563234, guid: 0ae6f1cfc5af09d408197a8c177c3c8c, type: 2}
   m_Bones:
   - {fileID: 4889569007384460}
   - {fileID: 4890336306927246}
@@ -3990,7 +3990,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 43766274989695780, guid: 45aafafbeccd0e24eadb7e937241888e, type: 2}
   m_Bones:
   - {fileID: 4099226725594880}
   - {fileID: 4682945671971764}
@@ -4037,7 +4037,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 43674915385230192, guid: 7480264b0b841484c822c49b039327a3, type: 2}
   m_Bones:
   - {fileID: 4781089895955310}
   - {fileID: 4984750547927722}
@@ -4084,7 +4084,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 43766682091563234, guid: 0ae6f1cfc5af09d408197a8c177c3c8c, type: 2}
   m_Bones:
   - {fileID: 4487178850925502}
   - {fileID: 4833080401974548}
@@ -4130,7 +4130,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 43674915385230192, guid: 7480264b0b841484c822c49b039327a3, type: 2}
   m_Bones:
   - {fileID: 4087158489352456}
   - {fileID: 4961512747860620}
@@ -4177,7 +4177,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 43766274989695780, guid: 45aafafbeccd0e24eadb7e937241888e, type: 2}
   m_Bones:
   - {fileID: 4692929871594982}
   - {fileID: 4521693318053088}
@@ -4224,7 +4224,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 43531472370490872, guid: fa2c3f7802e97004ba354a6e186ca657, type: 2}
   m_Bones:
   - {fileID: 4393504557582342}
   - {fileID: 4183697170025424}
@@ -4271,7 +4271,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 43714739080095290, guid: d4185b1113e7b5f419a8d91fd5a6e346, type: 2}
   m_Bones:
   - {fileID: 4160013981902734}
   - {fileID: 4568103476687608}
@@ -4318,7 +4318,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 43132014762863374, guid: 94fd47797dd24f64e84731ad22633b97, type: 2}
   m_Bones:
   - {fileID: 4139794594742098}
   - {fileID: 4327176172412216}

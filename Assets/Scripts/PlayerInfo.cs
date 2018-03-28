@@ -270,6 +270,8 @@ public class PlayerInfo : MonoBehaviour {
 
 	public void UpdatePartManager(){
 		GameObject player = GameObject.Find("Character");
-		partManager = player.GetComponentInChildren<PartManager> ();
+		if (player != null) {
+			partManager = player.GetComponentInChildren<PartManager> ();
+		}
 	}
 }

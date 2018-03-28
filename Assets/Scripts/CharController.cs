@@ -17,6 +17,13 @@ public class CharController : MonoBehaviour {
 	protected Vector3 forwardVector;
 	CharacterController characterController;
 
+	public Animator headAnimator = null;
+	public Animator bodyAnimator = null;
+	public Animator rArmAnimator = null;
+	public Animator lArmAnimator = null;
+	public Animator rLegAnimator = null;
+	public Animator lLegAnimator = null;
+
 	//Determines whether or not UI needs updating
 	bool inLevel;
 
@@ -53,6 +60,13 @@ public class CharController : MonoBehaviour {
 			player.GetComponentInChildren<PartManager> ().ActivateLegs (PlayerInfo.Instance.legPart);
 			initialSetup = true;
 		}
+
+		Debug.Log (bodyAnimator);
+		Debug.Log (headAnimator);
+		Debug.Log (rLegAnimator);
+		Debug.Log (lLegAnimator);
+		Debug.Log (rArmAnimator);
+		Debug.Log (lArmAnimator);
 
 		transform.position = new Vector3 (transform.position.x, 0.0f, transform.position.z);
 

@@ -19,6 +19,7 @@ public class BodyManager : MonoBehaviour {
 		}
 
 		heads [partNo].SetActive (true);
+		GameObject.Find ("Player").GetComponent<CharController> ().headAnimator = heads [partNo].GetComponent<Animator>();
 	}
 
 	public void ActivateArms(int partNo) {
@@ -31,7 +32,9 @@ public class BodyManager : MonoBehaviour {
 		}
 
 		l_arms [partNo].SetActive (true);
+		GameObject.Find ("Player").GetComponent<CharController> ().lArmAnimator = l_arms [partNo].GetComponentInChildren<Animator>();
 		r_arms [partNo].SetActive (true);
+		GameObject.Find ("Player").GetComponent<CharController> ().rArmAnimator = r_arms [partNo].GetComponentInChildren<Animator>();
 	}
 
 	public void ActivateLegs(int partNo) {
@@ -44,7 +47,9 @@ public class BodyManager : MonoBehaviour {
 		}
 
 		l_legs [partNo].SetActive (true);
+		GameObject.Find ("Player").GetComponent<CharController> ().lLegAnimator = l_legs [partNo].GetComponentInChildren<Animator>();
 		r_legs [partNo].SetActive (true);
+		GameObject.Find ("Player").GetComponent<CharController> ().rLegAnimator = r_legs [partNo].GetComponentInChildren<Animator>();
 	}
 
 	void DeactivateAll() {

@@ -46,6 +46,8 @@ public class PlayerInfo : MonoBehaviour {
 	public int armPart = 0;
 	public int legPart = 0;
 
+	public PartManager partManager;
+
 	void OnDestroy() {
 		DataManager.Instance.Save ();
 	}
@@ -142,7 +144,7 @@ public class PlayerInfo : MonoBehaviour {
 	}
 
 	public void UseItem(Item toUse) {
-		PartManager partManager = null;
+		partManager = null;
 		GameObject player = GameObject.Find("Character");
 		if (player != null) {
 			partManager = player.GetComponentInChildren<PartManager> ();
@@ -264,5 +266,10 @@ public class PlayerInfo : MonoBehaviour {
 		bodyPart = 0;
 		legPart = 0;
 		DataManager.Instance.Save ();
+	}
+
+	public void UpdatePartManager(){
+		GameObject player = GameObject.Find("Character");
+		partManager = player.GetComponentInChildren<PartManager> ();
 	}
 }

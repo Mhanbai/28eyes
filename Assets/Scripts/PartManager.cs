@@ -15,10 +15,10 @@ public class PartManager : MonoBehaviour {
 		DeactivateAll ();
 		bodies [bodyNo].SetActive (true);
 		currentBodyNo = bodyNo;
+		GameObject.Find ("Player").GetComponent<CharController> ().bodyAnimator = bodies [bodyNo].GetComponent<Animator>();
 	}
 
 	public void ActivateHead(int toActivate) {
-		Debug.Log ("activate head");
 		bodies [currentBodyNo].GetComponent<BodyManager>().ActivateHead (toActivate);
 	}
 

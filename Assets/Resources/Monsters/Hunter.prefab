@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0679736df97a1924480a27870bd61319, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 1
   bleedDamage: 0.2
   bleedTime: 3
   poisonDamage: 10
@@ -160,7 +160,7 @@ MonoBehaviour:
   delayBetweenAttacks: 0.5
   shouldMoveWhileAttacking: 0
   lootList: 1
-  dropChance: 90
+  dropChance: 99
 --- !u!212 &212029402860059966
 SpriteRenderer:
   m_ObjectHideFlags: 1

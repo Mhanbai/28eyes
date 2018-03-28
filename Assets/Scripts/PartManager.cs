@@ -18,6 +18,7 @@ public class PartManager : MonoBehaviour {
 	}
 
 	public void ActivateHead(int toActivate) {
+		Debug.Log ("activate head");
 		bodies [currentBodyNo].GetComponent<BodyManager>().ActivateHead (toActivate);
 	}
 

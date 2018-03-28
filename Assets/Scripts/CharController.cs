@@ -27,6 +27,7 @@ public class CharController : MonoBehaviour {
 		}
 
 		player.GetComponentInChildren<PartManager> ().ActivateBody (PlayerInfo.Instance.bodyPart);
+		Debug.Log ("Body equipping " + PlayerInfo.Instance.bodyPart);
 
 		//Find the players Character Controller
 		characterController = GetComponent<CharacterController> ();
@@ -52,6 +53,8 @@ public class CharController : MonoBehaviour {
 			player.GetComponentInChildren<PartManager> ().ActivateLegs (PlayerInfo.Instance.legPart);
 			initialSetup = true;
 		}
+
+		transform.position = new Vector3 (transform.position.x, 0.0f, transform.position.z);
 
 		//Moving Code
 		if (Input.GetKey (KeyCode.A)) {

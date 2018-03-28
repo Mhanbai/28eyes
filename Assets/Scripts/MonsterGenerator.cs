@@ -15,7 +15,7 @@ public class MonsterGenerator : MonoBehaviour {
 
 	void Update() {
 		time += Time.deltaTime;
-		if (time > 10.0f) {
+		if (time > 20.0f) {
 			CreateMonster ();
 			time = 0.0f;
 		}

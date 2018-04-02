@@ -9,8 +9,8 @@ public class HealthBar : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		float percentage = PlayerInfo.Instance.CurrentHealth() / PlayerInfo.Instance.MaxHealth();
-		indicator.transform.localScale = new Vector3 (percentage, indicator.transform.localScale.y, indicator.transform.localScale.z);
+		int percentage = PlayerInfo.Instance.CurrentHealth() / PlayerInfo.Instance.MaxHealth();
+		indicator.transform.localScale = new Vector3 ((float)percentage, indicator.transform.localScale.y, indicator.transform.localScale.z);
 		counter.text = PlayerInfo.Instance.CurrentHealth ().ToString();
 	}
 }

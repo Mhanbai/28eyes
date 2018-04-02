@@ -35,6 +35,7 @@ public class BodyManager : MonoBehaviour {
 		GameObject.Find ("Player").GetComponent<CharController> ().lArmAnimator = l_arms [partNo].GetComponentInChildren<Animator>();
 		r_arms [partNo].SetActive (true);
 		GameObject.Find ("Player").GetComponent<CharController> ().rArmAnimator = r_arms [partNo].GetComponentInChildren<Animator>();
+		PlayerInfo.Instance.firePoint = GameObject.Find ("R_Hand_IK");
 	}
 
 	public void ActivateLegs(int partNo) {

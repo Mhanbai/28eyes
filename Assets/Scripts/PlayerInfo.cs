@@ -37,6 +37,8 @@ public class PlayerInfo : MonoBehaviour {
 	public Item armItem;
 	public Item legItem;
 
+	public GameObject firePoint;
+
 	public int ammoDiff = 0;
 	public float reloadDiff = 0.0f;
 	public float rangeDiff = 0.0f;
@@ -53,7 +55,7 @@ public class PlayerInfo : MonoBehaviour {
 	}
 
 	void Start() {
-		DataManager.Instance.Load ();
+		//DataManager.Instance.Load ();
 		for (int i = 0; i < 6; i++) {
 			inventory [i] = null;
 		}
@@ -62,14 +64,12 @@ public class PlayerInfo : MonoBehaviour {
 	//Functions for combat
 	public void Hit(float damage) {
 		currentHealth = currentHealth - damage;
+		currentHealth = Mathf.Clamp (currentHealth, 0.0f, maxHealth);
 	}
 
 	public void Heal(float healing) {
 		currentHealth = currentHealth + healing;
-
-		if (currentHealth > maxHealth) {
-			currentHealth = maxHealth;
-		}
+		currentHealth = Mathf.Clamp (currentHealth, 0.0f, maxHealth);
 	}
 
 	//Functions for pickups
@@ -107,7 +107,11 @@ public class PlayerInfo : MonoBehaviour {
 	}
 
 	public float CurrentHealth() {
-		return currentHealth;
+		if (currentHealth >= 0.0f) {
+			return currentHealth;
+		} else {
+			return 0.0f;
+		}
 	}
 
 	public bool IsRunningOrShooting() {

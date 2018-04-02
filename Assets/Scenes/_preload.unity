@@ -297,6 +297,7 @@ MonoBehaviour:
     rangeChange: 0
     attackType: 0
     bodyPart: 0
+  firePoint: {fileID: 0}
   ammoDiff: 0
   reloadDiff: 0
   rangeDiff: 0
@@ -474,8 +475,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d2817eac69d7434c99f949cbf23e3b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI: {fileID: 1643915261919314, guid: fb07a601c96698b47a4ea11528d1ba4a, type: 2}
-  Player: {fileID: 1786899709794426, guid: d41aebc036c91964dbb8760397e24a3a, type: 2}
+  UI: {fileID: 1882664480246184, guid: 394d1957ee6cc8345a8f6dea9d27770e, type: 2}
+  Player: {fileID: 1513394020217876, guid: 09372667898e9434f81d94f9d3ce0284, type: 2}
 --- !u!114 &1378583545
 MonoBehaviour:
   m_ObjectHideFlags: 0

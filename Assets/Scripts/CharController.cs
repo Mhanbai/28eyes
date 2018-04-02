@@ -227,7 +227,7 @@ public class CharController : MonoBehaviour {
 			GameObject projectileObject = GameObject.Instantiate (PlayerInfo.Instance.AttackStyle().Projectile);
 			ProjectileBehaviour projectileBehaviour = projectileObject.GetComponent<ProjectileBehaviour> ();
 
-			projectileObject.transform.position = new Vector3 (player.transform.position.x, 1.0f, player.transform.position.z);
+			projectileObject.transform.position = PlayerInfo.Instance.firePoint.transform.position;
 			projectileBehaviour.startingLocation = player.transform.position;
 			projectileBehaviour.speed = PlayerInfo.Instance.AttackStyle().ProjectileSpeed - (i * 2);
 			projectileBehaviour.direction = direction;

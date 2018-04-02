@@ -304,6 +304,7 @@ MonoBehaviour:
   headPart: 0
   armPart: 0
   legPart: 0
+  partManager: {fileID: 0}
 --- !u!114 &1378583543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -474,7 +475,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UI: {fileID: 1643915261919314, guid: fb07a601c96698b47a4ea11528d1ba4a, type: 2}
-  Player: {fileID: 1576944184645172, guid: fe3d4c5e8115f5249bcaf53ad3888e1f, type: 2}
+  Player: {fileID: 1786899709794426, guid: d41aebc036c91964dbb8760397e24a3a, type: 2}
 --- !u!114 &1378583545
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -24,6 +24,10 @@ public class CharController : MonoBehaviour {
 	public Animator rLegAnimator = null;
 	public Animator lLegAnimator = null;
 
+	bool playReload = true;
+	bool isDead = false;
+	float deathCounter = 0.0f;
+
 	//Determines whether or not UI needs updating
 	bool inLevel;
 
@@ -34,7 +38,6 @@ public class CharController : MonoBehaviour {
 		}
 
 		player.GetComponentInChildren<PartManager> ().ActivateBody (PlayerInfo.Instance.bodyPart);
-		Debug.Log ("Body equipping " + PlayerInfo.Instance.bodyPart);
 
 		//Find the players Character Controller
 		characterController = GetComponent<CharacterController> ();
@@ -61,101 +64,164 @@ public class CharController : MonoBehaviour {
 			initialSetup = true;
 		}
 
-		Debug.Log (bodyAnimator);
-		Debug.Log (headAnimator);
-		Debug.Log (rLegAnimator);
-		Debug.Log (lLegAnimator);
-		Debug.Log (rArmAnimator);
-		Debug.Log (lArmAnimator);
-
 		transform.position = new Vector3 (transform.position.x, 0.0f, transform.position.z);
 
-		//Moving Code
-		if (Input.GetKey (KeyCode.A)) {
-			//Set Sprite and Animation
-			//////////////////////////////////////////////////////animController.SetBool ("arrowPressed", true);
-			//////////////////////////////////////////////////////sprite.flipX = true;
-			//Move Avatar
-			velX = -PlayerInfo.Instance.Speed () * Time.deltaTime;
-			forwardVector = new Vector3 (-1.0f, 0.0f, forwardVector.z);
-			isRunningX = true;
-		} else if (Input.GetKey (KeyCode.D)) {
-			//Set Sprite and Animation
-			//////////////////////////////////////////////////////animController.SetBool ("arrowPressed", true);
-			//////////////////////////////////////////////////////sprite.flipX = false;
-			//Move Avatar
-			velX = PlayerInfo.Instance.Speed () * Time.deltaTime;
-			isRunningX = true;
-			forwardVector = new Vector3 (1.0f, 0.0f, forwardVector.z);
-		} else {
-			velX = 0.0f;
-			isRunningX = false;
-		}
+		if (isDead == false) {
+			//Moving Code
+			if (Input.GetKey (KeyCode.A)) {
+				//Set Sprite and Animation
+				if (!headAnimator.GetCurrentAnimatorStateInfo (0).IsName ("run")) {
+					headAnimator.Play ("run", 0);
+					bodyAnimator.Play ("run", 0);
+					rArmAnimator.Play ("run", 0);
+					lArmAnimator.Play ("run", 0);
+					rLegAnimator.Play ("run", 0);
+					lLegAnimator.Play ("run", 0);
+				}
 
-		if (Input.GetKey (KeyCode.W)) {
-			//Set Sprite and Animation
-			/////////////////////////////////////////////////////animController.SetBool ("arrowPressed", true);
-			//Move Avatar
-			velZ = PlayerInfo.Instance.Speed () * Time.deltaTime;
-			forwardVector = new Vector3 (forwardVector.x, 0.0f, 1.0f);
-			isRunningZ = true;
-		} else if (Input.GetKey (KeyCode.S)) {
-			//Set Sprite and Animation
-			////////////////////////////////////////////////////animController.SetBool ("arrowPressed", true);
-			//Move Avatar
-			velZ = -PlayerInfo.Instance.Speed () * Time.deltaTime;
-			forwardVector = new Vector3 (forwardVector.x, 0.0f, -1.0f);
-			isRunningZ = true;
-		} else {
-			velZ = 0.0f;
-			isRunningZ = false;
-		}
+				//////////////////////////////////////////////////////animController.SetBool ("arrowPressed", true);
+				//////////////////////////////////////////////////////sprite.flipX = true;
+				//Move Avatar
+				velX = -PlayerInfo.Instance.Speed () * Time.deltaTime;
+				forwardVector = new Vector3 (-1.0f, 0.0f, forwardVector.z);
+				isRunningX = true;
+			} else if (Input.GetKey (KeyCode.D)) {
+				//Set Sprite and Animation
+				if (!headAnimator.GetCurrentAnimatorStateInfo (0).IsName ("run")) {
+					headAnimator.Play ("run", 0);
+					bodyAnimator.Play ("run", 0);
+					rArmAnimator.Play ("run", 0);
+					lArmAnimator.Play ("run", 0);
+					rLegAnimator.Play ("run", 0);
+					lLegAnimator.Play ("run", 0);
+				}
 
-		forwardVector.Normalize ();
-	
-		if ((isRunningX == false) && (isRunningZ == false)) {
-			//Stop animation
-			//////////////////////////////////////////////////animController.SetBool ("arrowPressed", false);
-			PlayerInfo.Instance.SetPlayerActive (false);
-		} else {
-			PlayerInfo.Instance.SetPlayerActive (true);
-		}
-
-		characterController.Move (new Vector3 (velX, 0.0f, velZ));
-
-		//Attacking Code
-		if ((Input.GetMouseButtonDown(0)) && (PlayerInfo.Instance.attackCount < PlayerInfo.Instance.AttackStyle().Uses) && (!UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())) {
-			//Storage variables to use with fucntions
-			RaycastHit info;
-			LayerMask ground = LayerMask.GetMask("Ground");
-			//Find where on the screen was clicked
-			Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-			//Shoot a ray from this point in the direction the camera is facing
-			if (Physics.Raycast (ray, out info, Mathf.Infinity, ground)) {
-				//Get direction between player and resulting point 
-				Vector3 clickDistance = new Vector3(info.point.x, player.transform.position.y, info.point.z) - player.transform.position;
-				//Attack in direction
-				Attack (Vector3.Normalize (clickDistance), clickDistance);
-				PlayerInfo.Instance.attackCount++;
+				//////////////////////////////////////////////////////animController.SetBool ("arrowPressed", true);
+				//////////////////////////////////////////////////////sprite.flipX = false;
+				//Move Avatar
+				velX = PlayerInfo.Instance.Speed () * Time.deltaTime;
+				isRunningX = true;
+				forwardVector = new Vector3 (1.0f, 0.0f, forwardVector.z);
+			} else {
+				velX = 0.0f;
+				isRunningX = false;
 			}
-		}
 
-		if (PlayerInfo.Instance.attackCount >= (PlayerInfo.Instance.AttackStyle().Uses +  PlayerInfo.Instance.ammoDiff)) {
-			PlayerInfo.Instance.SetAttackReady(false);
-			PlayerInfo.Instance.reloadTimer += Time.deltaTime;
-			if (PlayerInfo.Instance.reloadTimer > (PlayerInfo.Instance.AttackStyle().ReloadTime + (PlayerInfo.Instance.AttackStyle().ReloadTime * PlayerInfo.Instance.reloadDiff))) {
-				PlayerInfo.Instance.reloadTimer = 0.0f;
-				PlayerInfo.Instance.attackCount = 0;
-				PlayerInfo.Instance.SetAttackReady(true);
+			if (Input.GetKey (KeyCode.W)) {
+				//Set Sprite and Animation
+				if (!headAnimator.GetCurrentAnimatorStateInfo (0).IsName ("run")) {
+					headAnimator.Play ("run", 0);
+					bodyAnimator.Play ("run", 0);
+					rArmAnimator.Play ("run", 0);
+					lArmAnimator.Play ("run", 0);
+					rLegAnimator.Play ("run", 0);
+					lLegAnimator.Play ("run", 0);
+				}
+
+				/////////////////////////////////////////////////////animController.SetBool ("arrowPressed", true);
+				//Move Avatar
+				velZ = PlayerInfo.Instance.Speed () * Time.deltaTime;
+				forwardVector = new Vector3 (forwardVector.x, 0.0f, 1.0f);
+				isRunningZ = true;
+			} else if (Input.GetKey (KeyCode.S)) {
+				//Set Sprite and Animation
+				if (!headAnimator.GetCurrentAnimatorStateInfo (0).IsName ("run")) {
+					headAnimator.Play ("run", 0);
+					bodyAnimator.Play ("run", 0);
+					rArmAnimator.Play ("run", 0);
+					lArmAnimator.Play ("run", 0);
+					rLegAnimator.Play ("run", 0);
+					lLegAnimator.Play ("run", 0);
+				}
+
+				////////////////////////////////////////////////////animController.SetBool ("arrowPressed", true);
+				//Move Avatar
+				velZ = -PlayerInfo.Instance.Speed () * Time.deltaTime;
+				forwardVector = new Vector3 (forwardVector.x, 0.0f, -1.0f);
+				isRunningZ = true;
+			} else {
+				velZ = 0.0f;
+				isRunningZ = false;
+			}
+
+			forwardVector.Normalize ();
+	
+			if ((isRunningX == false) && (isRunningZ == false)) {
+				//Stop animation
+				if (!headAnimator.GetCurrentAnimatorStateInfo (0).IsName ("idle")) {
+					headAnimator.Play ("idle", 0);
+					bodyAnimator.Play ("idle", 0);
+					rArmAnimator.Play ("idle", 0);
+					lArmAnimator.Play ("idle", 0);
+					rLegAnimator.Play ("idle", 0);
+					lLegAnimator.Play ("idle", 0);
+				}
+				//////////////////////////////////////////////////animController.SetBool ("arrowPressed", false);
+				PlayerInfo.Instance.SetPlayerActive (false);
+			} else {
+				PlayerInfo.Instance.SetPlayerActive (true);
+			}
+
+			characterController.Move (new Vector3 (velX, 0.0f, velZ));
+
+			//Attacking Code
+			if ((Input.GetMouseButtonDown (0)) && (PlayerInfo.Instance.attackCount < PlayerInfo.Instance.AttackStyle ().Uses) && (!UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject ())) {
+				//Storage variables to use with fucntions
+				RaycastHit info;
+				LayerMask ground = LayerMask.GetMask ("Ground");
+				//Find where on the screen was clicked
+				Ray ray = cam.ScreenPointToRay (Input.mousePosition);
+				//Shoot a ray from this point in the direction the camera is facing
+				if (Physics.Raycast (ray, out info, Mathf.Infinity, ground)) {
+					//Get direction between player and resulting point 
+					Vector3 clickDistance = new Vector3 (info.point.x, player.transform.position.y, info.point.z) - player.transform.position;
+					//Attack in direction
+					Attack (Vector3.Normalize (clickDistance), clickDistance);
+					PlayerInfo.Instance.attackCount++;
+				}
+			}
+
+			if (PlayerInfo.Instance.attackCount >= (PlayerInfo.Instance.AttackStyle ().Uses + PlayerInfo.Instance.ammoDiff)) {
+				if (playReload) {
+					rArmAnimator.Play ("reload", 0);
+					lArmAnimator.Play ("reload", 0);
+					playReload = false;
+				}
+				PlayerInfo.Instance.SetAttackReady (false);
+				PlayerInfo.Instance.reloadTimer += Time.deltaTime;
+				if (PlayerInfo.Instance.reloadTimer > (PlayerInfo.Instance.AttackStyle ().ReloadTime + (PlayerInfo.Instance.AttackStyle ().ReloadTime * PlayerInfo.Instance.reloadDiff))) {
+					PlayerInfo.Instance.reloadTimer = 0.0f;
+					PlayerInfo.Instance.attackCount = 0;
+					PlayerInfo.Instance.SetAttackReady (true);
+					playReload = true;
+				}
 			}
 		}
 
 		if (PlayerInfo.Instance.CurrentHealth () <= 0.0f) {
-			PlayerInfo.Instance.Die ();
+			isDead = true;
+			deathCounter += Time.deltaTime;
+			if (!headAnimator.GetCurrentAnimatorStateInfo (0).IsName ("death")) {
+				headAnimator.Play ("death", 0);
+				bodyAnimator.Play ("death", 0);
+				rArmAnimator.Play ("death", 0);
+				lArmAnimator.Play ("death", 0);
+				rLegAnimator.Play ("death", 0);
+				lLegAnimator.Play ("death", 0);
+			}
+			if (deathCounter > 3.0f) {
+				deathCounter = 0.0f;
+				isDead = false;
+				PlayerInfo.Instance.Die ();
+			}
 		}
 	}
 
 	void Attack(Vector3 direction, Vector3 clickDistance) {
+		if (!rArmAnimator.GetCurrentAnimatorStateInfo (0).IsName ("attack")) {
+			rArmAnimator.Play ("attack", 0);
+			lArmAnimator.Play ("attack", 0);
+		}
 		PlayerInfo.Instance.SetPlayerActive (true);
 		for (int i = 0; i < PlayerInfo.Instance.AttackStyle().NoOfProjectiles; i++) {
 			GameObject projectileObject = GameObject.Instantiate (PlayerInfo.Instance.AttackStyle().Projectile);

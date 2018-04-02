@@ -9,7 +9,6 @@ public class CharController : MonoBehaviour {
 	Camera cam;
 
 	//Values for movement
-	bool initialSetup = false;
 	protected float velX;
 	protected float velZ;
 	protected bool isRunningX = false;
@@ -29,6 +28,7 @@ public class CharController : MonoBehaviour {
 	float deathCounter = 0.0f;
 
 	public GameObject avatar;
+	float regenTimer = 0.0f;
 
 	//Determines whether or not UI needs updating
 	bool inLevel;
@@ -38,8 +38,6 @@ public class CharController : MonoBehaviour {
 		if (PlayerInfo.Instance.equippedAttack == null) {
 			PlayerInfo.Instance.equippedAttack = AttackList.Instance.attackType [0];
 		}
-
-		player.GetComponentInChildren<PartManager> ().ActivateBody (PlayerInfo.Instance.bodyPart);
 
 		//Find the players Character Controller
 		characterController = GetComponent<CharacterController> ();
@@ -60,11 +58,17 @@ public class CharController : MonoBehaviour {
 	}
 
 	void Update () {
-		if (!initialSetup) {
-			player.GetComponentInChildren<PartManager> ().ActivateHead (PlayerInfo.Instance.headPart);
-			player.GetComponentInChildren<PartManager> ().ActivateArms (PlayerInfo.Instance.armPart);
-			player.GetComponentInChildren<PartManager> ().ActivateLegs (PlayerInfo.Instance.legPart);
-			initialSetup = true;
+		if (PlayerInfo.Instance.partManager == null) {
+			PlayerInfo.Instance.FindPartManager ();
+		}
+		if ((!PlayerInfo.Instance.partManager.IsHeadActive(PlayerInfo.Instance.headPart)) || 
+			(!PlayerInfo.Instance.partManager.IsBodyActive(PlayerInfo.Instance.bodyPart)) || 
+			(!PlayerInfo.Instance.partManager.IsArmsActive(PlayerInfo.Instance.armPart)) || 
+			(!PlayerInfo.Instance.partManager.IsLegsActive(PlayerInfo.Instance.legPart))) {
+			PlayerInfo.Instance.partManager.ActivateBody (PlayerInfo.Instance.bodyPart);
+			PlayerInfo.Instance.partManager.ActivateHead (PlayerInfo.Instance.headPart);
+			PlayerInfo.Instance.partManager.ActivateArms (PlayerInfo.Instance.armPart);
+			PlayerInfo.Instance.partManager.ActivateLegs (PlayerInfo.Instance.legPart);
 		}
 
 		transform.position = new Vector3 (transform.position.x, 0.0f, transform.position.z);
@@ -217,6 +221,12 @@ public class CharController : MonoBehaviour {
 				isDead = false;
 				PlayerInfo.Instance.Die ();
 			}
+		} else if (PlayerInfo.Instance.CurrentHealth () < PlayerInfo.Instance.MaxHealth ()) {
+			regenTimer += Time.deltaTime;
+			if (regenTimer > 3.0f) {
+				regenTimer = 0.0f;
+				PlayerInfo.Instance.Heal (5.0f);
+			}
 		}
 	}
 
@@ -233,7 +243,6 @@ public class CharController : MonoBehaviour {
 			projectileObject.transform.position = PlayerInfo.Instance.firePoint.transform.position;
 			projectileBehaviour.startingLocation = player.transform.position;
 			projectileBehaviour.speed = PlayerInfo.Instance.AttackStyle().ProjectileSpeed - (i * 2);
-			//projectileBehaviour.direction = direction;///////////////////////////////////////////////
 			projectileBehaviour.direction = Quaternion.AngleAxis(i * 10.0f, new Vector3(0.0f, 1.0f, 0.0f)) * direction;
 			projectileBehaviour.trajectoryType = PlayerInfo.Instance.AttackStyle().TrajectoryType;
 

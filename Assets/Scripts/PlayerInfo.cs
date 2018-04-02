@@ -48,14 +48,14 @@ public class PlayerInfo : MonoBehaviour {
 	public int armPart = 0;
 	public int legPart = 0;
 
-	public PartManager partManager;
+	public PartManager partManager = null;
 
 	void OnDestroy() {
 		DataManager.Instance.Save ();
 	}
 
 	void Start() {
-		//DataManager.Instance.Load ();
+		DataManager.Instance.Load ();
 		for (int i = 0; i < 6; i++) {
 			inventory [i] = null;
 		}
@@ -273,6 +273,13 @@ public class PlayerInfo : MonoBehaviour {
 	}
 
 	public void UpdatePartManager(){
+		GameObject player = GameObject.Find("Character");
+		if (player != null) {
+			partManager = player.GetComponentInChildren<PartManager> ();
+		}
+	}
+
+	public void FindPartManager() {
 		GameObject player = GameObject.Find("Character");
 		if (player != null) {
 			partManager = player.GetComponentInChildren<PartManager> ();

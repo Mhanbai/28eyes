@@ -22,6 +22,10 @@ public class BodyManager : MonoBehaviour {
 		GameObject.Find ("Player").GetComponent<CharController> ().headAnimator = heads [partNo].GetComponent<Animator>();
 	}
 
+	public bool IsHeadActive(int headCheck){
+		return heads [headCheck].activeSelf;
+	}
+
 	public void ActivateArms(int partNo) {
 		foreach (GameObject part in r_arms) {
 			part.SetActive (false);
@@ -38,6 +42,10 @@ public class BodyManager : MonoBehaviour {
 		PlayerInfo.Instance.firePoint = GameObject.Find ("R_Hand_IK");
 	}
 
+	public bool IsArmsActive(int armCheck){
+		return (r_arms [armCheck].activeSelf && l_arms[armCheck].activeSelf);
+	}
+
 	public void ActivateLegs(int partNo) {
 		foreach (GameObject part in r_legs) {
 			part.SetActive (false);
@@ -51,6 +59,10 @@ public class BodyManager : MonoBehaviour {
 		GameObject.Find ("Player").GetComponent<CharController> ().lLegAnimator = l_legs [partNo].GetComponentInChildren<Animator>();
 		r_legs [partNo].SetActive (true);
 		GameObject.Find ("Player").GetComponent<CharController> ().rLegAnimator = r_legs [partNo].GetComponentInChildren<Animator>();
+	}
+
+	public bool IsLegsActive(int legCheck){
+		return (r_legs [legCheck].activeSelf && l_legs[legCheck].activeSelf);
 	}
 
 	void DeactivateAll() {

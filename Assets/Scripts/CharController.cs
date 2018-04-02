@@ -230,7 +230,8 @@ public class CharController : MonoBehaviour {
 			projectileObject.transform.position = PlayerInfo.Instance.firePoint.transform.position;
 			projectileBehaviour.startingLocation = player.transform.position;
 			projectileBehaviour.speed = PlayerInfo.Instance.AttackStyle().ProjectileSpeed - (i * 2);
-			projectileBehaviour.direction = direction;
+			//projectileBehaviour.direction = direction;///////////////////////////////////////////////
+			projectileBehaviour.direction = Quaternion.AngleAxis(i * 10.0f, new Vector3(0.0f, 1.0f, 0.0f)) * direction;
 			projectileBehaviour.trajectoryType = PlayerInfo.Instance.AttackStyle().TrajectoryType;
 
 			if (projectileBehaviour.trajectoryType == 1) {

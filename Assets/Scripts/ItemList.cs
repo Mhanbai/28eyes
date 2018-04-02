@@ -31,17 +31,17 @@ public class ItemList : MonoBehaviour {
 
 	void Start() {
 		// 	Description, Objective?, Picture, Category, Health Change, Speed Change, Ammo, Reload, Range, Attack Type, Body Part Sprite) {
-		levelOneItems[0] = new Item("Raises health by 30% but lowers speed by 10%", false, 1, 0, 0.3f, -0.1f, 0, 0.0f, 0.0f, 0, 1);
-		levelOneItems[1] = new Item("Increases speed by 20% but lowers ammo by 10%", false, 1, 2, 0.0f, 0.2f, 0, -0.1f, 0.0f, 0, 0);
-		levelOneItems[2] = new Item("Lowers health and speed by 5%, equips a slowing web attack", false, 1, 3, -0.05f, -0.05f, 0, 0.0f, 0.0f, 1, 0);
+		levelOneItems[0] = new Item("Raises health by 30% but lowers speed by 10%", false, 1, 0, 0.3f, -0.1f, 0, 0.0f, 0.0f, -1, 1);
+		levelOneItems[1] = new Item("Increases speed by 20% but lowers ammo by 10%", false, 1, 3, 0.0f, 0.2f, 0, -0.1f, 0.0f, -1, 0);
+		levelOneItems[2] = new Item("Lowers health and speed by 5%, equips a slowing web attack", false, 1, 2, -0.05f, -0.05f, 0, 0.0f, 0.0f, 1, 0);
 
-		levelTwoItems[0] = new Item("Raises health by 30% but lowers speed by 10%", false, 1, 1, 0.3f, -0.1f, 0, 0.0f, 0.0f, 0, 0);
-		levelTwoItems[1] = new Item("Increases speed by 20% but lowers ammo by 10%", false, 1, 2, 0.0f, 0.2f, 0, -0.1f, 0.0f, 0, 0);
-		levelTwoItems[2] = new Item("Lowers health and speed by 5%, equips a slowing web attack", false, 1, 3, -0.05f, -0.05f, 0, 0.0f, 0.0f, 1, 0);
+		levelTwoItems[0] = new Item("Raises health by 30% but lowers speed by 10%", false, 1, 1, 0.3f, -0.1f, 0, 0.0f, 0.0f, -1, 0);
+		levelTwoItems[1] = new Item("Increases speed by 20% but lowers ammo by 10%", false, 1, 3, 0.0f, 0.2f, 0, -0.1f, 0.0f, -1, 0);
+		levelTwoItems[2] = new Item("Lowers health and speed by 5%, equips a slowing web attack", false, 1, 2, -0.05f, -0.05f, 0, 0.0f, 0.0f, 1, 0);
 
-		levelThreeItems[0] = new Item("Raises health by 30% but lowers speed by 10%", false, 1, 1, 0.3f, -0.1f, 0, 0.0f, 0.0f, 0, 0);
-		levelThreeItems[1] = new Item("Increases speed by 20% but lowers ammo by 10%", false, 1, 2, 0.0f, 0.2f, 0, -0.1f, 0.0f, 0, 0);
-		levelThreeItems[2] = new Item("Lowers health and speed by 5%, equips a slowing web attack", false, 1, 3, -0.05f, -0.05f, 0, 0.0f, 0.0f, 1, 0);
+		levelThreeItems[0] = new Item("Raises health by 30% but lowers speed by 10%", false, 1, 1, 0.3f, -0.1f, 0, 0.0f, 0.0f, -1, 0);
+		levelThreeItems[1] = new Item("Increases speed by 20% but lowers ammo by 10%", false, 1, 3, 0.0f, 0.2f, 0, -0.1f, 0.0f, -1, 0);
+		levelThreeItems[2] = new Item("Lowers health and speed by 5%, equips a slowing web attack", false, 1, 2, -0.05f, -0.05f, 0, 0.0f, 0.0f, 1, 0);
 
 		portalOneItems[0] = new Item ("Red Portal Stone", true, 4);
 		portalTwoItems[0] = new Item ("Blue Portal Stone", true, 5);

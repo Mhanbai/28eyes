@@ -8,7 +8,7 @@ public class Item {
 	public string description = "";
 	public int picRef;
 	public int itemSet;
-	public float healthChange;
+	public int healthChange;
 	public float speedChange;
 	public int ammoChange;
 	public float reloadChange;
@@ -17,7 +17,7 @@ public class Item {
 	public int bodyPart;
 
 	public Item(string description_in, bool objective_in, int picRef_in, int itemSet_in = -1, 
-		float healthChange_in = 0.0f, float speedChange_in = 0.0f, int ammoChange_in = 0, float reloadChange_in = 0.0f, float rangeChange_in = 0.0f, int attackType_in = -1, int bodyPart_in = -1) {
+		int healthChange_in = 0, float speedChange_in = 0.0f, int ammoChange_in = 0, float reloadChange_in = 0.0f, float rangeChange_in = 0.0f, int attackType_in = -1, int bodyPart_in = -1) {
 
 		isObjective = objective_in; 
 		description = description_in;

@@ -11,7 +11,7 @@ public class MonsterClass : MonoBehaviour {
 	public int poisonHits = 5;
 	public float deathTimer = 2.0f;
 
-	public float attackStrength = 10.0f;
+	public int attackStrength = 10;
 	public float attackTimer = 0.5f;
 	public float attackRange = 5.0f;
 	public float delayBetweenAttacks = 1.0f;

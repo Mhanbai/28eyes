@@ -19,8 +19,8 @@ public class PlayerInfo : MonoBehaviour {
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	//TODO: Change stats based on design
-	[SerializeField] protected float maxHealth = 100.0f; //Percentage
-	[SerializeField] protected float currentHealth = 100.0f; //Percentage
+	[SerializeField] protected int maxHealth = 100; //Percentage
+	[SerializeField] protected int currentHealth = 100; //Percentage
 	[SerializeField] protected float maxSpeed = 3.0f; //Pixels per second
 	[SerializeField] protected float minimumSpeed = 0.1f; 
 	protected bool playerIsActive = false;
@@ -62,14 +62,14 @@ public class PlayerInfo : MonoBehaviour {
 	}
 
 	//Functions for combat
-	public void Hit(float damage) {
+	public void Hit(int damage) {
 		currentHealth = currentHealth - damage;
-		currentHealth = Mathf.Clamp (currentHealth, 0.0f, maxHealth);
+		currentHealth = Mathf.Clamp (currentHealth, 0, maxHealth);
 	}
 
-	public void Heal(float healing) {
+	public void Heal(int healing) {
 		currentHealth = currentHealth + healing;
-		currentHealth = Mathf.Clamp (currentHealth, 0.0f, maxHealth);
+		currentHealth = Mathf.Clamp (currentHealth, 0, maxHealth);
 	}
 
 	//Functions for pickups
@@ -90,15 +90,15 @@ public class PlayerInfo : MonoBehaviour {
 		}
 	}
 
-	public float MaxHealth() {
+	public int MaxHealth() {
 		return maxHealth;
 	}
 
-	public void SetMaxHealth(float max_health_in) {
+	public void SetMaxHealth(int max_health_in) {
 		maxHealth = max_health_in;
 
-		if (maxHealth < 0.1f) {
-			maxHealth = 0.1f;
+		if (maxHealth < 1) {
+			maxHealth = 1;
 		}
 
 		if (currentHealth > maxHealth) {
@@ -106,11 +106,11 @@ public class PlayerInfo : MonoBehaviour {
 		}
 	}
 
-	public float CurrentHealth() {
-		if (currentHealth >= 0.0f) {
+	public int CurrentHealth() {
+		if (currentHealth >= 0) {
 			return currentHealth;
 		} else {
-			return 0.0f;
+			return 0;
 		}
 	}
 
@@ -130,7 +130,7 @@ public class PlayerInfo : MonoBehaviour {
 		attackIsReady = attackState;
 	}
 
-	public void TakeHit(float damage) {
+	public void TakeHit(int damage) {
 		currentHealth -= damage;
 	}
 
@@ -155,22 +155,46 @@ public class PlayerInfo : MonoBehaviour {
 		}
 		switch (toUse.itemSet) {
 		case 0:
-			if (headItem != null) {
-				SetMaxHealth (maxHealth + (maxHealth * -headItem.healthChange));
+			if ((headItem != null) && (headItem != toUse)) {
+				SetMaxHealth (maxHealth + toUse.healthChange);
+				SetMaxSpeed (maxSpeed + (maxSpeed * toUse.speedChange));
+				ammoDiff = toUse.ammoChange;
+				reloadDiff = toUse.reloadChange;
+				rangeDiff = toUse.rangeChange;
+
+				if (toUse.attackType != -1) {
+					equippedAttack = PlayerInfo.Instance.equippedAttack = AttackList.Instance.attackType [toUse.attackType];
+				}
+					
+				SetMaxHealth (maxHealth - headItem.healthChange);
 				SetMaxSpeed (maxSpeed + (maxSpeed * -headItem.speedChange));
+
 				headPart = toUse.bodyPart;
+
 				if (partManager != null) {
 					partManager.ActivateHead (headPart);
 				}
-			}
 
-			headItem = toUse;
+				headItem = toUse;
+			}
 			break;
 		case 1:
-			if (bodyItem != null) {
-				SetMaxHealth (maxHealth + (maxHealth * -bodyItem.healthChange));
+			if ((bodyItem != null) && (bodyItem != toUse)) {
+				SetMaxHealth (maxHealth + toUse.healthChange);
+				SetMaxSpeed (maxSpeed + (maxSpeed * toUse.speedChange));
+				ammoDiff = toUse.ammoChange;
+				reloadDiff = toUse.reloadChange;
+				rangeDiff = toUse.rangeChange;
+
+				if (toUse.attackType != -1) {
+					equippedAttack = PlayerInfo.Instance.equippedAttack = AttackList.Instance.attackType [toUse.attackType];
+				}
+
+				SetMaxHealth (maxHealth - bodyItem.healthChange);
 				SetMaxSpeed (maxSpeed + (maxSpeed * -bodyItem.speedChange));
+
 				bodyPart = toUse.bodyPart;
+
 				if (partManager != null) {
 					partManager.ActivateBody (bodyPart);
 					partManager.ActivateHead (headPart);
@@ -182,10 +206,22 @@ public class PlayerInfo : MonoBehaviour {
 			bodyItem = toUse;
 			break;
 		case 2:
-			if (armItem != null) {
-				SetMaxHealth (maxHealth + (maxHealth * -armItem.healthChange));
+			if ((armItem != null) && (armItem != toUse)) {
+				SetMaxHealth (maxHealth + toUse.healthChange);
+				SetMaxSpeed (maxSpeed + (maxSpeed * toUse.speedChange));
+				ammoDiff = toUse.ammoChange;
+				reloadDiff = toUse.reloadChange;
+				rangeDiff = toUse.rangeChange;
+
+				if (toUse.attackType != -1) {
+					equippedAttack = PlayerInfo.Instance.equippedAttack = AttackList.Instance.attackType [toUse.attackType];
+				}
+
+				SetMaxHealth (maxHealth - armItem.healthChange);
 				SetMaxSpeed (maxSpeed + (maxSpeed * -armItem.speedChange));
+
 				armPart = toUse.bodyPart;
+
 				if (partManager != null) {
 					partManager.ActivateArms (armPart);
 				}
@@ -194,10 +230,22 @@ public class PlayerInfo : MonoBehaviour {
 			armItem = toUse;
 			break;
 		case 3:
-			if (legItem != null) {
-				SetMaxHealth (maxHealth + (maxHealth * -legItem.healthChange));
+			if ((legItem != null) && (legItem != toUse)) {
+				SetMaxHealth (maxHealth + toUse.healthChange);
+				SetMaxSpeed (maxSpeed + (maxSpeed * toUse.speedChange));
+				ammoDiff = toUse.ammoChange;
+				reloadDiff = toUse.reloadChange;
+				rangeDiff = toUse.rangeChange;
+
+				if (toUse.attackType != -1) {
+					equippedAttack = PlayerInfo.Instance.equippedAttack = AttackList.Instance.attackType [toUse.attackType];
+				}
+
+				SetMaxHealth (maxHealth - legItem.healthChange);
 				SetMaxSpeed (maxSpeed + (maxSpeed * -legItem.speedChange));
+
 				legPart = toUse.bodyPart;
+
 				if (partManager != null) {
 					partManager.ActivateLegs (legPart);
 				}
@@ -206,19 +254,9 @@ public class PlayerInfo : MonoBehaviour {
 			legItem = toUse;
 			break;
 		}
-
-		SetMaxHealth (maxHealth + (maxHealth * toUse.healthChange));
-		SetMaxSpeed (maxSpeed + (maxSpeed * toUse.speedChange));
-		ammoDiff = toUse.ammoChange;
-		reloadDiff = toUse.reloadChange;
-		rangeDiff = toUse.rangeChange;
-
-		if (toUse.attackType != -1) {
-			equippedAttack = PlayerInfo.Instance.equippedAttack = AttackList.Instance.attackType [toUse.attackType];
-		}
 	}
 
-	public void Load(float health_in, Item[] inventory_in, Item headPart_in, Item bodyPart_in, Item armPart_in, Item legPart_in, int headSprite_in, int bodySprite_in, int armSprite_in, int legSprite_in) {
+	public void Load(int health_in, Item[] inventory_in, Item headPart_in, Item bodyPart_in, Item armPart_in, Item legPart_in, int headSprite_in, int bodySprite_in, int armSprite_in, int legSprite_in) {
 		UseItem (headPart_in);
 		UseItem (bodyPart_in);
 		UseItem (armPart_in);
@@ -238,25 +276,25 @@ public class PlayerInfo : MonoBehaviour {
 		currentHealth = maxHealth;
 		inventory = new Item[6];
 		if (headItem != null) {
-			SetMaxHealth (maxHealth + (maxHealth * -headItem.healthChange));
+			SetMaxHealth (maxHealth - headItem.healthChange);
 			SetMaxSpeed (maxSpeed + (maxSpeed * -headItem.speedChange));
 			headItem = null;
 			headPart = 0;
 		}
 		if (bodyItem != null) {
-			SetMaxHealth (maxHealth + (maxHealth * -bodyItem.healthChange));
+			SetMaxHealth (maxHealth - bodyItem.healthChange);
 			SetMaxSpeed (maxSpeed + (maxSpeed * -bodyItem.speedChange));
 			bodyItem = null;
 			bodyPart = 0;
 		}
 		if (armItem != null) {
-			SetMaxHealth (maxHealth + (maxHealth * -armItem.healthChange));
+			SetMaxHealth (maxHealth - armItem.healthChange);
 			SetMaxSpeed (maxSpeed + (maxSpeed * -armItem.speedChange));
 			armItem = null;
 			armPart = 0;
 		}
 		if (legItem != null) {
-			SetMaxHealth (maxHealth + (maxHealth * -legItem.healthChange));
+			SetMaxHealth (maxHealth - legItem.healthChange);
 			SetMaxSpeed (maxSpeed + (maxSpeed * -legItem.speedChange));
 			legItem = null;
 			legPart = 0;

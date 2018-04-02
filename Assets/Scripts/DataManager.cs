@@ -101,7 +101,7 @@ public class DataManager : MonoBehaviour {
 
 [System.Serializable]
 class DataFile {
-	public float health;
+	public int health;
 	public Item[] inventory;
 	public Item headPart;
 	public Item bodyPart;

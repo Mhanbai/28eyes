@@ -28,6 +28,8 @@ public class CharController : MonoBehaviour {
 	bool isDead = false;
 	float deathCounter = 0.0f;
 
+	public GameObject avatar;
+
 	//Determines whether or not UI needs updating
 	bool inLevel;
 
@@ -41,6 +43,7 @@ public class CharController : MonoBehaviour {
 
 		//Find the players Character Controller
 		characterController = GetComponent<CharacterController> ();
+		avatar = GameObject.Find ("Character");
 
 		//Find the camera
 		cam = Camera.main;
@@ -78,7 +81,7 @@ public class CharController : MonoBehaviour {
 					rLegAnimator.Play ("run", 0);
 					lLegAnimator.Play ("run", 0);
 				}
-
+				avatar.transform.localScale = new Vector3 (Mathf.Abs(avatar.transform.localScale.x), avatar.transform.localScale.y, avatar.transform.localScale.z);
 				//////////////////////////////////////////////////////animController.SetBool ("arrowPressed", true);
 				//////////////////////////////////////////////////////sprite.flipX = true;
 				//Move Avatar
@@ -95,7 +98,7 @@ public class CharController : MonoBehaviour {
 					rLegAnimator.Play ("run", 0);
 					lLegAnimator.Play ("run", 0);
 				}
-
+				avatar.transform.localScale = new Vector3 (-Mathf.Abs(avatar.transform.localScale.x), avatar.transform.localScale.y, avatar.transform.localScale.z);
 				//////////////////////////////////////////////////////animController.SetBool ("arrowPressed", true);
 				//////////////////////////////////////////////////////sprite.flipX = false;
 				//Move Avatar

@@ -154,7 +154,7 @@ MonoBehaviour:
   poisonFrequency: 2
   poisonHits: 4
   deathTimer: 2
-  attackStrength: 10
+  attackStrength: 42
   attackTimer: 1
   attackRange: 10
   delayBetweenAttacks: 0.5

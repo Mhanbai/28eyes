@@ -6,15 +6,15 @@ public class AttackIcon : MonoBehaviour {
 	CharController player;
 	public UnityEngine.UI.Image icon;
 	public UnityEngine.UI.Text text;
-	
+
 	// Update is called once per frame
 	void Update () {
 		if (PlayerInfo.Instance.IsAttackReady () == true) {
 			text.text = (PlayerInfo.Instance.AttackStyle ().Uses - PlayerInfo.Instance.attackCount).ToString();
-			icon.color = Color.red;
+			text.color = Color.red;
 		} else {
 			text.text = (PlayerInfo.Instance.AttackStyle().ReloadTime - PlayerInfo.Instance.reloadTimer).ToString();
-			icon.color = Color.white;
+			text.color = Color.white;
 		}
 	}
 }

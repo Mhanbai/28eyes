@@ -1,0 +1,222 @@
+fileFormatVersion: 2
+guid: d45e9820570fe404e9a24563465502e4
+timeCreated: 1523100838
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: eagle_0
+    21300002: eagle_1
+    21300004: eagle_2
+    21300006: eagle_3
+    21300008: eagle_4
+    21300010: eagle_5
+    21300012: eagle_6
+    21300014: eagle_7
+    21300016: eagle_8
+  externalObjects: {}
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: eagle_0
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 55
+        width: 827
+        height: 1614
+      alignment: 9
+      pivot: {x: 0.5082362, y: 0.018906392}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: eagle_1
+      rect:
+        serializedVersion: 2
+        x: 1100
+        y: 1173
+        width: 1446
+        height: 458
+      alignment: 9
+      pivot: {x: 0.96162164, y: 0.88666624}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: eagle_2
+      rect:
+        serializedVersion: 2
+        x: 2860
+        y: 583
+        width: 657
+        height: 1048
+      alignment: 9
+      pivot: {x: 0.2926555, y: 0.9484522}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: eagle_3
+      rect:
+        serializedVersion: 2
+        x: 3864
+        y: 610
+        width: 658
+        height: 1048
+      alignment: 9
+      pivot: {x: 0.30332172, y: 0.9614508}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: eagle_4
+      rect:
+        serializedVersion: 2
+        x: 1092
+        y: 603
+        width: 1447
+        height: 455
+      alignment: 9
+      pivot: {x: 0.9565953, y: 0.9041854}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: eagle_5
+      rect:
+        serializedVersion: 2
+        x: 2742
+        y: 887
+        width: 243
+        height: 65
+      alignment: 9
+      pivot: {x: 0.92588973, y: 0.35525748}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: eagle_6
+      rect:
+        serializedVersion: 2
+        x: 3747
+        y: 914
+        width: 244
+        height: 68
+      alignment: 9
+      pivot: {x: 0.9112909, y: 0.26940468}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: eagle_7
+      rect:
+        serializedVersion: 2
+        x: 2589
+        y: 711
+        width: 428
+        height: 138
+      alignment: 9
+      pivot: {x: 0.96162146, y: 0.54545087}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: eagle_8
+      rect:
+        serializedVersion: 2
+        x: 3594
+        y: 740
+        width: 427
+        height: 138
+      alignment: 9
+      pivot: {x: 0.9306892, y: 0.5493571}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    outline: []
+    physicsShape: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

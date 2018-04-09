@@ -1,14 +1,14 @@
 fileFormatVersion: 2
 guid: d45e9820570fe404e9a24563465502e4
-timeCreated: 1523100838
+timeCreated: 1523289442
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: eagle_0
-    21300002: eagle_1
-    21300004: eagle_2
-    21300006: eagle_3
-    21300008: eagle_4
+    21300000: eagle_Body
+    21300002: eagle_Wing
+    21300004: eagle_Leg
+    21300006: eagle_R_Leg
+    21300008: eagle_R_Wing
     21300010: eagle_5
     21300012: eagle_6
     21300014: eagle_7
@@ -89,49 +89,49 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: eagle_0
+      name: eagle_Body
       rect:
         serializedVersion: 2
-        x: 96
-        y: 55
-        width: 827
-        height: 1614
+        x: 91.05712
+        y: 49.779175
+        width: 839.53534
+        height: 1626.2415
       alignment: 9
-      pivot: {x: 0.5082362, y: 0.018906392}
+      pivot: {x: 0.5065352, y: 0.03035114}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: eagle_1
+      name: eagle_Wing
       rect:
         serializedVersion: 2
-        x: 1100
-        y: 1173
-        width: 1446
-        height: 458
+        x: 1096.8555
+        y: 1164.9575
+        width: 1459.4326
+        height: 474.3595
       alignment: 9
-      pivot: {x: 0.96162164, y: 0.88666624}
+      pivot: {x: 0.9503877, y: 0.8443239}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: eagle_2
+      name: eagle_Leg
       rect:
         serializedVersion: 2
-        x: 2860
-        y: 583
-        width: 657
-        height: 1048
+        x: 2853.638
+        y: 574.6378
+        width: 674.36816
+        height: 1062.1954
       alignment: 9
-      pivot: {x: 0.2926555, y: 0.9484522}
+      pivot: {x: 0.31475282, y: 0.93082464}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: eagle_3
+      name: eagle_R_Leg
       rect:
         serializedVersion: 2
         x: 3864
@@ -139,13 +139,13 @@ TextureImporter:
         width: 658
         height: 1048
       alignment: 9
-      pivot: {x: 0.30332172, y: 0.9614508}
+      pivot: {x: 0.3343762, y: 0.9549515}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: eagle_4
+      name: eagle_R_Wing
       rect:
         serializedVersion: 2
         x: 1092
@@ -153,7 +153,7 @@ TextureImporter:
         width: 1447
         height: 455
       alignment: 9
-      pivot: {x: 0.9565953, y: 0.9041854}
+      pivot: {x: 0.96130246, y: 0.8742457}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -162,12 +162,12 @@ TextureImporter:
       name: eagle_5
       rect:
         serializedVersion: 2
-        x: 2742
-        y: 887
-        width: 243
-        height: 65
+        x: 2902.5737
+        y: 382.9698
+        width: 257.95898
+        height: 82.133514
       alignment: 9
-      pivot: {x: 0.92588973, y: 0.35525748}
+      pivot: {x: 0.9183892, y: 0.24468009}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -176,12 +176,12 @@ TextureImporter:
       name: eagle_6
       rect:
         serializedVersion: 2
-        x: 3747
-        y: 914
-        width: 244
+        x: 3914
+        y: 418
+        width: 243
         height: 68
       alignment: 9
-      pivot: {x: 0.9112909, y: 0.26940468}
+      pivot: {x: 0.92044836, y: 0.19950238}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -190,12 +190,12 @@ TextureImporter:
       name: eagle_7
       rect:
         serializedVersion: 2
-        x: 2589
-        y: 711
-        width: 428
-        height: 138
+        x: 2766.3254
+        y: 109.91015
+        width: 442.80103
+        height: 152.01285
       alignment: 9
-      pivot: {x: 0.96162146, y: 0.54545087}
+      pivot: {x: 0.9543621, y: 0.5549185}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -204,12 +204,12 @@ TextureImporter:
       name: eagle_8
       rect:
         serializedVersion: 2
-        x: 3594
-        y: 740
-        width: 427
-        height: 138
+        x: 3777
+        y: 146
+        width: 428
+        height: 139
       alignment: 9
-      pivot: {x: 0.9306892, y: 0.5493571}
+      pivot: {x: 0.9809342, y: 0.5522664}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -217,6 +217,6 @@ TextureImporter:
     outline: []
     physicsShape: []
   spritePackingTag: 
-  userData: 
+  userData: 99830294322977
   assetBundleName: 
   assetBundleVariant: 

@@ -26,10 +26,8 @@ public class Pickup : MonoBehaviour {
 	}
 
 	void OnTriggerStay() {
-		if (Input.GetKeyDown (KeyCode.E)) {
-			if (PlayerInfo.Instance.AddToInventory (myItem) == true) {
-				GameObject.Destroy (gameObject);
-			}
+		if (PlayerInfo.Instance.AddToInventory (myItem) == true) {
+			GameObject.Destroy (gameObject);
 		}
 	}
 

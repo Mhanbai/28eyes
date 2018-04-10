@@ -77,18 +77,15 @@ LightmapSettings:
     m_PVRDirectSampleCount: 32
     m_PVRSampleCount: 500
     m_PVRBounces: 2
-    m_PVRFilterTypeDirect: 0
-    m_PVRFilterTypeIndirect: 0
-    m_PVRFilterTypeAO: 0
+    m_PVRFiltering: 0
     m_PVRFilteringMode: 1
     m_PVRCulling: 1
     m_PVRFilteringGaussRadiusDirect: 1
     m_PVRFilteringGaussRadiusIndirect: 5
     m_PVRFilteringGaussRadiusAO: 2
-    m_PVRFilteringAtrousPositionSigmaDirect: 0.5
-    m_PVRFilteringAtrousPositionSigmaIndirect: 2
-    m_PVRFilteringAtrousPositionSigmaAO: 1
-    m_ShowResolutionOverlay: 1
+    m_PVRFilteringAtrousColorSigma: 1
+    m_PVRFilteringAtrousNormalSigma: 1
+    m_PVRFilteringAtrousPositionSigma: 1
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 0
 --- !u!196 &4
@@ -110,9 +107,8 @@ NavMeshSettings:
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
-    debug:
-      m_Flags: 0
   m_NavMeshData: {fileID: 0}
+<<<<<<< HEAD
 --- !u!1 &53818366
 GameObject:
   m_ObjectHideFlags: 0
@@ -887,6 +883,8 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 97e4b82aa0c486747aeb8849ef0543d4, type: 2}
   m_IsPrefabParent: 0
+=======
+>>>>>>> 7fd7b5f542af4a6ac4f6914957f8fea4e4b97c95
 --- !u!1 &1378583538
 GameObject:
   m_ObjectHideFlags: 0
@@ -1254,7 +1252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d2817eac69d7434c99f949cbf23e3b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI: {fileID: 1737773388901404, guid: aab054822597ebd41b634476ba4036c7, type: 2}
+  UI: {fileID: 1869762409498964, guid: bd2e5c266e804e84bb292192a59d26c0, type: 2}
   Player: {fileID: 1513394020217876, guid: 09372667898e9434f81d94f9d3ce0284, type: 2}
 --- !u!114 &1378583545
 MonoBehaviour:
@@ -1282,6 +1280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ceefdedf4b18374ab45ed4cd562cd23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
 --- !u!1 &1624164550
 GameObject:
   m_ObjectHideFlags: 0
@@ -1753,3 +1752,5 @@ MonoBehaviour:
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 1694576177}
   m_AttachedIK: {fileID: 0}
+=======
+>>>>>>> 7fd7b5f542af4a6ac4f6914957f8fea4e4b97c95

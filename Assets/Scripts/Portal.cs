@@ -21,14 +21,12 @@ public class Portal : MonoBehaviour {
 	}
 
 	// Update is called once per frame
-	void OnTriggerStay () {
-		if (Input.GetKeyDown (KeyCode.E)) {
-			if (DataManager.Instance.IsPortalUnlocked(portalNumber) == true) {
-				FlipShowItems ();
-				hubUI.GetComponent<hubUI> ().UpdatePortal (requiredToOpen, portalNumber);
-			} else {
-				UnityEngine.SceneManagement.SceneManager.LoadScene (portalNumber + 3);
-			}
+	void OnTriggerEnter () {
+		if (DataManager.Instance.IsPortalUnlocked(portalNumber) == true) {
+			FlipShowItems ();
+			hubUI.GetComponent<hubUI> ().UpdatePortal (requiredToOpen, portalNumber);
+		} else {
+			UnityEngine.SceneManagement.SceneManager.LoadScene (portalNumber + 3);
 		}
 	}
 

@@ -12,6 +12,6 @@ public class Explosion : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		collider.transform.localScale += new Vector3 (0.1f, 0.1f, 0.1f);
+		//collider.transform.localScale += new Vector3 (0.1f, 0.1f, 0.1f);
 	}
 }

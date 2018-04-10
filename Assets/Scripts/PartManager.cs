@@ -51,4 +51,8 @@ public class PartManager : MonoBehaviour {
 			body.SetActive (false);
 		}
 	}
+
+	public BodyManager GetBody() {
+		return bodies [currentBodyNo].GetComponent<BodyManager> ();
+	}
 }

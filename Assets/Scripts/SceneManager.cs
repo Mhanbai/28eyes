@@ -16,6 +16,7 @@ public class SceneManager : MonoBehaviour {
 
 	public GameObject UI;
 	public GameObject Player;
+	public GameObject DebugUI;
 
 	protected GameObject uiRef;
 
@@ -28,6 +29,7 @@ public class SceneManager : MonoBehaviour {
 	{
 		if ((scene.name != "_preload") && (scene.name != "_mainmenu") && (scene.name != "_death")) {
 			uiRef = GameObject.Instantiate (UI);
+			GameObject.Instantiate (DebugUI);
 			GameObject spawnPoint = GameObject.Find ("PlayerSpawnPoint");
 			GameObject avatar = GameObject.Instantiate (Player, spawnPoint.transform.position, Quaternion.identity);
 			avatar.name = "Player";

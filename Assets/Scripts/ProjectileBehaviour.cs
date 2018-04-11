@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ProjectileBehaviour : MonoBehaviour {
+	public Explosion explosion;
 	public bool causesBleed;
 	public bool causesSlow;
 	public bool causesPosion;
@@ -56,6 +57,10 @@ public class ProjectileBehaviour : MonoBehaviour {
 	}
 
 	public void Die() {
+		if (explosion != null) {
+			Explosion exp = GameObject.Instantiate (explosion);
+			exp.transform.position = gameObject.transform.position + new Vector3(0.0f, 2.0f, 0.0f);
+		}
 		GameObject.Destroy (gameObject);
 	}
 }

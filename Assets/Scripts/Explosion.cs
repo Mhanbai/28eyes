@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class Explosion : MonoBehaviour {
 	public Collider collider;
+	public float maxSize;
+	public float damage;
+	public bool causesSlow;
+	public bool causesBleed;
+	public bool causesPosion;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
 	// Update is called once per frame
 	void Update () {
-		//collider.transform.localScale += new Vector3 (0.1f, 0.1f, 0.1f);
+		if (collider.transform.localScale.x < maxSize) {
+			collider.transform.localScale += new Vector3 (0.1f, 0.1f, 0.1f);
+		} else {
+			GameObject.Destroy (gameObject);
+		}
 	}
 }

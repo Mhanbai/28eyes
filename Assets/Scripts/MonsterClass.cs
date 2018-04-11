@@ -171,6 +171,32 @@ public class MonsterClass : MonoBehaviour {
 			TakeHit(projectile);
 			projectile.Die ();
 		} catch { }
+		try {
+			Debug.Log("step 1");
+			Explosion explosion = collision.transform.GetComponentInParent<Explosion> ();
+			TakeExplosion(explosion);
+		} catch { }
+	}
+
+	public void TakeExplosion(Explosion explosion) {
+		Debug.Log("step 2");
+		health = health - explosion.damage;
+
+		if ((explosion.causesPosion == true) && (poisoned == false)) {
+			poisoned = true;
+		} else if ((explosion.causesPosion == true) && (poisoned == true)) {
+			poisonCounter = 0.0f;
+		}
+
+		if ((explosion.causesBleed == true) && (bleeding == false)) {
+			bleeding = true;
+		} else if ((explosion.causesBleed == true) && (bleeding == true)) {
+			bleedCounter = 0.0f;
+		}
+
+		if (explosion.causesSlow == true) {
+			myMovement.Slow ();
+		}
 	}
 
 	public void TakeHit(ProjectileBehaviour hit) {

@@ -3,6 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SwitchPart : MonoBehaviour {
+	bool isZoomed = false;
+	protected Camera cam;
+	protected float startingSize;
+
+	void Start() {
+		cam = GameObject.Find ("Main Camera").GetComponent<Camera> ();
+		startingSize = cam.orthographicSize;
+	}
+
 	public void SwitchPartUp(int part) {
 		switch (part) {
 		case 0:
@@ -66,6 +75,16 @@ public class SwitchPart : MonoBehaviour {
 				PlayerInfo.Instance.legPart--;
 			}
 			break;
+		}
+	}
+
+	public void Zoom() {
+		if (isZoomed == false) {
+			cam.orthographicSize = 6.0f;
+			isZoomed = true;
+		} else {
+			cam.orthographicSize = startingSize;
+			isZoomed = false;
 		}
 	}
 }

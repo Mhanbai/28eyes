@@ -18,7 +18,7 @@ public class SceneManager : MonoBehaviour {
 	public GameObject Player;
 	public GameObject DebugUI;
 
-	protected GameObject uiRef;
+	public GameObject uiRef;
 
 	void OnEnable()
 	{

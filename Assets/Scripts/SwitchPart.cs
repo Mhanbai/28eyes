@@ -80,9 +80,11 @@ public class SwitchPart : MonoBehaviour {
 
 	public void Zoom() {
 		if (isZoomed == false) {
+			SceneManager.Instance.uiRef.SetActive (false);
 			cam.orthographicSize = 6.0f;
 			isZoomed = true;
 		} else {
+			SceneManager.Instance.uiRef.SetActive (true);
 			cam.orthographicSize = startingSize;
 			isZoomed = false;
 		}

@@ -549,7 +549,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4003020824829676, guid: ce5a6e3c846631c4cb7767383f12f0ea, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 49.1
+      value: 64.3
       objectReference: {fileID: 0}
     - target: {fileID: 4003020824829676, guid: ce5a6e3c846631c4cb7767383f12f0ea, type: 2}
       propertyPath: m_LocalRotation.x
@@ -600,7 +600,8 @@ Prefab:
       propertyPath: hubUI
       value: 
       objectReference: {fileID: 1782377354}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114329865284286630, guid: ce5a6e3c846631c4cb7767383f12f0ea, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: ce5a6e3c846631c4cb7767383f12f0ea, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &289367544
@@ -3451,7 +3452,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4003020824829676, guid: ce5a6e3c846631c4cb7767383f12f0ea, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 49.1
+      value: 64.2
       objectReference: {fileID: 0}
     - target: {fileID: 4003020824829676, guid: ce5a6e3c846631c4cb7767383f12f0ea, type: 2}
       propertyPath: m_LocalRotation.x
@@ -3502,7 +3503,8 @@ Prefab:
       propertyPath: hubUI
       value: 
       objectReference: {fileID: 1782377354}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114329865284286630, guid: ce5a6e3c846631c4cb7767383f12f0ea, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: ce5a6e3c846631c4cb7767383f12f0ea, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1892864259

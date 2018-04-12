@@ -961,7 +961,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4060183278688728}
   - component: {fileID: 114398061095340796}
-  - component: {fileID: 114796112304743940}
   - component: {fileID: 143850468600602310}
   m_Layer: 0
   m_Name: Player
@@ -3789,24 +3788,6 @@ MonoBehaviour:
   - {fileID: 4807386902519470}
   - {fileID: 4290221850282326}
   - {fileID: 4665149966804492}
---- !u!114 &114796112304743940
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1748306946483922}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9de621ce597cbc64c9cc8bf886d8b30b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerControlled: 1
-  mass: 0
-  maxSpeed: 0
-  legPower: 0
-  turnSpeed: 0
-  fleeDistance: 0
-  slowSeverity: 2
 --- !u!114 &114805934572316452
 MonoBehaviour:
   m_ObjectHideFlags: 1

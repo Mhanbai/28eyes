@@ -323,4 +323,8 @@ public class PlayerInfo : MonoBehaviour {
 			partManager = player.GetComponentInChildren<PartManager> ();
 		}
 	}
+
+	public float MaxSpeed(){
+		return maxSpeed;
+	}
 }

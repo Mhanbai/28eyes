@@ -266,4 +266,8 @@ public class CharController : MonoBehaviour {
 	public float GetSpeed() {
 		return Vector3.Magnitude(new Vector3(velX, 0.0f, velZ));
 	}
+
+	public Vector3 GetVelocityVector() {
+		return new Vector3 (velX, 0.0f, velZ);
+	}
 }

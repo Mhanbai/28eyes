@@ -9,7 +9,7 @@ public class EnemyProjectile : MonoBehaviour {
     public int damage;
     public float speed;
     protected float movement;
-    protected bool collided = false;
+    public bool collided = false;
 	
 	// Update is called once per frame
 	void Update () {
@@ -34,6 +34,9 @@ public class EnemyProjectile : MonoBehaviour {
 
     private void OnTriggerEnter(Collider collision)
     {
-        collided = true;
+        if (!collision.CompareTag("guardian"))
+        {
+            collided = true;
+        }
     }
 }

@@ -36,6 +36,7 @@ GameObject:
   - component: {fileID: 4215754617331394}
   - component: {fileID: 65918352516549546}
   - component: {fileID: 114433018568228626}
+  - component: {fileID: 54947721457215764}
   m_Layer: 0
   m_Name: Guardian
   m_TagString: Untagged
@@ -101,6 +102,21 @@ Transform:
   m_Father: {fileID: 4215754617331394}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &54947721457215764
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1823485321812378}
+  serializedVersion: 2
+  m_Mass: 0.0000001
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!65 &65918352516549546
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -147,6 +163,15 @@ MonoBehaviour:
   damage: 25
   firePoint: {fileID: 1018544415921676}
   missile: {fileID: 1483456921002008, guid: 84d063ac578269c4c968717bf8940b60, type: 2}
+  health: 100
+  bleedDamage: 0.5
+  bleedTime: 5
+  poisonDamage: 10
+  poisonFrequency: 5
+  poisonHits: 5
+  deathTimer: 2
+  dropChance: 99
+  lootList: 1
 --- !u!212 &212737913885868856
 SpriteRenderer:
   m_ObjectHideFlags: 1

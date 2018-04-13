@@ -45,15 +45,21 @@ public class Monster : MonoBehaviour {
     [SerializeField] protected float slowTime = 5.0f;
     [SerializeField] protected float slowSeverity = 2.0f;
     [SerializeField] protected float deathTimer = 2.0f;
+    [SerializeField] protected int dropChance = 99;
+    [SerializeField] protected int lootList = 1;
 
+    protected float deathCounter = 0.0f;
     protected float bleedCounter = 0.0f;
     protected float poisonCounter = 0.0f;
     float slowCounter = 0.0f;
     protected int poisonTracker = 0;
+    protected float trappedCounter = 0.0f;
+    protected float escapeCounter = 0.0f;
 
     protected bool bleeding = false;
     protected bool poisoned = false;
     protected bool slowed = false;
+    protected bool trapped = false;
 
     float yPos;
     SpriteRenderer mySprite;
@@ -70,144 +76,207 @@ public class Monster : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        foreach(Collider obs in obstacleList)
-        {
-            Debug.Log(obs);
-        }
-        Debug.Log("---------------------------------------");
-
         //Reset velocity vector
         velocityVector = new Vector3(0.0f, 0.0f, 0.0f);
+        Debug.Log(trapped);
 
-        if (!isAttacking)
+        if (health > 0.0f)
         {
-            //Find array of obstacles and create line between two furthest collision points
-            if (obstacleList.Count > 1)
+            if (!isAttacking)
             {
-                Vector3 avoidanceForce;
-                Vector3 pointOne = FindFurthest(transform.position);
-                Vector3 pointTwo = FindFurthest(pointOne);
-                Vector3 pointToTarget = FindClosest(pointOne, pointTwo);
-                if (pointToTarget == pointOne)
+                //Find array of obstacles and create line between two furthest collision points
+                if (trapped == false)
                 {
-                    avoidanceForce = pointOne - pointTwo;
-                }
-                else
-                {
-                    avoidanceForce = pointTwo - pointOne;
-                }
-                Vector3.Normalize(avoidanceForce);
-                wanderTimer = wanderVariance;
-
-                velocityVector += avoidanceForce * Time.deltaTime;
-            }
-            else if (obstacleList.Count == 1)
-            {
-                Vector3 between = obstacleList[0].transform.position - transform.position;
-                between = new Vector3(between.z, 0.0f, -between.x);
-                Vector3.Normalize(between);
-                avoidanceForce = between * maxSpeed;
-                wanderTimer = wanderVariance;
-
-                velocityVector += avoidanceForce;
-            }
-            else
-            {
-                if (Vector3.Distance(transform.position, player.transform.position) < pursueDistance)
-                {
-                    if (!(Vector3.Distance(transform.position, player.transform.position) < attackRange))
+                    if (obstacleList.Count > 1)
                     {
-                        attackDelayTimer = delayBetweenAttacks;
-                        velocityVector += Pursue(player);
+                        trappedCounter += Time.deltaTime;
+                        if (trappedCounter > 2.0f)
+                        {
+                            trapped = true;
+                        }
+
+                        Vector3 avoidanceForce;
+                        Vector3 pointOne = FindFurthest(transform.position);
+                        Vector3 pointTwo = FindFurthest(pointOne);
+
+                        if (Vector3.Angle(forwardVector, pointOne - pointTwo) > Vector3.Angle(forwardVector, pointTwo - pointOne))
+                        {
+                            avoidanceForce = pointTwo - pointOne;
+                        }
+                        else
+                        {
+                            avoidanceForce = pointOne - pointTwo;
+                        }
+
+                        Vector3.Normalize(avoidanceForce);
+                        wanderTimer = wanderVariance;
+                        velocityVector = new Vector3(0.0f, 0.0f, 0.0f);
+                        velocityVector += avoidanceForce * Time.deltaTime;
+                    }
+                    else if (obstacleList.Count == 1)
+                    {
+                        Vector3 between = obstacleList[0].transform.position - transform.position;
+                        between = new Vector3(between.z, 0.0f, -between.x);
+                        Vector3.Normalize(between);
+
+                        if (Vector3.Angle(forwardVector, between) > Vector3.Angle(forwardVector, -between))
+                        {
+                            avoidanceForce = -between;
+                        }
+                        else
+                        {
+                            avoidanceForce = between;
+                        }
+
+                        wanderTimer = wanderVariance;
+
+                        velocityVector += avoidanceForce * Time.deltaTime;
                     }
                     else
                     {
-                        isAttacking = true;
+                        if (Vector3.Distance(transform.position, player.transform.position) < pursueDistance)
+                        {
+                            if (!(Vector3.Distance(transform.position, player.transform.position) < attackRange))
+                            {
+                                attackDelayTimer = delayBetweenAttacks;
+                                velocityVector += Pursue(player);
+                            }
+                            else
+                            {
+                                isAttacking = true;
+                            }
+
+                        }
+                        else
+                        {
+                            velocityVector += Seek(Wander());
+                        }
                     }
-
-                }
-                else
-                {
-                    velocityVector += Seek(Wander());
-                }
-            }
-        }
-
-        if (isAttacking)
-        {
-            if (shouldMoveWhileAttacking)
-            {
-                velocityVector += Pursue(player);
-            }
-            attackDelayTimer += Time.deltaTime;
-            if (attackDelayTimer > delayBetweenAttacks)
-            {
-                attackTimer += Time.deltaTime;
-                if (attackTimer > attackLength)
-                {
-                    if (Vector3.Distance(transform.position, player.transform.position) < attackRange)
+                } else
+                { 
+                    if (obstacleList.Count > 0)
                     {
-                        PlayerInfo.Instance.Hit(attackStrength);
+                        escapeCounter += Time.deltaTime;
+                        Vector3 pointOne = FindFurthest(transform.position);
+                        Vector3 pointTwo = FindFurthest(pointOne);
+
+                        Vector3 escape = pointOne - pointTwo;
+                        escape = new Vector3(escape.z, 0.0f, -escape.x);
+
+                        Vector3.Normalize(escape);
+
+                        if (escapeCounter < 2.0f)
+                        {
+                            velocityVector += escape * Time.deltaTime * 0.5f;
+                        } else
+                        {
+                            velocityVector -= escape * Time.deltaTime * 0.5f;
+                        }
                     }
-                    attackTimer = 0.0f;
-                    attackDelayTimer = 0.0f;
-                    isAttacking = false;
+                    else
+                    {
+                        trapped = false;
+                        trappedCounter = 0.0f;
+                        escapeCounter = 0.0f;
+                    }
+                }
+            } 
+
+            if (isAttacking)
+            {
+                if (shouldMoveWhileAttacking)
+                {
+                    velocityVector += Pursue(player);
+                }
+                attackDelayTimer += Time.deltaTime;
+                if (attackDelayTimer > delayBetweenAttacks)
+                {
+                    attackTimer += Time.deltaTime;
+                    if (attackTimer > attackLength)
+                    {
+                        if (Vector3.Distance(transform.position, player.transform.position) < attackRange)
+                        {
+                            PlayerInfo.Instance.Hit(attackStrength);
+                        }
+                        attackTimer = 0.0f;
+                        attackDelayTimer = 0.0f;
+                        isAttacking = false;
+                    }
                 }
             }
-        }
 
-        if (bleeding == true)
-        {
-            bleedCounter += Time.deltaTime;
-            health -= bleedDamage;
-
-            if (bleedCounter > bleedTime)
+            if (bleeding == true)
             {
-                bleeding = false;
-            }
-        }
+                bleedCounter += Time.deltaTime;
+                health -= bleedDamage;
 
-        if (poisoned == true)
-        {
-            poisonCounter += Time.deltaTime;
-
-            if (poisonCounter > poisonFrequency)
-            {
-                poisonCounter = 0.0f;
-                health = health - poisonDamage;
-                poisonTracker++;
+                if (bleedCounter > bleedTime)
+                {
+                    bleeding = false;
+                }
             }
 
-            if (poisonTracker > poisonHits)
+            if (poisoned == true)
             {
-                poisonTracker = 0;
-                poisoned = false;
+                poisonCounter += Time.deltaTime;
+
+                if (poisonCounter > poisonFrequency)
+                {
+                    poisonCounter = 0.0f;
+                    health = health - poisonDamage;
+                    poisonTracker++;
+                }
+
+                if (poisonTracker > poisonHits)
+                {
+                    poisonTracker = 0;
+                    poisoned = false;
+                }
+            }
+
+            if (slowed == true)
+            {
+                slowCounter = slowCounter + Time.deltaTime;
+            }
+
+            if (slowCounter > slowTime)
+            {
+                slowCounter = 0.0f;
+                slowed = false;
+                maxSpeed = maxSpeed * slowSeverity;
+            }
+
+            //Add velocity vector to position
+            forwardVector = velocityVector.normalized;
+            transform.position += velocityVector;
+
+            //Flip depencing on direction
+            if (velocityVector.x < 0.0f)
+            {
+                mySprite.flipX = false;
+            }
+            else if (velocityVector.x > 0.0f)
+            {
+                mySprite.flipX = true;
             }
         }
-
-        if (slowed == true)
+        else
         {
-            slowCounter = slowCounter + Time.deltaTime;
-        }
+            velocityVector -= (velocityVector * 0.1f);
+            mySprite.flipY = true;
+            deathCounter += Time.deltaTime;
 
-        if (slowCounter > slowTime)
-        {
-            slowCounter = 0.0f;
-            slowed = false;
-            maxSpeed = maxSpeed * slowSeverity;
-        }
+            if (deathCounter > deathTimer)
+            {
+                if (Random.Range(0, 100) < dropChance)
+                {
+                    int itemToDrop = Random.Range(0, ItemList.Instance.LevelItems(lootList).Length);
+                    GameObject droppedItem = GameObject.Instantiate(ItemList.Instance.pickup, transform.position, Quaternion.identity);
+                    droppedItem.GetComponent<Pickup>().AssignItem(ItemList.Instance.LevelItems(lootList)[itemToDrop]); //Change depending on level
+                }
 
-        //Add velocity vector to position
-        transform.position += velocityVector;
-
-        //Flip depencing on direction
-        if (velocityVector.x < 0.1f)
-        {
-            mySprite.flipX = false;
-        }
-        else if (velocityVector.x > 0.1f)
-        {
-            mySprite.flipX = true;
+                GameObject.Destroy(gameObject);
+            }
         }
 
         //Ensure monster is always touching the ground
@@ -241,6 +310,11 @@ public class Monster : MonoBehaviour {
             Slow();
         }
     }
+    public void TakeExplosion(monsterExplosion explosion)
+    {
+        health = health - explosion.damage;
+    }
+
 
     public void TakeHit(ProjectileBehaviour hit)
     {
@@ -268,6 +342,11 @@ public class Monster : MonoBehaviour {
         {
             Slow();
         }
+    }
+
+    public void TakeHit(EnemyProjectile hit)
+    {
+        health = health - hit.damage;
     }
 
     public void Slow()
@@ -336,28 +415,49 @@ public class Monster : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider obstacle) {
-        Debug.Log("Huh?");
-		if ((!obstacle.CompareTag ("Player")) && (!obstacle.CompareTag ("Enemy"))) {
-			obstacleList.Add (obstacle);
+        if (
+            (!obstacle.CompareTag("Player"))
+            && (!obstacle.CompareTag("Enemy")) 
+            && (!obstacle.CompareTag("explosion")) 
+            && (!obstacle.CompareTag("projectile")) 
+            && (!obstacle.CompareTag("ground"))
+            )
+        {
+            obstacleList.Add (obstacle);
 		}
 
         if (obstacle.CompareTag("projectile"))
         {
-            ProjectileBehaviour projectile = obstacle.transform.GetComponent<ProjectileBehaviour>();
-            TakeHit(projectile);
-            projectile.Die();
+            try
+            {
+                ProjectileBehaviour projectile = obstacle.transform.GetComponent<ProjectileBehaviour>();
+                TakeHit(projectile);
+                projectile.Die();
+            } catch
+            {
+                EnemyProjectile projectile = obstacle.transform.GetComponent<EnemyProjectile>();
+                projectile.collided = true;
+            }
         }
 
-        if (obstacle.CompareTag("explosion"))
-        {
-            Explosion explosion = obstacle.transform.GetComponentInParent<Explosion>();
-            TakeExplosion(explosion);
-        }
+       if (obstacle.CompareTag("explosion"))
+       {
+            try
+            {
+                Explosion explosion = obstacle.transform.GetComponentInParent<Explosion>();
+                TakeExplosion(explosion);
+            }
+            catch
+            {
+                monsterExplosion explosion = obstacle.transform.GetComponentInParent<monsterExplosion>();
+                TakeExplosion(explosion);
+            }
+       }
 
     }
 
     void OnTriggerExit(Collider obstacle) {
-        if ((!obstacle.CompareTag("Player")) && (!obstacle.CompareTag("Enemy")) && (!obstacle.CompareTag("explosion")) && (!obstacle.CompareTag("projectile")))
+        if ((!obstacle.CompareTag("Player")) && (!obstacle.CompareTag("Enemy")) && (!obstacle.CompareTag("explosion")) && (!obstacle.CompareTag("projectile")) && (!obstacle.CompareTag("ground")))
         {
             obstacleList.Remove(obstacle);
         }
@@ -387,4 +487,9 @@ public class Monster : MonoBehaviour {
 
 		return closestPoint;
 	}
+
+    bool isLeft(Vector3 pointOne, Vector3 pointTwo, Vector3 queryPoint)
+    {
+        return ((pointTwo.x - pointOne.x) * (queryPoint.z - pointOne.z) - (pointTwo.z - pointOne.z) * (queryPoint.x - pointOne.x)) < 0;
+    }
 }

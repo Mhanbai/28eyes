@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 65770877512768122}
   m_Layer: 0
   m_Name: monsterFireball 1 1
-  m_TagString: Untagged
+  m_TagString: projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -88,6 +88,7 @@ MonoBehaviour:
   explosive: {fileID: 1049416066103392, guid: 6eaed24a831550143a4da5caad9b433a, type: 2}
   damage: 0
   speed: 0
+  collided: 0
 --- !u!212 &212590401430179850
 SpriteRenderer:
   m_ObjectHideFlags: 1

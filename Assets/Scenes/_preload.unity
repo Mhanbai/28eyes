@@ -476,7 +476,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UI: {fileID: 1473667758264798, guid: 0e378b68eed953744a60556cad44c351, type: 2}
-  Player: {fileID: 1748306946483922, guid: e770bad40679ae3468fdc02f02bb91fe, type: 2}
+  Player: {fileID: 1505781898164992, guid: b9cd82e10997b544f9325070919c592c, type: 2}
   DebugUI: {fileID: 1128595373734696, guid: 820e881db11b18d4484d5ce6d0f459b8, type: 2}
   uiRef: {fileID: 0}
 --- !u!114 &1378583545

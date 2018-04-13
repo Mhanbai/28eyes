@@ -55,7 +55,7 @@ public class PlayerInfo : MonoBehaviour {
 	}
 
 	void Start() {
-		DataManager.Instance.Load ();
+		//DataManager.Instance.Load ();
 		for (int i = 0; i < 6; i++) {
 			inventory [i] = null;
 		}

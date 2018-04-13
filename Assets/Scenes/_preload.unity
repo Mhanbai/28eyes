@@ -108,52 +108,6 @@ NavMeshSettings:
     tileSize: 256
     accuratePlacement: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &896811112
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4834064224637872, guid: 680e4bbdbec9b5a48a9359132d950c85, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 94.14443
-      objectReference: {fileID: 0}
-    - target: {fileID: 4834064224637872, guid: 680e4bbdbec9b5a48a9359132d950c85, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 12.144883
-      objectReference: {fileID: 0}
-    - target: {fileID: 4834064224637872, guid: 680e4bbdbec9b5a48a9359132d950c85, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -57.60176
-      objectReference: {fileID: 0}
-    - target: {fileID: 4834064224637872, guid: 680e4bbdbec9b5a48a9359132d950c85, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4834064224637872, guid: 680e4bbdbec9b5a48a9359132d950c85, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4834064224637872, guid: 680e4bbdbec9b5a48a9359132d950c85, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4834064224637872, guid: 680e4bbdbec9b5a48a9359132d950c85, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4834064224637872, guid: 680e4bbdbec9b5a48a9359132d950c85, type: 2}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1758361945814522, guid: 680e4bbdbec9b5a48a9359132d950c85, type: 2}
-      propertyPath: m_Name
-      value: Hunter 2
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 680e4bbdbec9b5a48a9359132d950c85, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &1378583538
 GameObject:
   m_ObjectHideFlags: 0
@@ -523,7 +477,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UI: {fileID: 1473667758264798, guid: 0e378b68eed953744a60556cad44c351, type: 2}
   Player: {fileID: 1748306946483922, guid: e770bad40679ae3468fdc02f02bb91fe, type: 2}
-  DebugUI: {fileID: 1573176095002762, guid: 313cd3cb2bb41c940bff4436b1543b12, type: 2}
+  DebugUI: {fileID: 1128595373734696, guid: 820e881db11b18d4484d5ce6d0f459b8, type: 2}
   uiRef: {fileID: 0}
 --- !u!114 &1378583545
 MonoBehaviour:

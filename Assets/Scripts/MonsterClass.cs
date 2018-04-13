@@ -38,8 +38,7 @@ public class MonsterClass : MonoBehaviour {
 
 	NPCMovement myMovement;
 	NPCMovement player;
-
-	bool bleeding = false;
+    bool bleeding = false;
 	bool poisoned = false;
 
 	int state = 0;
@@ -107,7 +106,7 @@ public class MonsterClass : MonoBehaviour {
 
 				if (attackOngoingTime < 0.0f) {
 					if (Vector3.Magnitude (transform.position - player.transform.position) <= attackRange) {
-						PlayerInfo.Instance.TakeHit (attackStrength);
+						PlayerInfo.Instance.Hit (attackStrength);
 					}
 					attackDelayTime = delayBetweenAttacks;
 					myAnimator.SetBool ("isAttacking", false);

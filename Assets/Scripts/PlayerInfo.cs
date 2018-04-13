@@ -130,10 +130,6 @@ public class PlayerInfo : MonoBehaviour {
 		attackIsReady = attackState;
 	}
 
-	public void TakeHit(int damage) {
-		currentHealth -= damage;
-	}
-
 	public bool AddToInventory(Item toAdd) {
 		int index = -1;
 		foreach (Item item in inventory) {

@@ -86,8 +86,6 @@ public class CharController : MonoBehaviour {
 					lLegAnimator.Play ("run", 0);
 				}
 				avatar.transform.localScale = new Vector3 (Mathf.Abs(avatar.transform.localScale.x), avatar.transform.localScale.y, avatar.transform.localScale.z);
-				//////////////////////////////////////////////////////animController.SetBool ("arrowPressed", true);
-				//////////////////////////////////////////////////////sprite.flipX = true;
 				//Move Avatar
 				velX = -PlayerInfo.Instance.Speed () * Time.deltaTime;
 				forwardVector = new Vector3 (-1.0f, 0.0f, forwardVector.z);
@@ -103,8 +101,6 @@ public class CharController : MonoBehaviour {
 					lLegAnimator.Play ("run", 0);
 				}
 				avatar.transform.localScale = new Vector3 (-Mathf.Abs(avatar.transform.localScale.x), avatar.transform.localScale.y, avatar.transform.localScale.z);
-				//////////////////////////////////////////////////////animController.SetBool ("arrowPressed", true);
-				//////////////////////////////////////////////////////sprite.flipX = false;
 				//Move Avatar
 				velX = PlayerInfo.Instance.Speed () * Time.deltaTime;
 				isRunningX = true;
@@ -125,7 +121,6 @@ public class CharController : MonoBehaviour {
 					lLegAnimator.Play ("run", 0);
 				}
 
-				/////////////////////////////////////////////////////animController.SetBool ("arrowPressed", true);
 				//Move Avatar
 				velZ = PlayerInfo.Instance.Speed () * Time.deltaTime;
 				forwardVector = new Vector3 (forwardVector.x, 0.0f, 1.0f);
@@ -141,7 +136,6 @@ public class CharController : MonoBehaviour {
 					lLegAnimator.Play ("run", 0);
 				}
 
-				////////////////////////////////////////////////////animController.SetBool ("arrowPressed", true);
 				//Move Avatar
 				velZ = -PlayerInfo.Instance.Speed () * Time.deltaTime;
 				forwardVector = new Vector3 (forwardVector.x, 0.0f, -1.0f);
@@ -163,7 +157,6 @@ public class CharController : MonoBehaviour {
 					rLegAnimator.Play ("idle", 0);
 					lLegAnimator.Play ("idle", 0);
 				}
-				//////////////////////////////////////////////////animController.SetBool ("arrowPressed", false);
 				PlayerInfo.Instance.SetPlayerActive (false);
 			} else {
 				PlayerInfo.Instance.SetPlayerActive (true);

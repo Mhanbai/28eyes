@@ -51,6 +51,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4045594366203028}
   - component: {fileID: 65332484896720790}
+  - component: {fileID: 54304047130839982}
+  - component: {fileID: 114133218377879434}
   m_Layer: 0
   m_Name: Collider
   m_TagString: Untagged
@@ -99,6 +101,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &54304047130839982
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1871218055350960}
+  serializedVersion: 2
+  m_Mass: 0.0000001
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!65 &65332484896720790
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -111,6 +128,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 8.510216, y: 4.896533, z: 2.1950989}
   m_Center: {x: -0.055980682, y: -0.17668676, z: -0.11122894}
+--- !u!114 &114133218377879434
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1871218055350960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aeb1d46f96b0c154c9264a0fb0ce50bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212608402463050524
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -141,15 +169,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: f67199c21d82eda47a90cccf83bc2903, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0

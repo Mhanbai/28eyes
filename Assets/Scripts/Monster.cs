@@ -78,7 +78,6 @@ public class Monster : MonoBehaviour {
     void Update() {
         //Reset velocity vector
         velocityVector = new Vector3(0.0f, 0.0f, 0.0f);
-        Debug.Log(trapped);
 
         if (health > 0.0f)
         {
@@ -180,7 +179,12 @@ public class Monster : MonoBehaviour {
                         escapeCounter = 0.0f;
                     }
                 }
-            } 
+            }
+
+            if ((Vector3.Distance(transform.position, player.transform.position) < attackRange))
+            {
+                isAttacking = true;
+            }
 
             if (isAttacking)
             {
@@ -251,11 +255,11 @@ public class Monster : MonoBehaviour {
             transform.position += velocityVector;
 
             //Flip depencing on direction
-            if (velocityVector.x < 0.0f)
+            if (velocityVector.x < -0.1f)
             {
                 mySprite.flipX = false;
             }
-            else if (velocityVector.x > 0.0f)
+            else if (velocityVector.x > 0.1f)
             {
                 mySprite.flipX = true;
             }

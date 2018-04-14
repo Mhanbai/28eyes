@@ -14,16 +14,15 @@ public class MonsterGenerator : MonoBehaviour {
 	}
 
 	void Update() {
-		/*time += Time.deltaTime;
+		time += Time.deltaTime;
 		if (time > 20.0f) {
 			CreateMonster ();
 			time = 0.0f;
-		}*/
+		}
 	}
 
 	void CreateMonster() {
 		int selection = Random.Range (0, monsters.Length);
 		GameObject toSpawn = GameObject.Instantiate(monsters[selection], new Vector3(this.transform.position.x, 1.75f, this.transform.position.z), Quaternion.identity);
-		//toSpawn.GetComponent<MonsterClass> ().EstablishBoundaries(topRightBoundary.transform.position, bottomLeftBoundary.transform.position);
 	}
 }

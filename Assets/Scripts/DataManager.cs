@@ -73,8 +73,6 @@ public class DataManager : MonoBehaviour {
 			return portal2Unlocked;
 		case 2:
 			return portal3Unlocked;
-		default:
-			return false;
 		}
 
 		return false;

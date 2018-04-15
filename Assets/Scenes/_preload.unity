@@ -183,7 +183,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 100
-  maxSpeed: 10
+  maxSpeed: 13
   minimumSpeed: 0.1
   attackCount: 0
   reloadTimer: 0

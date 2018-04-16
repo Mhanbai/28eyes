@@ -95,6 +95,18 @@ public class DataManager : MonoBehaviour {
 
 		return false;
 	}
+
+    public void Reset()
+    {
+        Item[] emptyInv = { null, null, null, null, null, null };
+
+        PlayerInfo.Instance.Load(100, emptyInv, null, null, null, null, 0, 0, 0, 0);
+        portal1Unlocked = false;
+        portal2Unlocked = false;
+        portal3Unlocked = false;
+
+        Save();
+    }
 }
 
 [System.Serializable]

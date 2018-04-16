@@ -282,7 +282,8 @@ public class Monster : MonoBehaviour {
             {
                 if (Random.Range(0, 100) < dropChance)
                 {
-                    int itemToDrop = Random.Range(0, ItemList.Instance.LevelItems(lootList).Length);
+                    int drop = Random.Range(0, ItemList.Instance.LevelItems(lootList).Length);
+                    int itemToDrop = drop;
                     GameObject droppedItem = GameObject.Instantiate(ItemList.Instance.pickup, transform.position, Quaternion.identity);
                     droppedItem.GetComponent<Pickup>().AssignItem(ItemList.Instance.LevelItems(lootList)[itemToDrop]); //Change depending on level
                 }

@@ -760,6 +760,72 @@ MonoBehaviour:
     rangeChange: 0
     attackType: 0
     bodyPart: 0
+  - isObjective: 0
+    description: 
+    picRef: 0
+    itemSet: 0
+    healthChange: 0
+    speedChange: 0
+    ammoChange: 0
+    reloadChange: 0
+    rangeChange: 0
+    attackType: 0
+    bodyPart: 0
+  - isObjective: 0
+    description: 
+    picRef: 0
+    itemSet: 0
+    healthChange: 0
+    speedChange: 0
+    ammoChange: 0
+    reloadChange: 0
+    rangeChange: 0
+    attackType: 0
+    bodyPart: 0
+  - isObjective: 0
+    description: 
+    picRef: 0
+    itemSet: 0
+    healthChange: 0
+    speedChange: 0
+    ammoChange: 0
+    reloadChange: 0
+    rangeChange: 0
+    attackType: 0
+    bodyPart: 0
+  - isObjective: 0
+    description: 
+    picRef: 0
+    itemSet: 0
+    healthChange: 0
+    speedChange: 0
+    ammoChange: 0
+    reloadChange: 0
+    rangeChange: 0
+    attackType: 0
+    bodyPart: 0
+  - isObjective: 0
+    description: 
+    picRef: 0
+    itemSet: 0
+    healthChange: 0
+    speedChange: 0
+    ammoChange: 0
+    reloadChange: 0
+    rangeChange: 0
+    attackType: 0
+    bodyPart: 0
+  - isObjective: 0
+    description: 
+    picRef: 0
+    itemSet: 0
+    healthChange: 0
+    speedChange: 0
+    ammoChange: 0
+    reloadChange: 0
+    rangeChange: 0
+    attackType: 0
+    bodyPart: 0
   levelTwoItems:
   - isObjective: 0
     description: 

@@ -77,15 +77,18 @@ LightmapSettings:
     m_PVRDirectSampleCount: 32
     m_PVRSampleCount: 500
     m_PVRBounces: 2
-    m_PVRFiltering: 0
+    m_PVRFilterTypeDirect: 0
+    m_PVRFilterTypeIndirect: 0
+    m_PVRFilterTypeAO: 0
     m_PVRFilteringMode: 1
     m_PVRCulling: 1
     m_PVRFilteringGaussRadiusDirect: 1
     m_PVRFilteringGaussRadiusIndirect: 5
     m_PVRFilteringGaussRadiusAO: 2
-    m_PVRFilteringAtrousColorSigma: 1
-    m_PVRFilteringAtrousNormalSigma: 1
-    m_PVRFilteringAtrousPositionSigma: 1
+    m_PVRFilteringAtrousPositionSigmaDirect: 0.5
+    m_PVRFilteringAtrousPositionSigmaIndirect: 2
+    m_PVRFilteringAtrousPositionSigmaAO: 1
+    m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 0
 --- !u!196 &4
@@ -107,6 +110,8 @@ NavMeshSettings:
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
+    debug:
+      m_Flags: 0
   m_NavMeshData: {fileID: 0}
 --- !u!1 &689738531
 GameObject:
@@ -690,210 +695,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 5f2e60c31d66e8c4e8721764fd250b28, type: 3}
   - {fileID: 21300000, guid: 1789bdede765eed49867f6e294a8c634, type: 3}
   - {fileID: 21300000, guid: eb0b39ac0bbc15847af85468d7675787, type: 3}
-  portalOneItems:
-  - isObjective: 0
-    description: 
-    picRef: 0
-    itemSet: 0
-    healthChange: 0
-    speedChange: 0
-    ammoChange: 0
-    reloadChange: 0
-    rangeChange: 0
-    attackType: 0
-    bodyPart: 0
-  portalTwoItems:
-  - isObjective: 0
-    description: 
-    picRef: 0
-    itemSet: 0
-    healthChange: 0
-    speedChange: 0
-    ammoChange: 0
-    reloadChange: 0
-    rangeChange: 0
-    attackType: 0
-    bodyPart: 0
-  portalThreeItems:
-  - isObjective: 0
-    description: 
-    picRef: 0
-    itemSet: 0
-    healthChange: 0
-    speedChange: 0
-    ammoChange: 0
-    reloadChange: 0
-    rangeChange: 0
-    attackType: 0
-    bodyPart: 0
-  levelOneItems:
-  - isObjective: 0
-    description: 
-    picRef: 0
-    itemSet: 0
-    healthChange: 0
-    speedChange: 0
-    ammoChange: 0
-    reloadChange: 0
-    rangeChange: 0
-    attackType: 0
-    bodyPart: 0
-  - isObjective: 0
-    description: 
-    picRef: 0
-    itemSet: 0
-    healthChange: 0
-    speedChange: 0
-    ammoChange: 0
-    reloadChange: 0
-    rangeChange: 0
-    attackType: 0
-    bodyPart: 0
-  - isObjective: 0
-    description: 
-    picRef: 0
-    itemSet: 0
-    healthChange: 0
-    speedChange: 0
-    ammoChange: 0
-    reloadChange: 0
-    rangeChange: 0
-    attackType: 0
-    bodyPart: 0
-  - isObjective: 0
-    description: 
-    picRef: 0
-    itemSet: 0
-    healthChange: 0
-    speedChange: 0
-    ammoChange: 0
-    reloadChange: 0
-    rangeChange: 0
-    attackType: 0
-    bodyPart: 0
-  - isObjective: 0
-    description: 
-    picRef: 0
-    itemSet: 0
-    healthChange: 0
-    speedChange: 0
-    ammoChange: 0
-    reloadChange: 0
-    rangeChange: 0
-    attackType: 0
-    bodyPart: 0
-  - isObjective: 0
-    description: 
-    picRef: 0
-    itemSet: 0
-    healthChange: 0
-    speedChange: 0
-    ammoChange: 0
-    reloadChange: 0
-    rangeChange: 0
-    attackType: 0
-    bodyPart: 0
-  - isObjective: 0
-    description: 
-    picRef: 0
-    itemSet: 0
-    healthChange: 0
-    speedChange: 0
-    ammoChange: 0
-    reloadChange: 0
-    rangeChange: 0
-    attackType: 0
-    bodyPart: 0
-  - isObjective: 0
-    description: 
-    picRef: 0
-    itemSet: 0
-    healthChange: 0
-    speedChange: 0
-    ammoChange: 0
-    reloadChange: 0
-    rangeChange: 0
-    attackType: 0
-    bodyPart: 0
-  - isObjective: 0
-    description: 
-    picRef: 0
-    itemSet: 0
-    healthChange: 0
-    speedChange: 0
-    ammoChange: 0
-    reloadChange: 0
-    rangeChange: 0
-    attackType: 0
-    bodyPart: 0
-  levelTwoItems:
-  - isObjective: 0
-    description: 
-    picRef: 0
-    itemSet: 0
-    healthChange: 0
-    speedChange: 0
-    ammoChange: 0
-    reloadChange: 0
-    rangeChange: 0
-    attackType: 0
-    bodyPart: 0
-  - isObjective: 0
-    description: 
-    picRef: 0
-    itemSet: 0
-    healthChange: 0
-    speedChange: 0
-    ammoChange: 0
-    reloadChange: 0
-    rangeChange: 0
-    attackType: 0
-    bodyPart: 0
-  - isObjective: 0
-    description: 
-    picRef: 0
-    itemSet: 0
-    healthChange: 0
-    speedChange: 0
-    ammoChange: 0
-    reloadChange: 0
-    rangeChange: 0
-    attackType: 0
-    bodyPart: 0
-  levelThreeItems:
-  - isObjective: 0
-    description: 
-    picRef: 0
-    itemSet: 0
-    healthChange: 0
-    speedChange: 0
-    ammoChange: 0
-    reloadChange: 0
-    rangeChange: 0
-    attackType: 0
-    bodyPart: 0
-  - isObjective: 0
-    description: 
-    picRef: 0
-    itemSet: 0
-    healthChange: 0
-    speedChange: 0
-    ammoChange: 0
-    reloadChange: 0
-    rangeChange: 0
-    attackType: 0
-    bodyPart: 0
-  - isObjective: 0
-    description: 
-    picRef: 0
-    itemSet: 0
-    healthChange: 0
-    speedChange: 0
-    ammoChange: 0
-    reloadChange: 0
-    rangeChange: 0
-    attackType: 0
-    bodyPart: 0
 --- !u!114 &1378583544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -968,6 +769,7 @@ MonoBehaviour:
   bleed: {fileID: 8300000, guid: b406575388a879d44960847a5c965975, type: 3}
   poison: {fileID: 8300000, guid: b9a22d3ca292df549b8e0f3f81cadef0, type: 3}
   playerDie: {fileID: 8300000, guid: 58a0c4e6ae2349b46a246056dfcd6729, type: 3}
+  backgroundMusic: {fileID: 8300000, guid: 007cd8682e86b024f8ff7a2057932037, type: 3}
 --- !u!1 &1435033174
 GameObject:
   m_ObjectHideFlags: 0
@@ -993,7 +795,8 @@ AudioSource:
   m_GameObject: {fileID: 1435033174}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 3a0d7874ab8c163419fb1fe643d2fa94,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1

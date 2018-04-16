@@ -19,15 +19,9 @@ public class ItemList : MonoBehaviour {
 	public Sprite[] itemPictures;
 	public enum Stats {Speed, AttackSpeed, Health};
 
-	//Items required to unlock each portal
-	public Item[] portalOneItems = new Item[1];
-	public Item[] portalTwoItems = new Item[1];
-	public Item[] portalThreeItems = new Item[1];
-
-	//Item lists for each level
-	public Item[] levelOneItems = new Item[9];
-	public Item[] levelTwoItems = new Item[3];
-	public Item[] levelThreeItems = new Item[3];
+    //Item lists for each level
+    [System.NonSerialized] public Item[] levelOneItems = new Item[9];
+    [System.NonSerialized] public Item[] levelTwoItems = new Item[3];
 
 	void Start() {
 		// 	                        Description,                                                                                            Objective?, Picture, Category, Health Change, Speed Change, Ammo, Reload, Range, Attack Type, Body Part Sprite) {
@@ -44,14 +38,6 @@ public class ItemList : MonoBehaviour {
         levelTwoItems[0] = new Item("Raises health by 30 but lowers speed by 10%", false, 1, 0, 30, 0, 0, 0.0f, 0.0f, -1, 0);
 		levelTwoItems[1] = new Item("Increases speed by 20% but lowers ammo by 10%", false, 1, 3, 0, 0, 0, 0, 0.0f, -1, 0);
 		levelTwoItems[2] = new Item("Lowers health by 5 and speed by 5%, equips a slowing web attack", false, 1, 2, -5, 0, 0, 0.0f, 0.0f, 1, 0);
-
-		levelThreeItems[0] = new Item("Raises health by 30 but lowers speed by 10%", false, 1, 0, 30, 0, 0, 0.0f, 0.0f, -1, 0);
-		levelThreeItems[1] = new Item("Increases speed by 20% but lowers ammo by 10%", false, 1, 3, 0, 0, 0, 0, 0.0f, -1, 0);
-		levelThreeItems[2] = new Item("Lowers health by 5 and speed by 5%, equips a slowing web attack", false, 1, 2, -5, 0, 0, 0.0f, 0.0f, 1, 0);
-
-		portalOneItems[0] = new Item ("Red Portal Stone", true, 4);
-		portalTwoItems[0] = new Item ("Blue Portal Stone", true, 5);
-		portalThreeItems[0] = new Item ("Green Portal Stone", true, 6);
 	}
 
 	public Item[] LevelItems(int listNo) {
@@ -60,23 +46,8 @@ public class ItemList : MonoBehaviour {
 			return levelOneItems;
 		case 2:
 			return levelTwoItems;
-		case 3:
-			return levelThreeItems;
 		default:
 			return levelOneItems;
-		}
-	}
-
-	public Item[] AssignPortalItems(int portalNo) {
-		switch (portalNo) {
-		case 0:
-			return portalOneItems;
-		case 1:
-			return portalTwoItems;
-		case 2:
-			return portalThreeItems;
-		default:
-			return portalOneItems;
 		}
 	}
 }

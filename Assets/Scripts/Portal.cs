@@ -10,7 +10,6 @@ public class Portal : MonoBehaviour {
 
 	void Start() {
 		player = GameObject.Find ("Player").GetComponent<CharController> ();
-		requiredToOpen = ItemList.Instance.AssignPortalItems (portalNumber);
 		hubUI.gameObject.SetActive (false);
 	}
 
@@ -22,24 +21,7 @@ public class Portal : MonoBehaviour {
 
 	// Update is called once per frame
 	void OnTriggerEnter () {
-		if (DataManager.Instance.IsPortalUnlocked(portalNumber) == true) {
-			FlipShowItems ();
-			hubUI.GetComponent<hubUI> ().UpdatePortal (requiredToOpen, portalNumber);
-		} else {
-            SoundManager.Instance.SFX.PlayOneShot(SoundManager.Instance.portalUse);
-			UnityEngine.SceneManagement.SceneManager.LoadScene (portalNumber + 3);
-		}
-	}
-
-	public void FlipShowItems() {
-		if (hubUI.gameObject.activeSelf == true) {
-			hubUI.gameObject.SetActive (false);
-		} else {
-			hubUI.gameObject.SetActive (true);
-		}
-	}
-
-	public void Unlock() {
-		DataManager.Instance.SetPortalUnlocked (portalNumber, true);
+        SoundManager.Instance.SFX.PlayOneShot(SoundManager.Instance.portalUse);
+        UnityEngine.SceneManagement.SceneManager.LoadScene (portalNumber + 3);
 	}
 }

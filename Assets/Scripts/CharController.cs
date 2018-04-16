@@ -146,10 +146,13 @@ public class CharController : MonoBehaviour {
 			}
 
 			forwardVector.Normalize ();
-	
-			if ((isRunningX == false) && (isRunningZ == false)) {
-				//Stop animation
-				if (!headAnimator.GetCurrentAnimatorStateInfo (0).IsName ("idle")) {
+
+            if ((isRunningX == false) && (isRunningZ == false)) {
+                //StopSound
+                SoundManager.Instance.Footsteps.Stop();
+
+                //Stop animation
+                if (!headAnimator.GetCurrentAnimatorStateInfo (0).IsName ("idle")) {
 					headAnimator.Play ("idle", 0);
 					bodyAnimator.Play ("idle", 0);
 					rArmAnimator.Play ("idle", 0);
@@ -160,7 +163,12 @@ public class CharController : MonoBehaviour {
 				PlayerInfo.Instance.SetPlayerActive (false);
 			} else {
 				PlayerInfo.Instance.SetPlayerActive (true);
-			}
+                if (!SoundManager.Instance.Footsteps.isPlaying)
+                {
+                    SoundManager.Instance.Footsteps.clip = SoundManager.Instance.playerRun;
+                    SoundManager.Instance.Footsteps.Play();
+                }
+            }
 
 			characterController.Move (new Vector3 (velX, 0.0f, velZ));
 
@@ -183,7 +191,8 @@ public class CharController : MonoBehaviour {
 
 			if (PlayerInfo.Instance.attackCount >= (PlayerInfo.Instance.AttackStyle ().Uses + PlayerInfo.Instance.ammoDiff)) {
 				if (playReload) {
-					rArmAnimator.Play ("reload", 0);
+                    SoundManager.Instance.SFX.PlayOneShot(SoundManager.Instance.playerReload);
+                    rArmAnimator.Play ("reload", 0);
 					lArmAnimator.Play ("reload", 0);
 					playReload = false;
 				}
@@ -208,8 +217,10 @@ public class CharController : MonoBehaviour {
 				lArmAnimator.Play ("death", 0);
 				rLegAnimator.Play ("death", 0);
 				lLegAnimator.Play ("death", 0);
-			}
-			if (deathCounter > 3.0f) {
+                SoundManager.Instance.BGM.Stop();
+                SoundManager.Instance.SFX.PlayOneShot(SoundManager.Instance.playerDie);
+            }
+            if (deathCounter > 3.0f) {
 				deathCounter = 0.0f;
 				isDead = false;
 				PlayerInfo.Instance.Die ();
@@ -240,9 +251,11 @@ public class CharController : MonoBehaviour {
 			projectileBehaviour.trajectoryType = PlayerInfo.Instance.AttackStyle().TrajectoryType;
 
 			if (projectileBehaviour.trajectoryType == 1) {
-				projectileBehaviour.range = Mathf.Clamp (Vector3.Magnitude (clickDistance), 0.0f, (PlayerInfo.Instance.AttackStyle().Range + (PlayerInfo.Instance.AttackStyle().Range * PlayerInfo.Instance.rangeDiff)));
+                SoundManager.Instance.Monsters.PlayOneShot(SoundManager.Instance.playerThrow);
+                projectileBehaviour.range = Mathf.Clamp (Vector3.Magnitude (clickDistance), 0.0f, (PlayerInfo.Instance.AttackStyle().Range + (PlayerInfo.Instance.AttackStyle().Range * PlayerInfo.Instance.rangeDiff)));
 			} else {
-				projectileBehaviour.range = (PlayerInfo.Instance.AttackStyle().Range + (PlayerInfo.Instance.AttackStyle().Range * PlayerInfo.Instance.rangeDiff));
+                SoundManager.Instance.Monsters.PlayOneShot(SoundManager.Instance.playerShoot);
+                projectileBehaviour.range = (PlayerInfo.Instance.AttackStyle().Range + (PlayerInfo.Instance.AttackStyle().Range * PlayerInfo.Instance.rangeDiff));
 			}
 
 			projectileBehaviour.damage = PlayerInfo.Instance.AttackStyle().Damage;

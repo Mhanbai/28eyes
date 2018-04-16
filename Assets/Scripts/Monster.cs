@@ -195,6 +195,9 @@ public class Monster : MonoBehaviour {
                 attackDelayTimer += Time.deltaTime;
                 if (attackDelayTimer > delayBetweenAttacks)
                 {
+                    if (!SoundManager.Instance.Monsters.isPlaying) { 
+                        SoundManager.Instance.Monsters.PlayOneShot(SoundManager.Instance.hunterAttack);
+                    }
                     attackTimer += Time.deltaTime;
                     if (attackTimer > attackLength)
                     {
@@ -270,6 +273,11 @@ public class Monster : MonoBehaviour {
             mySprite.flipY = true;
             deathCounter += Time.deltaTime;
 
+            if (!SoundManager.Instance.Monsters.isPlaying)
+            {
+                SoundManager.Instance.Monsters.PlayOneShot(SoundManager.Instance.hunterDie);
+            }
+
             if (deathCounter > deathTimer)
             {
                 if (Random.Range(0, 100) < dropChance)
@@ -294,24 +302,29 @@ public class Monster : MonoBehaviour {
 
         if ((explosion.causesPosion == true) && (poisoned == false))
         {
+            SoundManager.Instance.SFX.PlayOneShot(SoundManager.Instance.poison);
             poisoned = true;
         }
         else if ((explosion.causesPosion == true) && (poisoned == true))
         {
+            SoundManager.Instance.SFX.PlayOneShot(SoundManager.Instance.poison);
             poisonCounter = 0.0f;
         }
 
         if ((explosion.causesBleed == true) && (bleeding == false))
         {
+            SoundManager.Instance.SFX.PlayOneShot(SoundManager.Instance.bleed);
             bleeding = true;
         }
         else if ((explosion.causesBleed == true) && (bleeding == true))
         {
+            SoundManager.Instance.SFX.PlayOneShot(SoundManager.Instance.bleed);
             bleedCounter = 0.0f;
         }
 
         if (explosion.causesSlow == true)
         {
+            SoundManager.Instance.SFX.PlayOneShot(SoundManager.Instance.slow);
             Slow();
         }
     }
@@ -323,34 +336,41 @@ public class Monster : MonoBehaviour {
 
     public void TakeHit(ProjectileBehaviour hit)
     {
+        SoundManager.Instance.Monsters.PlayOneShot(SoundManager.Instance.hunterTakeHit);
         health = health - hit.damage;
 
         if ((hit.causesPosion == true) && (poisoned == false))
         {
+            SoundManager.Instance.SFX.PlayOneShot(SoundManager.Instance.poison);
             poisoned = true;
         }
         else if ((hit.causesPosion == true) && (poisoned == true))
         {
+            SoundManager.Instance.SFX.PlayOneShot(SoundManager.Instance.poison);
             poisonCounter = 0.0f;
         }
 
         if ((hit.causesBleed == true) && (bleeding == false))
         {
+            SoundManager.Instance.SFX.PlayOneShot(SoundManager.Instance.bleed);
             bleeding = true;
         }
         else if ((hit.causesBleed == true) && (bleeding == true))
         {
+            SoundManager.Instance.SFX.PlayOneShot(SoundManager.Instance.bleed);
             bleedCounter = 0.0f;
         }
 
         if (hit.causesSlow == true)
         {
+            SoundManager.Instance.SFX.PlayOneShot(SoundManager.Instance.slow);
             Slow();
         }
     }
 
     public void TakeHit(EnemyProjectile hit)
     {
+        SoundManager.Instance.Monsters.PlayOneShot(SoundManager.Instance.hunterTakeHit);
         health = health - hit.damage;
     }
 
@@ -364,19 +384,6 @@ public class Monster : MonoBehaviour {
         else
         {
             slowCounter = 0.0f;
-        }
-    }
-
-    void Attack()
-    {
-        attackTimer += Time.deltaTime;
-        if (attackTimer > attackLength)
-        {
-            if (Vector3.Distance(transform.position, player.transform.position) < attackRange)
-            {
-                PlayerInfo.Instance.Hit(attackStrength);
-            }
-            attackTimer = 0.0f;
         }
     }
 

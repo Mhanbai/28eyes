@@ -34,7 +34,12 @@ public class SceneManager : MonoBehaviour {
 			GameObject avatar = GameObject.Instantiate (Player, spawnPoint.transform.position, Quaternion.identity);
 			avatar.name = "Player";
 			spawnPoint.SetActive (false);
-		}
+            if (scene.name != "_hubWorld")
+            {
+                SoundManager.Instance.BGM.clip = SoundManager.Instance.backgroundMusic;
+                SoundManager.Instance.BGM.Play();
+            }
+        }
 
 		if (scene.name == "_hubWorld") {
 			uiRef.SetActive (false);

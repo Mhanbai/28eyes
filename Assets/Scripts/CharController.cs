@@ -216,9 +216,9 @@ public class CharController : MonoBehaviour {
 			}
 		} else if (PlayerInfo.Instance.CurrentHealth () < PlayerInfo.Instance.MaxHealth ()) {
 			regenTimer += Time.deltaTime;
-			if (regenTimer > 3.0f) {
+			if (regenTimer > 10.0f) {
 				regenTimer = 0.0f;
-				PlayerInfo.Instance.Heal (5);
+				PlayerInfo.Instance.Heal (1);
 			}
 		}
 	}

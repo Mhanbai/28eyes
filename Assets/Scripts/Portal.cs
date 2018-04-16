@@ -26,6 +26,7 @@ public class Portal : MonoBehaviour {
 			FlipShowItems ();
 			hubUI.GetComponent<hubUI> ().UpdatePortal (requiredToOpen, portalNumber);
 		} else {
+            SoundManager.Instance.SFX.PlayOneShot(SoundManager.Instance.portalUse);
 			UnityEngine.SceneManagement.SceneManager.LoadScene (portalNumber + 3);
 		}
 	}

@@ -12,7 +12,7 @@ public class DataManager : MonoBehaviour {
 		if (Instance == null) {
 			Instance = this;
 		} else {
-			Debug.Log ("Warning, there is more than one PlayerInfo class in the scene!");
+			Debug.Log ("Warning, there is more than one DataManager class in the scene!");
 		}
 	}
 		

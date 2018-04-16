@@ -10,8 +10,13 @@ public class Explosion : MonoBehaviour {
 	public bool causesBleed;
 	public bool causesPosion;
 
-	// Update is called once per frame
-	void Update () {
+    private void Start()
+    {
+        SoundManager.Instance.SFX.PlayOneShot(SoundManager.Instance.explosion);
+    }
+
+    // Update is called once per frame
+    void Update () {
 		if (collider.transform.localScale.x < maxSize) {
 			collider.transform.localScale += new Vector3 (0.1f, 0.1f, 0.1f);
 		} else {

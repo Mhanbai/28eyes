@@ -2,38 +2,50 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class SceneSelection : MonoBehaviour {
-	string[] scenes;
-	public GameObject button;
-	public GameObject panel;
-	public GameObject buttonPos;
-	public Canvas canvas;
+    public GameObject head1;
+    public GameObject head2;
 
-	void Awake () {
-		int sceneCount = UnityEngine.SceneManagement.SceneManager.sceneCountInBuildSettings;
-		scenes = new string[sceneCount];
+    private void Start()
+    {
+        head1.SetActive(false);
+        head2.SetActive(false);
+    }
 
-		for (int i = 0; i < sceneCount; i++) {
-			scenes [i] = System.IO.Path.GetFileNameWithoutExtension (SceneUtility.GetScenePathByBuildIndex (i));
-		}
-	}
+    private void Update()
+    {
+        if (PlayerInfo.Instance.headPart == 0)
+        {
+            head1.SetActive(true);
+            head2.SetActive(false);
+        }
+        if (PlayerInfo.Instance.headPart == 1)
+        {
+            head1.SetActive(false);
+            head2.SetActive(true);
+        }
+    }
 
-	void Start() {
-		int i = 0;
-		foreach (string scene in scenes) {
-			GameObject sceneButton = Instantiate (button, panel.transform);
-			sceneButton.GetComponentInChildren<Text> ().text = scene;
-			sceneButton.GetComponent<menuButton> ().sceneToOpen = i;
-			sceneButton.GetComponent<Button>().onClick.AddListener(() => OnButtonPress(sceneButton.GetComponent<menuButton> ().sceneToOpen));
-			sceneButton.transform.position = new Vector3 (buttonPos.transform.position.x, buttonPos.transform.position.y - (i * 75.0f), buttonPos.transform.position.z);
+    public void StartGame()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(2);
+    }
 
-			i++;
-		}
-	}
+    public void ChangeHead() {
+        if (PlayerInfo.Instance.headPart == 1)
+        {
+            PlayerInfo.Instance.headPart = 0;
+        }
+        else
+        {
+            PlayerInfo.Instance.headPart = 1;
+        }
+    }
 
-	void OnButtonPress(int sceneToLoad) {
-		UnityEngine.SceneManagement.SceneManager.LoadScene (sceneToLoad);
-	}
+    public void Reset()
+    {
+        DataManager.Instance.Reset();
+    }
 }
+

@@ -55,7 +55,7 @@ public class PlayerInfo : MonoBehaviour {
 	}
 
 	void Start() {
-		//DataManager.Instance.Load ();
+		DataManager.Instance.Load ();
 		for (int i = 0; i < 6; i++) {
 			inventory [i] = null;
 		}
@@ -253,10 +253,22 @@ public class PlayerInfo : MonoBehaviour {
 	}
 
 	public void Load(int health_in, Item[] inventory_in, Item headPart_in, Item bodyPart_in, Item armPart_in, Item legPart_in, int headSprite_in, int bodySprite_in, int armSprite_in, int legSprite_in) {
-		UseItem (headPart_in);
-		UseItem (bodyPart_in);
-		UseItem (armPart_in);
-		UseItem (legPart_in);
+        if (headPart_in != null)
+        {
+            UseItem(headPart_in);
+        }
+        if (bodyPart_in != null)
+        {
+            UseItem(bodyPart_in);
+        }
+        if (armPart_in != null)
+        {
+            UseItem(armPart_in);
+        }
+        if (legPart_in != null)
+        {
+            UseItem(legPart_in);
+        }
 		headPart = headSprite_in;
 		bodyPart = bodySprite_in;
 		armPart = armSprite_in;

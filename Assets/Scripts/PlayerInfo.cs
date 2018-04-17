@@ -55,10 +55,7 @@ public class PlayerInfo : MonoBehaviour {
 	}
 
 	void Start() {
-		DataManager.Instance.Load ();
-		for (int i = 0; i < 6; i++) {
-			inventory [i] = null;
-		}
+		//DataManager.Instance.Load ();
 	}
 
 	//Functions for combat
@@ -252,7 +249,7 @@ public class PlayerInfo : MonoBehaviour {
 		}
 	}
 
-	public void Load(int health_in, Item[] inventory_in, Item headPart_in, Item bodyPart_in, Item armPart_in, Item legPart_in, int headSprite_in, int bodySprite_in, int armSprite_in, int legSprite_in) {
+	public void Load(int health_in, Item headPart_in, Item bodyPart_in, Item armPart_in, Item legPart_in, int headSprite_in, int bodySprite_in, int armSprite_in, int legSprite_in) {
         if (headPart_in != null)
         {
             UseItem(headPart_in);
@@ -274,9 +271,6 @@ public class PlayerInfo : MonoBehaviour {
 		armPart = armSprite_in;
 		legPart = legSprite_in;
 		currentHealth = health_in;
-		for (int i = 0; i < 6; i++) {
-			inventory[i] = inventory_in[i];
-		}
 	}
 
 	public void Die() {

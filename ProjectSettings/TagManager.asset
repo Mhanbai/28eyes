@@ -9,6 +9,7 @@ TagManager:
   - explosion
   - ground
   - guardian
+  - pickup
   layers:
   - Default
   - TransparentFX

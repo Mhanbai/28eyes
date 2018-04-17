@@ -139,7 +139,7 @@ MonoBehaviour:
   attackLength: 0.9
   delayBetweenAttacks: 1
   avoidDistance: 0
-  health: 250
+  health: 100
   bleedDamage: 0.5
   bleedTime: 5
   poisonDamage: 10

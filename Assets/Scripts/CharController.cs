@@ -251,10 +251,10 @@ public class CharController : MonoBehaviour {
 			projectileBehaviour.trajectoryType = PlayerInfo.Instance.AttackStyle().TrajectoryType;
 
 			if (projectileBehaviour.trajectoryType == 1) {
-				SoundManager.Instance.Monsters.PlayOneShot(SoundManager.Instance.playerThrow, 0.5f);
+				SoundManager.Instance.Monsters.PlayOneShot(SoundManager.Instance.playerThrow, 0.3f);
                 projectileBehaviour.range = Mathf.Clamp (Vector3.Magnitude (clickDistance), 0.0f, (PlayerInfo.Instance.AttackStyle().Range + (PlayerInfo.Instance.AttackStyle().Range * PlayerInfo.Instance.rangeDiff)));
 			} else {
-                SoundManager.Instance.Monsters.PlayOneShot(SoundManager.Instance.playerShoot, 0.5f);
+                SoundManager.Instance.Monsters.PlayOneShot(SoundManager.Instance.playerShoot, 0.3f);
                 projectileBehaviour.range = (PlayerInfo.Instance.AttackStyle().Range + (PlayerInfo.Instance.AttackStyle().Range * PlayerInfo.Instance.rangeDiff));
 			}
 

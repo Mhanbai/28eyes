@@ -114,7 +114,7 @@ public class Monster : MonoBehaviour {
                         Vector3.Normalize(avoidanceForce);
                         wanderTimer = wanderVariance;
                         velocityVector = new Vector3(0.0f, 0.0f, 0.0f);
-                        velocityVector += avoidanceForce * Time.deltaTime;
+                        velocityVector += avoidanceForce * 3.0f * Time.deltaTime;
                     }
                     else if (obstacleList.Count == 1)
                     {
@@ -133,7 +133,7 @@ public class Monster : MonoBehaviour {
 
                         wanderTimer = wanderVariance;
 
-                        velocityVector += avoidanceForce * Time.deltaTime;
+                        velocityVector += avoidanceForce * 3.0f * Time.deltaTime;
                     }
                     else
                     {
@@ -201,7 +201,7 @@ public class Monster : MonoBehaviour {
                 {
 					anim.Play ("hunterAttack", 0);
                     if (!SoundManager.Instance.Monsters.isPlaying) { 
-						SoundManager.Instance.Monsters.PlayOneShot(SoundManager.Instance.hunterAttack, 0.5f);
+						SoundManager.Instance.Monsters.PlayOneShot(SoundManager.Instance.hunterAttack, 0.3f);
                     }
                     attackTimer += Time.deltaTime;
                     if (attackTimer > attackLength)
@@ -263,7 +263,7 @@ public class Monster : MonoBehaviour {
             transform.position += velocityVector;
 
             //Flip depencing on direction
-            if (velocityVector.x < -0.1f)
+            if (velocityVector.x < -0.2f)
             {
                 mySprite.flipX = false;
             }
@@ -276,17 +276,18 @@ public class Monster : MonoBehaviour {
         {
 			isDead = true;
 
-            velocityVector -= (velocityVector * 0.1f);
+            velocityVector -= (velocityVector * 0.2f);
             mySprite.flipY = true;
             deathCounter += Time.deltaTime;
 
             if (!SoundManager.Instance.Monsters.isPlaying)
             {
-				SoundManager.Instance.Monsters.PlayOneShot(SoundManager.Instance.hunterDie, 0.5f);
+				SoundManager.Instance.Monsters.PlayOneShot(SoundManager.Instance.hunterDie, 0.3f);
             }
 
             if (deathCounter > deathTimer)
             {
+				Random.seed = System.DateTime.Now.Millisecond;
                 if (Random.Range(0, 100) < dropChance)
                 {
                     int drop = Random.Range(0, ItemList.Instance.LevelItems(lootList).Length);
@@ -352,7 +353,7 @@ public class Monster : MonoBehaviour {
 
     public void TakeHit(ProjectileBehaviour hit)
     {
-		SoundManager.Instance.Monsters.PlayOneShot(SoundManager.Instance.hunterTakeHit, 0.5f);
+		SoundManager.Instance.Monsters.PlayOneShot(SoundManager.Instance.hunterTakeHit, 0.3f);
         health = health - hit.damage;
 
         if ((hit.causesPosion == true) && (poisoned == false))
@@ -449,6 +450,7 @@ public class Monster : MonoBehaviour {
             && (!obstacle.CompareTag("explosion")) 
             && (!obstacle.CompareTag("projectile")) 
             && (!obstacle.CompareTag("ground"))
+			&& (!obstacle.CompareTag("pickup"))
             )
         {
             obstacleList.Add (obstacle);

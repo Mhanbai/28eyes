@@ -26,7 +26,7 @@ public class EnemyProjectile : MonoBehaviour {
 
     void Explode(float xPos, float zPos)
     {
-        SoundManager.Instance.SFX.PlayOneShot(SoundManager.Instance.explosion, 0.1f);
+        SoundManager.Instance.SFX.PlayOneShot(SoundManager.Instance.explosion, 0.5f);
         GameObject exp = GameObject.Instantiate(explosive);
         exp.transform.position = new Vector3(xPos, exp.GetComponent<Collider>().bounds.size.y / 2, zPos);
         exp.GetComponent<monsterExplosion>().damage = damage;

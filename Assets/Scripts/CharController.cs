@@ -191,7 +191,7 @@ public class CharController : MonoBehaviour {
 
 			if (PlayerInfo.Instance.attackCount >= (PlayerInfo.Instance.AttackStyle ().Uses + PlayerInfo.Instance.ammoDiff)) {
 				if (playReload) {
-                    SoundManager.Instance.SFX.PlayOneShot(SoundManager.Instance.playerReload);
+                    SoundManager.Instance.SFX.PlayOneShot(SoundManager.Instance.playerReload, 0.5f);
                     rArmAnimator.Play ("reload", 0);
 					lArmAnimator.Play ("reload", 0);
 					playReload = false;
@@ -218,7 +218,7 @@ public class CharController : MonoBehaviour {
 				rLegAnimator.Play ("death", 0);
 				lLegAnimator.Play ("death", 0);
                 SoundManager.Instance.BGM.Stop();
-                SoundManager.Instance.SFX.PlayOneShot(SoundManager.Instance.playerDie);
+				SoundManager.Instance.SFX.PlayOneShot(SoundManager.Instance.playerDie, 0.5f);
             }
             if (deathCounter > 3.0f) {
 				deathCounter = 0.0f;
@@ -251,10 +251,10 @@ public class CharController : MonoBehaviour {
 			projectileBehaviour.trajectoryType = PlayerInfo.Instance.AttackStyle().TrajectoryType;
 
 			if (projectileBehaviour.trajectoryType == 1) {
-                SoundManager.Instance.Monsters.PlayOneShot(SoundManager.Instance.playerThrow);
+				SoundManager.Instance.Monsters.PlayOneShot(SoundManager.Instance.playerThrow, 0.5f);
                 projectileBehaviour.range = Mathf.Clamp (Vector3.Magnitude (clickDistance), 0.0f, (PlayerInfo.Instance.AttackStyle().Range + (PlayerInfo.Instance.AttackStyle().Range * PlayerInfo.Instance.rangeDiff)));
 			} else {
-                SoundManager.Instance.Monsters.PlayOneShot(SoundManager.Instance.playerShoot);
+                SoundManager.Instance.Monsters.PlayOneShot(SoundManager.Instance.playerShoot, 0.5f);
                 projectileBehaviour.range = (PlayerInfo.Instance.AttackStyle().Range + (PlayerInfo.Instance.AttackStyle().Range * PlayerInfo.Instance.rangeDiff));
 			}
 

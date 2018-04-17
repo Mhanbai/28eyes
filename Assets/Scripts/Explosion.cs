@@ -12,7 +12,7 @@ public class Explosion : MonoBehaviour {
 
     private void Start()
     {
-        SoundManager.Instance.SFX.PlayOneShot(SoundManager.Instance.explosion);
+        SoundManager.Instance.SFX.PlayOneShot(SoundManager.Instance.explosion, 0.1f);
     }
 
     // Update is called once per frame

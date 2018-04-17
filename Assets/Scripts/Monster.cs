@@ -196,7 +196,7 @@ public class Monster : MonoBehaviour {
                 if (attackDelayTimer > delayBetweenAttacks)
                 {
                     if (!SoundManager.Instance.Monsters.isPlaying) { 
-                        SoundManager.Instance.Monsters.PlayOneShot(SoundManager.Instance.hunterAttack);
+						SoundManager.Instance.Monsters.PlayOneShot(SoundManager.Instance.hunterAttack, 0.5f);
                     }
                     attackTimer += Time.deltaTime;
                     if (attackTimer > attackLength)
@@ -275,7 +275,7 @@ public class Monster : MonoBehaviour {
 
             if (!SoundManager.Instance.Monsters.isPlaying)
             {
-                SoundManager.Instance.Monsters.PlayOneShot(SoundManager.Instance.hunterDie);
+				SoundManager.Instance.Monsters.PlayOneShot(SoundManager.Instance.hunterDie, 0.5f);
             }
 
             if (deathCounter > deathTimer)
@@ -302,29 +302,29 @@ public class Monster : MonoBehaviour {
 
         if ((explosion.causesPosion == true) && (poisoned == false))
         {
-            SoundManager.Instance.SFX.PlayOneShot(SoundManager.Instance.poison);
+			SoundManager.Instance.SFX.PlayOneShot(SoundManager.Instance.poison, 0.5f);
             poisoned = true;
         }
         else if ((explosion.causesPosion == true) && (poisoned == true))
         {
-            SoundManager.Instance.SFX.PlayOneShot(SoundManager.Instance.poison);
+			SoundManager.Instance.SFX.PlayOneShot(SoundManager.Instance.poison, 0.5f);
             poisonCounter = 0.0f;
         }
 
         if ((explosion.causesBleed == true) && (bleeding == false))
         {
-            SoundManager.Instance.SFX.PlayOneShot(SoundManager.Instance.bleed);
+			SoundManager.Instance.SFX.PlayOneShot(SoundManager.Instance.bleed, 0.5f);
             bleeding = true;
         }
         else if ((explosion.causesBleed == true) && (bleeding == true))
         {
-            SoundManager.Instance.SFX.PlayOneShot(SoundManager.Instance.bleed);
+			SoundManager.Instance.SFX.PlayOneShot(SoundManager.Instance.bleed, 0.5f);
             bleedCounter = 0.0f;
         }
 
         if (explosion.causesSlow == true)
         {
-            SoundManager.Instance.SFX.PlayOneShot(SoundManager.Instance.slow);
+			SoundManager.Instance.SFX.PlayOneShot(SoundManager.Instance.slow, 0.5f);
             Slow();
         }
     }
@@ -336,41 +336,41 @@ public class Monster : MonoBehaviour {
 
     public void TakeHit(ProjectileBehaviour hit)
     {
-        SoundManager.Instance.Monsters.PlayOneShot(SoundManager.Instance.hunterTakeHit);
+		SoundManager.Instance.Monsters.PlayOneShot(SoundManager.Instance.hunterTakeHit, 0.5f);
         health = health - hit.damage;
 
         if ((hit.causesPosion == true) && (poisoned == false))
         {
-            SoundManager.Instance.SFX.PlayOneShot(SoundManager.Instance.poison);
+			SoundManager.Instance.SFX.PlayOneShot(SoundManager.Instance.poison, 0.5f);
             poisoned = true;
         }
         else if ((hit.causesPosion == true) && (poisoned == true))
         {
-            SoundManager.Instance.SFX.PlayOneShot(SoundManager.Instance.poison);
+			SoundManager.Instance.SFX.PlayOneShot(SoundManager.Instance.poison, 0.5f);
             poisonCounter = 0.0f;
         }
 
         if ((hit.causesBleed == true) && (bleeding == false))
         {
-            SoundManager.Instance.SFX.PlayOneShot(SoundManager.Instance.bleed);
+			SoundManager.Instance.SFX.PlayOneShot(SoundManager.Instance.bleed, 0.5f);
             bleeding = true;
         }
         else if ((hit.causesBleed == true) && (bleeding == true))
         {
-            SoundManager.Instance.SFX.PlayOneShot(SoundManager.Instance.bleed);
+			SoundManager.Instance.SFX.PlayOneShot(SoundManager.Instance.bleed, 0.5f);
             bleedCounter = 0.0f;
         }
 
         if (hit.causesSlow == true)
         {
-            SoundManager.Instance.SFX.PlayOneShot(SoundManager.Instance.slow);
+			SoundManager.Instance.SFX.PlayOneShot(SoundManager.Instance.slow, 0.5f);
             Slow();
         }
     }
 
     public void TakeHit(EnemyProjectile hit)
     {
-        SoundManager.Instance.Monsters.PlayOneShot(SoundManager.Instance.hunterTakeHit);
+		SoundManager.Instance.Monsters.PlayOneShot(SoundManager.Instance.hunterTakeHit, 0.5f);
         health = health - hit.damage;
     }
 

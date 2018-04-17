@@ -6,7 +6,10 @@ public class Obstacle : MonoBehaviour {
     void OnTriggerEnter(Collider obstacle)
     {
 		if (obstacle.CompareTag("projectile")) {
+			try {
             obstacle.GetComponent<ProjectileBehaviour>().Die();
-        }
+			} catch {
+			}
+			}
     }
 }

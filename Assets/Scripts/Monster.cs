@@ -44,7 +44,7 @@ public class Monster : MonoBehaviour {
     [SerializeField] protected int poisonHits = 5;
     [SerializeField] protected float slowTime = 5.0f;
     [SerializeField] protected float slowSeverity = 2.0f;
-    [SerializeField] protected float deathTimer = 2.0f;
+    [SerializeField] protected float deathTimer = 0.5f;
     [SerializeField] protected int dropChance = 99;
     [SerializeField] protected int lootList = 1;
 
@@ -61,6 +61,9 @@ public class Monster : MonoBehaviour {
     protected bool slowed = false;
     protected bool trapped = false;
 
+	protected bool isDead = false;
+	protected Animator anim;
+
     float yPos;
     SpriteRenderer mySprite;
 
@@ -72,6 +75,7 @@ public class Monster : MonoBehaviour {
         attackDelayTimer = delayBetweenAttacks;
 		wanderTimer = wanderVariance;
         mySprite = GetComponentInChildren<SpriteRenderer>();
+		anim = GetComponentInChildren<Animator> ();
     }
 
     // Update is called once per frame
@@ -195,6 +199,7 @@ public class Monster : MonoBehaviour {
                 attackDelayTimer += Time.deltaTime;
                 if (attackDelayTimer > delayBetweenAttacks)
                 {
+					anim.Play ("hunterAttack", 0);
                     if (!SoundManager.Instance.Monsters.isPlaying) { 
 						SoundManager.Instance.Monsters.PlayOneShot(SoundManager.Instance.hunterAttack, 0.5f);
                     }
@@ -269,6 +274,8 @@ public class Monster : MonoBehaviour {
         }
         else
         {
+			isDead = true;
+
             velocityVector -= (velocityVector * 0.1f);
             mySprite.flipY = true;
             deathCounter += Time.deltaTime;
@@ -291,6 +298,15 @@ public class Monster : MonoBehaviour {
                 GameObject.Destroy(gameObject);
             }
         }
+
+		if (isDead == true) {
+			anim.Play ("hunterDeath", 0);
+		} else if (isAttacking == true) {
+		} else if ((Mathf.Abs (velocityVector.x) > 0) || (Mathf.Abs (velocityVector.z) > 0)) {
+			anim.Play ("hunterWalk", 0);
+		} else {
+			anim.Play ("hunterIdle", 0);
+		}
 
         //Ensure monster is always touching the ground
         transform.position = new Vector3(transform.position.x, yPos, transform.position.z);

@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class homePortal : MonoBehaviour {
 	void OnTriggerStay () {
-		if (Input.GetKeyDown (KeyCode.E)) {
-			UnityEngine.SceneManagement.SceneManager.LoadScene (2);
-		}
+		UnityEngine.SceneManagement.SceneManager.LoadScene (2);
 	}
 }

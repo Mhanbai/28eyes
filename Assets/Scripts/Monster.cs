@@ -114,7 +114,7 @@ public class Monster : MonoBehaviour {
                         Vector3.Normalize(avoidanceForce);
                         wanderTimer = wanderVariance;
                         velocityVector = new Vector3(0.0f, 0.0f, 0.0f);
-                        velocityVector += avoidanceForce * Time.deltaTime;
+                        velocityVector += avoidanceForce * 3.0f * Time.deltaTime;
                     }
                     else if (obstacleList.Count == 1)
                     {
@@ -133,7 +133,7 @@ public class Monster : MonoBehaviour {
 
                         wanderTimer = wanderVariance;
 
-                        velocityVector += avoidanceForce * Time.deltaTime;
+                        velocityVector += avoidanceForce * 3.0f * Time.deltaTime;
                     }
                     else
                     {
@@ -263,7 +263,7 @@ public class Monster : MonoBehaviour {
             transform.position += velocityVector;
 
             //Flip depencing on direction
-            if (velocityVector.x < -0.1f)
+            if (velocityVector.x < -0.2f)
             {
                 mySprite.flipX = false;
             }
@@ -276,7 +276,7 @@ public class Monster : MonoBehaviour {
         {
 			isDead = true;
 
-            velocityVector -= (velocityVector * 0.1f);
+            velocityVector -= (velocityVector * 0.2f);
             mySprite.flipY = true;
             deathCounter += Time.deltaTime;
 
@@ -449,6 +449,7 @@ public class Monster : MonoBehaviour {
             && (!obstacle.CompareTag("explosion")) 
             && (!obstacle.CompareTag("projectile")) 
             && (!obstacle.CompareTag("ground"))
+			&& (!obstacle.CompareTag("pickup"))
             )
         {
             obstacleList.Add (obstacle);

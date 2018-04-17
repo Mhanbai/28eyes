@@ -65,37 +65,6 @@ public class DataManager : MonoBehaviour {
 		file.Close ();
 	}
 
-	public bool IsPortalUnlocked(int portalNo) {
-		switch (portalNo) {
-		case 0:
-			return portal1Unlocked;
-		case 1:
-			return portal2Unlocked;
-		case 2:
-			return portal3Unlocked;
-		}
-
-		return false;
-	}
-
-	public bool SetPortalUnlocked(int portalNo, bool state) {
-		switch (portalNo) {
-		case 0:
-			portal1Unlocked = state;
-			break;
-		case 1:
-			portal2Unlocked = state;
-			break;
-		case 2:
-			portal3Unlocked = state;
-			break;
-		default:
-			return false;
-		}
-
-		return false;
-	}
-
     public void Reset()
     {
         Item[] emptyInv = { null, null, null, null, null, null };

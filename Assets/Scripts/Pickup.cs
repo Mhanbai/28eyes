@@ -27,7 +27,7 @@ public class Pickup : MonoBehaviour {
 
 	void OnTriggerStay() {
 		if (PlayerInfo.Instance.AddToInventory (myItem) == true) {
-			SoundManager.Instance.SFX.PlayOneShot(SoundManager.Instance.pickUp, 0.5f);
+			SoundManager.Instance.SFX.PlayOneShot(SoundManager.Instance.pickUp, 1.0f);
 			GameObject.Destroy (gameObject);
 		}
 	}

@@ -18,7 +18,7 @@ public class StaticMonster : MonoBehaviour {
     [SerializeField] protected float poisonDamage = 10.0f;
     [SerializeField] protected float poisonFrequency = 5.0f;
     [SerializeField] protected int poisonHits = 5;
-    [SerializeField] protected float deathTimer = 2.0f;
+    [SerializeField] protected float deathTimer = 0.4f;
     [SerializeField] protected int dropChance = 99;
     [SerializeField] protected int lootList = 1;
 
@@ -33,8 +33,11 @@ public class StaticMonster : MonoBehaviour {
     protected bool flipped = false;
     protected Vector3 bounds;
 
+	Animator anim;
+
     // Use this for initialization
     void Start () {
+		anim = GetComponentInChildren<Animator> ();
         bounds = gameObject.GetComponent<Collider>().bounds.size;
         player = GameObject.Find("Player").GetComponent<CharController>();
         transform.position = new Vector3(transform.position.x, 10.2f, transform.position.z);
@@ -59,6 +62,7 @@ public class StaticMonster : MonoBehaviour {
             {
                 if (fireTimer >= fireFrequency)
                 {
+					anim.Play ("guardianAttack", 0);
                     fireTimer = 0.0f;
                     Fire();
                 }
@@ -98,6 +102,7 @@ public class StaticMonster : MonoBehaviour {
             }
         } else
         {
+			anim.Play ("guardianDeath", 0);
             if (!SoundManager.Instance.Monsters.isPlaying)
             {
 				SoundManager.Instance.SFX.PlayOneShot(SoundManager.Instance.guardianDie, 0.5f);

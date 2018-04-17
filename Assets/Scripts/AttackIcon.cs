@@ -11,10 +11,8 @@ public class AttackIcon : MonoBehaviour {
 	void Update () {
 		if (PlayerInfo.Instance.IsAttackReady () == true) {
 			text.text = (PlayerInfo.Instance.AttackStyle ().Uses - PlayerInfo.Instance.attackCount).ToString();
-			text.color = Color.red;
 		} else {
 			text.text = (PlayerInfo.Instance.AttackStyle().ReloadTime - PlayerInfo.Instance.reloadTimer).ToString();
-			text.color = Color.white;
 		}
 	}
 }

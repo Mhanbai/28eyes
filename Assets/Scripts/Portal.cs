@@ -22,6 +22,6 @@ public class Portal : MonoBehaviour {
 	// Update is called once per frame
 	void OnTriggerEnter () {
 		SoundManager.Instance.SFX.PlayOneShot(SoundManager.Instance.portalUse, 0.5f);
-        UnityEngine.SceneManagement.SceneManager.LoadScene (portalNumber + 3);
+        UnityEngine.SceneManagement.SceneManager.LoadScene (4);
 	}
 }

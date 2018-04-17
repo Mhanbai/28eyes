@@ -21,8 +21,8 @@ GameObject:
   - component: {fileID: 4360348542208292}
   - component: {fileID: 212772550621944228}
   - component: {fileID: 95074877190577034}
-  - component: {fileID: 135394538982715982}
   - component: {fileID: 114238825200197518}
+  - component: {fileID: 135660635348257950}
   m_Layer: 0
   m_Name: monsterExplosion 1
   m_TagString: explosion
@@ -72,7 +72,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
---- !u!135 &135394538982715982
+--- !u!135 &135660635348257950
 SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -82,7 +82,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.3
+  m_Radius: 0.32
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!212 &212772550621944228
 SpriteRenderer:

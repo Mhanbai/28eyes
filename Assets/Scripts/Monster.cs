@@ -44,7 +44,7 @@ public class Monster : MonoBehaviour {
     [SerializeField] protected int poisonHits = 5;
     [SerializeField] protected float slowTime = 5.0f;
     [SerializeField] protected float slowSeverity = 2.0f;
-    [SerializeField] protected float deathTimer = 2.0f;
+    [SerializeField] protected float deathTimer = 0.5f;
     [SerializeField] protected int dropChance = 99;
     [SerializeField] protected int lootList = 1;
 
@@ -61,6 +61,9 @@ public class Monster : MonoBehaviour {
     protected bool slowed = false;
     protected bool trapped = false;
 
+	protected bool isDead = false;
+	protected Animator anim;
+
     float yPos;
     SpriteRenderer mySprite;
 
@@ -72,6 +75,7 @@ public class Monster : MonoBehaviour {
         attackDelayTimer = delayBetweenAttacks;
 		wanderTimer = wanderVariance;
         mySprite = GetComponentInChildren<SpriteRenderer>();
+		anim = GetComponentInChildren<Animator> ();
     }
 
     // Update is called once per frame
@@ -195,8 +199,9 @@ public class Monster : MonoBehaviour {
                 attackDelayTimer += Time.deltaTime;
                 if (attackDelayTimer > delayBetweenAttacks)
                 {
+					anim.Play ("hunterAttack", 0);
                     if (!SoundManager.Instance.Monsters.isPlaying) { 
-                        SoundManager.Instance.Monsters.PlayOneShot(SoundManager.Instance.hunterAttack);
+						SoundManager.Instance.Monsters.PlayOneShot(SoundManager.Instance.hunterAttack, 0.5f);
                     }
                     attackTimer += Time.deltaTime;
                     if (attackTimer > attackLength)
@@ -269,13 +274,15 @@ public class Monster : MonoBehaviour {
         }
         else
         {
+			isDead = true;
+
             velocityVector -= (velocityVector * 0.1f);
             mySprite.flipY = true;
             deathCounter += Time.deltaTime;
 
             if (!SoundManager.Instance.Monsters.isPlaying)
             {
-                SoundManager.Instance.Monsters.PlayOneShot(SoundManager.Instance.hunterDie);
+				SoundManager.Instance.Monsters.PlayOneShot(SoundManager.Instance.hunterDie, 0.5f);
             }
 
             if (deathCounter > deathTimer)
@@ -292,6 +299,15 @@ public class Monster : MonoBehaviour {
             }
         }
 
+		if (isDead == true) {
+			anim.Play ("hunterDeath", 0);
+		} else if (isAttacking == true) {
+		} else if ((Mathf.Abs (velocityVector.x) > 0) || (Mathf.Abs (velocityVector.z) > 0)) {
+			anim.Play ("hunterWalk", 0);
+		} else {
+			anim.Play ("hunterIdle", 0);
+		}
+
         //Ensure monster is always touching the ground
         transform.position = new Vector3(transform.position.x, yPos, transform.position.z);
 	}
@@ -302,29 +318,29 @@ public class Monster : MonoBehaviour {
 
         if ((explosion.causesPosion == true) && (poisoned == false))
         {
-            SoundManager.Instance.SFX.PlayOneShot(SoundManager.Instance.poison);
+			SoundManager.Instance.SFX.PlayOneShot(SoundManager.Instance.poison, 0.5f);
             poisoned = true;
         }
         else if ((explosion.causesPosion == true) && (poisoned == true))
         {
-            SoundManager.Instance.SFX.PlayOneShot(SoundManager.Instance.poison);
+			SoundManager.Instance.SFX.PlayOneShot(SoundManager.Instance.poison, 0.5f);
             poisonCounter = 0.0f;
         }
 
         if ((explosion.causesBleed == true) && (bleeding == false))
         {
-            SoundManager.Instance.SFX.PlayOneShot(SoundManager.Instance.bleed);
+			SoundManager.Instance.SFX.PlayOneShot(SoundManager.Instance.bleed, 0.5f);
             bleeding = true;
         }
         else if ((explosion.causesBleed == true) && (bleeding == true))
         {
-            SoundManager.Instance.SFX.PlayOneShot(SoundManager.Instance.bleed);
+			SoundManager.Instance.SFX.PlayOneShot(SoundManager.Instance.bleed, 0.5f);
             bleedCounter = 0.0f;
         }
 
         if (explosion.causesSlow == true)
         {
-            SoundManager.Instance.SFX.PlayOneShot(SoundManager.Instance.slow);
+			SoundManager.Instance.SFX.PlayOneShot(SoundManager.Instance.slow, 0.5f);
             Slow();
         }
     }
@@ -336,41 +352,41 @@ public class Monster : MonoBehaviour {
 
     public void TakeHit(ProjectileBehaviour hit)
     {
-        SoundManager.Instance.Monsters.PlayOneShot(SoundManager.Instance.hunterTakeHit);
+		SoundManager.Instance.Monsters.PlayOneShot(SoundManager.Instance.hunterTakeHit, 0.5f);
         health = health - hit.damage;
 
         if ((hit.causesPosion == true) && (poisoned == false))
         {
-            SoundManager.Instance.SFX.PlayOneShot(SoundManager.Instance.poison);
+			SoundManager.Instance.SFX.PlayOneShot(SoundManager.Instance.poison, 0.5f);
             poisoned = true;
         }
         else if ((hit.causesPosion == true) && (poisoned == true))
         {
-            SoundManager.Instance.SFX.PlayOneShot(SoundManager.Instance.poison);
+			SoundManager.Instance.SFX.PlayOneShot(SoundManager.Instance.poison, 0.5f);
             poisonCounter = 0.0f;
         }
 
         if ((hit.causesBleed == true) && (bleeding == false))
         {
-            SoundManager.Instance.SFX.PlayOneShot(SoundManager.Instance.bleed);
+			SoundManager.Instance.SFX.PlayOneShot(SoundManager.Instance.bleed, 0.5f);
             bleeding = true;
         }
         else if ((hit.causesBleed == true) && (bleeding == true))
         {
-            SoundManager.Instance.SFX.PlayOneShot(SoundManager.Instance.bleed);
+			SoundManager.Instance.SFX.PlayOneShot(SoundManager.Instance.bleed, 0.5f);
             bleedCounter = 0.0f;
         }
 
         if (hit.causesSlow == true)
         {
-            SoundManager.Instance.SFX.PlayOneShot(SoundManager.Instance.slow);
+			SoundManager.Instance.SFX.PlayOneShot(SoundManager.Instance.slow, 0.5f);
             Slow();
         }
     }
 
     public void TakeHit(EnemyProjectile hit)
     {
-        SoundManager.Instance.Monsters.PlayOneShot(SoundManager.Instance.hunterTakeHit);
+		SoundManager.Instance.Monsters.PlayOneShot(SoundManager.Instance.hunterTakeHit, 0.5f);
         health = health - hit.damage;
     }
 

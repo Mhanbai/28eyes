@@ -163,7 +163,7 @@ MonoBehaviour:
   damage: 30
   firePoint: {fileID: 1018544415921676}
   missile: {fileID: 1483456921002008, guid: 84d063ac578269c4c968717bf8940b60, type: 2}
-  health: 400
+  health: 200
   bleedDamage: 0.5
   bleedTime: 5
   poisonDamage: 10

@@ -201,7 +201,7 @@ public class Monster : MonoBehaviour {
                 {
 					anim.Play ("hunterAttack", 0);
                     if (!SoundManager.Instance.Monsters.isPlaying) { 
-						SoundManager.Instance.Monsters.PlayOneShot(SoundManager.Instance.hunterAttack, 0.5f);
+						SoundManager.Instance.Monsters.PlayOneShot(SoundManager.Instance.hunterAttack, 0.3f);
                     }
                     attackTimer += Time.deltaTime;
                     if (attackTimer > attackLength)
@@ -282,7 +282,7 @@ public class Monster : MonoBehaviour {
 
             if (!SoundManager.Instance.Monsters.isPlaying)
             {
-				SoundManager.Instance.Monsters.PlayOneShot(SoundManager.Instance.hunterDie, 0.5f);
+				SoundManager.Instance.Monsters.PlayOneShot(SoundManager.Instance.hunterDie, 0.3f);
             }
 
             if (deathCounter > deathTimer)
@@ -352,7 +352,7 @@ public class Monster : MonoBehaviour {
 
     public void TakeHit(ProjectileBehaviour hit)
     {
-		SoundManager.Instance.Monsters.PlayOneShot(SoundManager.Instance.hunterTakeHit, 0.5f);
+		SoundManager.Instance.Monsters.PlayOneShot(SoundManager.Instance.hunterTakeHit, 0.3f);
         health = health - hit.damage;
 
         if ((hit.causesPosion == true) && (poisoned == false))

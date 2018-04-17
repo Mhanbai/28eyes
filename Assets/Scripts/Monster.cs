@@ -287,6 +287,7 @@ public class Monster : MonoBehaviour {
 
             if (deathCounter > deathTimer)
             {
+				Random.seed = System.DateTime.Now.Millisecond;
                 if (Random.Range(0, 100) < dropChance)
                 {
                     int drop = Random.Range(0, ItemList.Instance.LevelItems(lootList).Length);

@@ -20,7 +20,7 @@ public class ItemList : MonoBehaviour {
 	public enum Stats {Speed, AttackSpeed, Health};
 
     //Item lists for each level
-    [System.NonSerialized] public Item[] levelOneItems = new Item[9];
+    [System.NonSerialized] public Item[] levelOneItems = new Item[10];
     [System.NonSerialized] public Item[] levelTwoItems = new Item[1];
     [System.NonSerialized] public Item[] levelThreeItems = new Item[1];
     [System.NonSerialized] public Item[] levelFourItems = new Item[1];
@@ -37,6 +37,8 @@ public class ItemList : MonoBehaviour {
         levelOneItems[6] = new Item("Equips the legs of a crab, reducing your speed by 10% and your health by 20",                          false,      1,          3,      +20,            -0.01f,      0,      0.0f,   0.0f,   -1,         0);
         levelOneItems[7] = new Item("Equips the legs of an eagle, raising your speed by 10% and your health by 10",                         false,      1,          3,      +10,             +0.1f,      0,      0.0f,   0.0f,   -1,         1);
         levelOneItems[8] = new Item("Equips the legs of a spider, Raising your speed by 30% but lowering your health by 10",                false,      1,          3,      -10,             +0.3f,      0,      0.0f,   0.0f,   -1,         0);
+        levelOneItems[9] = new Item("Equips the Ultimate Weapon, use at your own risk! Also provides a significant boost to health!",       false,      1,          2,      50,                 0,       0,      0.0f,   0.0f,    4,         0);
+
 
         levelTwoItems[0] = new Item("Equips the Ultimate Weapon, use at your own risk! Also provides a significant boost to health!",       false,      1,          2,      50,                  0,      0,      0.0f,   0.0f,    5,         0);
 	}

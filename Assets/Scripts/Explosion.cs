@@ -9,16 +9,21 @@ public class Explosion : MonoBehaviour {
 	public bool causesSlow;
 	public bool causesBleed;
 	public bool causesPosion;
+    float timer = 0.0f;
+    Animator anim;
+    public float clipLength = 2.0f;
+    public int sound = 0;
 
     private void Start()
     {
-        SoundManager.Instance.SFX.PlayOneShot(SoundManager.Instance.explosion, 0.5f);
+        anim = GetComponent<Animator>();
+        SoundManager.Instance.SFX.PlayOneShot(SoundManager.Instance.explosionSounds[sound], 0.5f);
     }
 
     // Update is called once per frame
     void Update () {
-		if (collider.transform.localScale.x < maxSize) {
-			collider.transform.localScale += new Vector3 (0.1f, 0.1f, 0.1f);
+		if (timer < clipLength) {
+            timer += Time.deltaTime;
 		} else {
 			GameObject.Destroy (gameObject);
 		}

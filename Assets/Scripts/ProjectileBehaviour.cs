@@ -14,6 +14,7 @@ public class ProjectileBehaviour : MonoBehaviour {
 	public float range;
 	public float damage;
 	float distance;
+    public int sound = 0;
 
 	//Additional variables for calculating point on arc
 	float angle = 180.0f;
@@ -59,7 +60,7 @@ public class ProjectileBehaviour : MonoBehaviour {
 	public void Die() {
 		if (explosion != null) {
 			Explosion exp = GameObject.Instantiate (explosion);
-			exp.transform.position = gameObject.transform.position + new Vector3(0.0f, 2.0f, 0.0f);
+			exp.transform.position = gameObject.transform.position + new Vector3(0.0f, exp.GetComponentInChildren<Collider>().bounds.size.y / 2, 0.0f);
 		}
 		GameObject.Destroy (gameObject);
 	}

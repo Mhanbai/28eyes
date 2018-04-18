@@ -722,6 +722,8 @@ MonoBehaviour:
   - {fileID: 1106232674436886, guid: 8b94588e584718d43ab4dc64a742ec95, type: 2}
   - {fileID: 1562679912356188, guid: f9095ae24ee6e38498419b50579063eb, type: 2}
   - {fileID: 1584505040572538, guid: 95ad2b2034bac6944b74227bab479d1a, type: 2}
+  - {fileID: 1579055705217268, guid: a4420dc5b79cf92449add6cc38e409da, type: 2}
+  - {fileID: 1740601013571370, guid: d5206cf7730781641b4c6d95e938b8c9, type: 2}
 --- !u!114 &1378583546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -767,6 +769,10 @@ MonoBehaviour:
   poison: {fileID: 8300000, guid: b9a22d3ca292df549b8e0f3f81cadef0, type: 3}
   playerDie: {fileID: 8300000, guid: 58a0c4e6ae2349b46a246056dfcd6729, type: 3}
   backgroundMusic: {fileID: 8300000, guid: 007cd8682e86b024f8ff7a2057932037, type: 3}
+  weaponSounds:
+  - {fileID: 8300000, guid: df7133058f57cf74caf8beb9af041f3e, type: 3}
+  explosionSounds:
+  - {fileID: 8300000, guid: c93bf9594d537c744a854db900095fe2, type: 3}
 --- !u!1 &1435033174
 GameObject:
   m_ObjectHideFlags: 0

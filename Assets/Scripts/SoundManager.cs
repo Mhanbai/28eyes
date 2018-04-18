@@ -42,6 +42,9 @@ public class SoundManager : MonoBehaviour {
      public AudioClip playerDie;
      public AudioClip backgroundMusic;
 
+    public AudioClip[] weaponSounds;
+    public AudioClip[] explosionSounds;
+
     // Update is called once per frame
     private void Start()
     {
@@ -49,6 +52,5 @@ public class SoundManager : MonoBehaviour {
         SFX = GameObject.Find("SFX").GetComponent<AudioSource>();
         Footsteps = GameObject.Find("Footsteps").GetComponent<AudioSource>();
         Monsters = GameObject.Find("Monster").GetComponent<AudioSource>();
-
     }
 }

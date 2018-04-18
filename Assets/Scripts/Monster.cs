@@ -87,101 +87,23 @@ public class Monster : MonoBehaviour {
         {
             if (!isAttacking)
             {
-                //Find array of obstacles and create line between two furthest collision points
-                if (trapped == false)
+                if (Vector3.Distance(transform.position, player.transform.position) < pursueDistance)
                 {
-                    if (obstacleList.Count > 1)
+                    if (!(Vector3.Distance(transform.position, player.transform.position) < attackRange))
                     {
-                        trappedCounter += Time.deltaTime;
-                        if (trappedCounter > 2.0f)
-                        {
-                            trapped = true;
-                        }
-
-                        Vector3 avoidanceForce;
-                        Vector3 pointOne = FindFurthest(transform.position);
-                        Vector3 pointTwo = FindFurthest(pointOne);
-
-                        if (Vector3.Angle(forwardVector, pointOne - pointTwo) > Vector3.Angle(forwardVector, pointTwo - pointOne))
-                        {
-                            avoidanceForce = pointTwo - pointOne;
-                        }
-                        else
-                        {
-                            avoidanceForce = pointOne - pointTwo;
-                        }
-
-                        Vector3.Normalize(avoidanceForce);
-                        wanderTimer = wanderVariance;
-                        velocityVector = new Vector3(0.0f, 0.0f, 0.0f);
-                        velocityVector += avoidanceForce * 3.0f * Time.deltaTime;
-                    }
-                    else if (obstacleList.Count == 1)
-                    {
-                        Vector3 between = obstacleList[0].transform.position - transform.position;
-                        between = new Vector3(between.z, 0.0f, -between.x);
-                        Vector3.Normalize(between);
-
-                        if (Vector3.Angle(forwardVector, between) > Vector3.Angle(forwardVector, -between))
-                        {
-                            avoidanceForce = -between;
-                        }
-                        else
-                        {
-                            avoidanceForce = between;
-                        }
-
-                        wanderTimer = wanderVariance;
-
-                        velocityVector += avoidanceForce * 3.0f * Time.deltaTime;
+                        attackDelayTimer = delayBetweenAttacks;
+                        Vector3 toAdd = Pursue(player);
+                        velocityVector += new Vector3(toAdd.x, 0.0f, toAdd.z);
                     }
                     else
                     {
-                        if (Vector3.Distance(transform.position, player.transform.position) < pursueDistance)
-                        {
-                            if (!(Vector3.Distance(transform.position, player.transform.position) < attackRange))
-                            {
-                                attackDelayTimer = delayBetweenAttacks;
-                                velocityVector += Pursue(player);
-                            }
-                            else
-                            {
-                                isAttacking = true;
-                            }
-
-                        }
-                        else
-                        {
-                            velocityVector += Seek(Wander());
-                        }
+                        isAttacking = true;
                     }
-                } else
-                { 
-                    if (obstacleList.Count > 0)
-                    {
-                        escapeCounter += Time.deltaTime;
-                        Vector3 pointOne = FindFurthest(transform.position);
-                        Vector3 pointTwo = FindFurthest(pointOne);
-
-                        Vector3 escape = pointOne - pointTwo;
-                        escape = new Vector3(escape.z, 0.0f, -escape.x);
-
-                        Vector3.Normalize(escape);
-
-                        if (escapeCounter < 2.0f)
-                        {
-                            velocityVector += escape * Time.deltaTime * 0.5f;
-                        } else
-                        {
-                            velocityVector -= escape * Time.deltaTime * 0.5f;
-                        }
-                    }
-                    else
-                    {
-                        trapped = false;
-                        trappedCounter = 0.0f;
-                        escapeCounter = 0.0f;
-                    }
+                }
+                else
+                {
+                    Vector3 toAdd = Seek(Wander());
+                    velocityVector += new Vector3(toAdd.x, 0.0f, toAdd.z);
                 }
             }
 
@@ -194,7 +116,8 @@ public class Monster : MonoBehaviour {
             {
                 if (shouldMoveWhileAttacking)
                 {
-                    velocityVector += Pursue(player);
+                    Vector3 toAdd = Pursue(player);
+                    velocityVector += new Vector3(toAdd.x, 0.0f, toAdd.z);
                 }
                 attackDelayTimer += Time.deltaTime;
                 if (attackDelayTimer > delayBetweenAttacks)
@@ -214,6 +137,15 @@ public class Monster : MonoBehaviour {
                         attackDelayTimer = 0.0f;
                         isAttacking = false;
                     }
+                }
+            }
+
+            if (obstacleList.Count > 0)
+            {
+                foreach (Collider obs in obstacleList)
+                {
+                    Vector3 toAdd = Avoid(obs.ClosestPointOnBounds(transform.position));
+                    velocityVector += new Vector3(toAdd.x, 0.0f, toAdd.z);
                 }
             }
 
@@ -258,18 +190,21 @@ public class Monster : MonoBehaviour {
                 maxSpeed = maxSpeed * slowSeverity;
             }
 
-            //Add velocity vector to position
-            forwardVector = velocityVector.normalized;
-            transform.position += velocityVector;
+            Debug.Log(velocityVector.sqrMagnitude);
 
-            //Flip depencing on direction
-            if (velocityVector.x < -0.2f)
+            if (velocityVector.sqrMagnitude > 40.0f)
             {
-                mySprite.flipX = false;
-            }
-            else if (velocityVector.x > 0.1f)
-            {
-                mySprite.flipX = true;
+                //Flip depencing on direction
+                if (velocityVector.x <= -0.1f)
+                {
+                    mySprite.flipX = false;
+                }
+                else if (velocityVector.x > 0.1f)
+                {
+                    mySprite.flipX = true;
+                }
+
+                transform.position += (velocityVector.normalized * maxSpeed);
             }
         }
         else
@@ -311,7 +246,9 @@ public class Monster : MonoBehaviour {
 
         //Ensure monster is always touching the ground
         transform.position = new Vector3(transform.position.x, yPos, transform.position.z);
-	}
+
+        Debug.Log("---------------------------------------------------------------");
+    }
 
     public void TakeExplosion(Explosion explosion)
     {
@@ -408,12 +345,12 @@ public class Monster : MonoBehaviour {
 		if (Vector3.Distance (targetPos, transform.position) < 0.2f) {
 			return new Vector3 (0.0f, 0.0f, 0.0f);
 		} else {
-			return (Vector3.Normalize (targetPos - transform.position) * maxSpeed) - velocityVector;
+			return (targetPos - transform.position);
 		}
 	}
 
 	public Vector3 Avoid(Vector3 targetPos) {
-		return (Vector3.Normalize (transform.position - targetPos) * maxSpeed) - velocityVector;
+		return (transform.position - targetPos);
 	}
 
 	public Vector3 Pursue(CharController target) {
@@ -493,7 +430,7 @@ public class Monster : MonoBehaviour {
         }
 	}
 
-	Vector3 FindFurthest(Vector3 furthestFrom) {
+	/*Vector3 FindFurthest(Vector3 furthestFrom) {
 		Vector3 furthestObstacle = furthestFrom;
 		float distance = 0.0f;
 		foreach (Collider obs in obstacleList) {
@@ -521,5 +458,5 @@ public class Monster : MonoBehaviour {
     bool isLeft(Vector3 pointOne, Vector3 pointTwo, Vector3 queryPoint)
     {
         return ((pointTwo.x - pointOne.x) * (queryPoint.z - pointOne.z) - (pointTwo.z - pointOne.z) * (queryPoint.x - pointOne.x)) < 0;
-    }
+    }*/
 }

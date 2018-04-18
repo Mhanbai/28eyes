@@ -102,7 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collider: {fileID: 135792921094972560}
   maxSize: 4
-  damage: 10
+  damage: 5
   causesSlow: 0
   causesBleed: 0
   causesPosion: 0

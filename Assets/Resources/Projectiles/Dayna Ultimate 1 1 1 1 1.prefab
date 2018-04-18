@@ -162,26 +162,26 @@ TrailRenderer:
         outSlope: 0
         tangentMode: 0
       - serializedVersion: 2
-        time: 0.18769827
-        value: 0.37273788
+        time: 0.1939849
+        value: 0.22987747
         inSlope: -0.0037974678
         outSlope: -0.0037974678
         tangentMode: 0
       - serializedVersion: 2
         time: 0.36783165
-        value: 0.83462906
+        value: 0.965065
         inSlope: -0.30621886
         outSlope: -0.30621886
         tangentMode: 0
       - serializedVersion: 2
         time: 0.55849355
-        value: 0.095840454
+        value: 0
         inSlope: -1.6930699
         outSlope: -1.6930699
         tangentMode: 0
       - serializedVersion: 2
-        time: 0.75005716
-        value: 0.9316788
+        time: 0.77102274
+        value: 1
         inSlope: 0.3835559
         outSlope: 0.3835559
         tangentMode: 0
@@ -271,38 +271,38 @@ TrailRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 2
-        time: 0.0064926147
-        value: 0.7354889
+        time: 0
+        value: 0.81290436
         inSlope: 0
         outSlope: 0
         tangentMode: 0
       - serializedVersion: 2
-        time: 0.19697562
-        value: 0.27095413
+        time: 0.22077933
+        value: 0.25806427
         inSlope: -0.0037974678
         outSlope: -0.0037974678
         tangentMode: 0
       - serializedVersion: 2
-        time: 0.4043154
-        value: 0.9096794
+        time: 0.43028587
+        value: 0.80000305
         inSlope: -0.30621886
         outSlope: -0.30621886
         tangentMode: 0
       - serializedVersion: 2
-        time: 0.5898656
-        value: 0.1741867
+        time: 0.6266393
+        value: 0.21935272
         inSlope: -1.6930699
         outSlope: -1.6930699
         tangentMode: 0
       - serializedVersion: 2
-        time: 0.7694358
-        value: 0.7225723
+        time: 0.78893656
+        value: 0.75484085
         inSlope: 0.3835559
         outSlope: 0.3835559
         tangentMode: 0
       - serializedVersion: 2
         time: 1
-        value: 0.12904358
+        value: 0.17419434
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -344,7 +344,7 @@ TrailRenderer:
     textureMode: 0
     generateLightingData: 0
   m_MinVertexDistance: 1
-  m_Autodestruct: 1
+  m_Autodestruct: 0
 --- !u!114 &114023582759798840
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -367,6 +367,7 @@ MonoBehaviour:
   trajectoryType: 0
   range: 0
   damage: 0
+  sound: 0
 --- !u!212 &212413873747828348
 SpriteRenderer:
   m_ObjectHideFlags: 1

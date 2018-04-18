@@ -14,6 +14,7 @@ public class ProjectileBehaviour : MonoBehaviour {
 	public float range;
 	public float damage;
 	float distance;
+    public int sound = 0;
 
 	//Additional variables for calculating point on arc
 	float angle = 180.0f;

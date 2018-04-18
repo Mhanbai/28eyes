@@ -55,7 +55,7 @@ public class PlayerInfo : MonoBehaviour {
 	}
 
 	void Start() {
-		//DataManager.Instance.Load ();
+		DataManager.Instance.Load ();
 	}
 
 	//Functions for combat

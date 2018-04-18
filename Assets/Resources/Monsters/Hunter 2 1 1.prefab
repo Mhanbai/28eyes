@@ -149,7 +149,7 @@ MonoBehaviour:
   slowSeverity: 2
   deathTimer: 0.5
   dropChance: 99
-  lootList: 2
+  lootList: 1
 --- !u!212 &212945902974093310
 SpriteRenderer:
   m_ObjectHideFlags: 1

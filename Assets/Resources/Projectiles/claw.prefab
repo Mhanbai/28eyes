@@ -65,7 +65,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03291a7642288c848aaf789f106dba03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosion: {fileID: 114820319940543018, guid: fb45ad85d60ff3f408d8ec1986368df7,
+  explosion: {fileID: 114131008857833074, guid: a0f957d8098383243ab1539e1dcf27d8,
     type: 2}
   causesBleed: 0
   causesSlow: 0

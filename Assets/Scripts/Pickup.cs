@@ -25,11 +25,15 @@ public class Pickup : MonoBehaviour {
 		transform.position = new Vector3 (transform.position.x, yPos, transform.position.z);
 	}
 
-	void OnTriggerStay() {
-		if (PlayerInfo.Instance.AddToInventory (myItem) == true) {
-			SoundManager.Instance.SFX.PlayOneShot(SoundManager.Instance.pickUp, 1.0f);
-			GameObject.Destroy (gameObject);
-		}
+	void OnTriggerStay(Collider collision) {
+        if (collision.CompareTag("Player"))
+        {
+            if (PlayerInfo.Instance.AddToInventory(myItem) == true)
+            {
+                SoundManager.Instance.SFX.PlayOneShot(SoundManager.Instance.pickUp, 1.0f);
+                GameObject.Destroy(gameObject);
+            }
+        }
 	}
 
 	public void AssignItem(Item item_in) {

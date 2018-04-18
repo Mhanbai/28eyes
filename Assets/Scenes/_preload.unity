@@ -703,7 +703,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d2817eac69d7434c99f949cbf23e3b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI: {fileID: 1844002221713116, guid: bc8a6d21b5fc86b42b89418b60883903, type: 2}
+  UI: {fileID: 1395989743152208, guid: b6cb850e82ca94b49acf4178d8257764, type: 2}
   Player: {fileID: 1568304347010852, guid: 6b0c2c1e4a7c3a343ab3485f062b4caf, type: 2}
   DebugUI: {fileID: 1128595373734696, guid: 820e881db11b18d4484d5ce6d0f459b8, type: 2}
   uiRef: {fileID: 1953337124154476, guid: 79e60daf1f8a7194783c34deaf174626, type: 2}

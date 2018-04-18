@@ -171,7 +171,7 @@ MonoBehaviour:
   poisonHits: 5
   deathTimer: 0.4
   dropChance: 99
-  lootList: 1
+  lootList: 2
 --- !u!212 &212737913885868856
 SpriteRenderer:
   m_ObjectHideFlags: 1

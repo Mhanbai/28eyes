@@ -46,7 +46,8 @@ public class Monster : MonoBehaviour {
     [SerializeField] protected float slowSeverity = 2.0f;
     [SerializeField] protected float deathTimer = 0.5f;
     [SerializeField] protected int dropChance = 99;
-    [SerializeField] protected int lootList = 1;
+    
+    public int lootList = 1;
 
     protected float deathCounter = 0.0f;
     protected float bleedCounter = 0.0f;
@@ -190,8 +191,6 @@ public class Monster : MonoBehaviour {
                 maxSpeed = maxSpeed * slowSeverity;
             }
 
-            Debug.Log(velocityVector.sqrMagnitude);
-
             if (velocityVector.sqrMagnitude > 40.0f)
             {
                 //Flip depencing on direction
@@ -246,8 +245,6 @@ public class Monster : MonoBehaviour {
 
         //Ensure monster is always touching the ground
         transform.position = new Vector3(transform.position.x, yPos, transform.position.z);
-
-        Debug.Log("---------------------------------------------------------------");
     }
 
     public void TakeExplosion(Explosion explosion)

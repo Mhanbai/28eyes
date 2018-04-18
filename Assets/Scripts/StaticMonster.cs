@@ -40,7 +40,7 @@ public class StaticMonster : MonoBehaviour {
 		anim = GetComponentInChildren<Animator> ();
         bounds = gameObject.GetComponent<Collider>().bounds.size;
         player = GameObject.Find("Player").GetComponent<CharController>();
-        transform.position = new Vector3(transform.position.x, 10.2f, transform.position.z);
+        transform.position = new Vector3(transform.position.x, bounds.y - (bounds.y * 0.33f), transform.position.z);
         fireTimer = fireFrequency;
     }
 	

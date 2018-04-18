@@ -14823,6 +14823,11 @@ Prefab:
       propertyPath: m_Name
       value: Portal1
       objectReference: {fileID: 0}
+    - target: {fileID: 114329865284286630, guid: ce5a6e3c846631c4cb7767383f12f0ea,
+        type: 2}
+      propertyPath: sceneNumber
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ce5a6e3c846631c4cb7767383f12f0ea, type: 2}
   m_IsPrefabParent: 0
@@ -36723,6 +36728,23 @@ Prefab:
     - {fileID: 114329865284286630, guid: ce5a6e3c846631c4cb7767383f12f0ea, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: ce5a6e3c846631c4cb7767383f12f0ea, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1873097568 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1418623156818626, guid: ce5a6e3c846631c4cb7767383f12f0ea,
+    type: 2}
+  m_PrefabInternal: {fileID: 1873097567}
+--- !u!114 &1873097569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1873097568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df6c0d48fd38083428ab9babfaa36e8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneNumber: 3
 --- !u!1 &1873277016
 GameObject:
   m_ObjectHideFlags: 0

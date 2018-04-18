@@ -23,22 +23,24 @@ public class ItemList : MonoBehaviour {
     [System.NonSerialized] public Item[] levelOneItems = new Item[10];
     [System.NonSerialized] public Item[] levelTwoItems = new Item[1];
     [System.NonSerialized] public Item[] levelThreeItems = new Item[1];
+    [System.NonSerialized] public Item[] levelFourItems = new Item[1];
+    [System.NonSerialized] public Item[] levelFiveItems = new Item[1];
 
     void Start() {
 		// 	                        Description,                                                                                            Objective?, Picture, Category, Health Change, Speed Change, Ammo, Reload, Range, Attack Type, Body Part Sprite) {
-		levelOneItems[0] = new Item("Equips the body of a crab, raising health by 30 but reducing speed by 20",                             false,      1,          1,      30,              -0.2f,      0,      0.0f,   0.0f,   -1,         0);
-		levelOneItems[1] = new Item("Equips the body of an eagle, increasing speed by 20% but lowering health by 20",                       false,      1,          1,      -20,             +0.2f,      0,      0.0f,   0.0f,   -1,         1);
-		levelOneItems[2] = new Item("Equips the body of a spider, increasing speed by 10% and health by 10",                                false,      1,          1,      -10,             +0.1f,      0,      0.0f,   0.0f,   -1,         0);
+		levelOneItems[0] = new Item("Equips the body of a crab, raising health by 30 but reducing speed by 20%",                            false,      1,          1,      +30,             -0.2f,      0,      0.0f,   0.0f,   -1,         0);
+		levelOneItems[1] = new Item("Equips the body of an eagle, increasing speed by 10% but lowering health by 10",                       false,      1,          1,      -10,             +0.1f,      0,      0.0f,   0.0f,   -1,         1);
+		levelOneItems[2] = new Item("Equips the body of a spider, increasing speed by 20% and reducing health by 20",                       false,      1,          1,      -20,             +0.2f,      0,      0.0f,   0.0f,   -1,         0);
         levelOneItems[3] = new Item("Equips the arms of a crab, altering your attack to a crab claw RPG!",                                  false,      1,          2,      0,                  0f,      0,      0.0f,   0.0f,    2,         0);
         levelOneItems[4] = new Item("Equips the wings of an eagle, altering your attack to shoot razor sharp feathers!",                    false,      1,          2,      0,                  0f,      0,      0.0f,   0.0f,    3,         1);
         levelOneItems[5] = new Item("Equips the arms of a spider, altering your attack to throw a slowing web shot in an arcing motion!",   false,      1,          2,      0,                  0f,      0,      0.0f,   0.0f,    1,         0);
-        levelOneItems[6] = new Item("Equips the legs of a crab, raising your speed by 10% and your health by 20",                           false,      1,          3,      +20,             +0.1f,      0,      0.0f,   0.0f,   -1,         0);
-        levelOneItems[7] = new Item("Equips the legs of an eagle, raising your speed by 20% and your health by 10",                         false,      1,          3,      +10,             +0.2f,      0,      0.0f,   0.0f,   -1,         1);
+        levelOneItems[6] = new Item("Equips the legs of a crab, reducing your speed by 10% and your health by 20",                          false,      1,          3,      +20,            -0.01f,      0,      0.0f,   0.0f,   -1,         0);
+        levelOneItems[7] = new Item("Equips the legs of an eagle, raising your speed by 10% and your health by 10",                         false,      1,          3,      +10,             +0.1f,      0,      0.0f,   0.0f,   -1,         1);
         levelOneItems[8] = new Item("Equips the legs of a spider, Raising your speed by 30% but lowering your health by 10",                false,      1,          3,      -10,             +0.3f,      0,      0.0f,   0.0f,   -1,         0);
         levelOneItems[9] = new Item("Equips the Ultimate Weapon, use at your own risk! Also provides a significant boost to health!",       false,      1,          2,      50,                 0,       0,      0.0f,   0.0f,    4,         0);
 
 
-        levelTwoItems[0] = new Item("Equips the Ultimate Weapon, use at your own risk! Also provides a significant boost to health!",       false,      1,          2,      50,                  0,      0,      0.0f,   0.0f,    4,         0);
+        levelTwoItems[0] = new Item("Equips the Ultimate Weapon, use at your own risk! Also provides a significant boost to health!",       false,      1,          2,      50,                  0,      0,      0.0f,   0.0f,    5,         0);
 	}
 
 	public Item[] LevelItems(int listNo) {
@@ -47,7 +49,13 @@ public class ItemList : MonoBehaviour {
 			return levelOneItems;
 		case 2:
 			return levelTwoItems;
-		default:
+        case 3:
+            return levelThreeItems;
+        case 4:
+            return levelFourItems;
+        case 5:
+            return levelFiveItems;
+            default:
 			return levelOneItems;
 		}
 	}

@@ -229,7 +229,7 @@ public class CharController : MonoBehaviour {
 			regenTimer += Time.deltaTime;
 			if (regenTimer > 10.0f) {
 				regenTimer = 0.0f;
-				PlayerInfo.Instance.Heal (1);
+				PlayerInfo.Instance.Heal (5);
 			}
 		}
 	}

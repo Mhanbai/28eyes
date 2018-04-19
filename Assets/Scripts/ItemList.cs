@@ -28,7 +28,7 @@ public class ItemList : MonoBehaviour {
 
     void Start() {
 		// 	                        Description,                                                                                                        Objective?, Picture, Category, Health Change, Speed Change, Ammo, Reload, Range, Attack Type, Body Part Sprite) {
-		levelOneItems[0] = new Item("Equips the arms of a spider, altering your attack to throw a poisonous, slowing web shot in an arcing motion!",    false,      1,          2,      0,                  0f,      0,      0.0f,   0.0f,    1,         0);
+		levelOneItems[0] = new Item("Equips the arms of a spider, altering your attack to throw a poisonous, slowing web shot in an arcing motion!",    false,      1,          2,      0,                +0.1f,      0,      0.0f,   0.0f,    1,         0);
         levelOneItems[1] = new Item("Equips the legs of a crab, reducing your speed by 10% and your health by 20",                                      false,      1,          3,      +20,            -0.01f,      0,      0.0f,   0.0f,   -1,         0);
         levelOneItems[2] = new Item("Equips the legs of an eagle, raising your speed by 10% and your health by 10",                                     false,      1,          3,      +10,             +0.1f,      0,      0.0f,   0.0f,   -1,         1);
         levelOneItems[3] = new Item("Equips the legs of a spider, Raising your speed by 30% but lowering your health by 10",                            false,      1,          3,      -10,             +0.3f,      0,      0.0f,   0.0f,   -1,         0);

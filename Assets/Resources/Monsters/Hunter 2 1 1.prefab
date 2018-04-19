@@ -132,23 +132,23 @@ MonoBehaviour:
   wanderRadius: 5
   wanderDistance: 4
   wanderVariance: 7
-  pursueDistance: 30
+  pursueDistance: 40
   shouldMoveWhileAttacking: 0
-  attackRange: 0
-  attackStrength: 5
+  attackRange: 20
+  attackStrength: 10
   attackLength: 0.9
   delayBetweenAttacks: 1
   avoidDistance: 0
   health: 100
-  bleedDamage: 0.5
-  bleedTime: 5
+  bleedDamage: 1
+  bleedTime: 3
   poisonDamage: 10
-  poisonFrequency: 5
+  poisonFrequency: 2
   poisonHits: 5
   slowTime: 5
-  slowSeverity: 2
+  slowSeverity: 4
   deathTimer: 0.5
-  dropChance: 99
+  dropChance: 50
   lootList: 1
 --- !u!212 &212945902974093310
 SpriteRenderer:

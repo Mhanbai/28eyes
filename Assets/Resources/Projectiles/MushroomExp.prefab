@@ -102,11 +102,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collider: {fileID: 135328111709617322}
   maxSize: 4
-  damage: 50
+  damage: 5000
   causesSlow: 0
   causesBleed: 0
   causesPosion: 0
   clipLength: 1.2
+  sound: 0
 --- !u!135 &135328111709617322
 SphereCollider:
   m_ObjectHideFlags: 1

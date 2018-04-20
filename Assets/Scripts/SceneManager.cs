@@ -47,7 +47,7 @@ public class SceneManager : MonoBehaviour {
 	}
 
 	public void GameOver() {
-		UnityEngine.SceneManagement.SceneManager.LoadScene (6);
+		UnityEngine.SceneManagement.SceneManager.LoadScene (5);
 	}
 
 	public void Quit() {

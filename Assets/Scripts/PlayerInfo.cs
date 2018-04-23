@@ -225,7 +225,12 @@ public class PlayerInfo : MonoBehaviour {
 				}
 			}
 
-			armItem = toUse;
+            if (toUse.attackType != -1)
+            {
+                equippedAttack = PlayerInfo.Instance.equippedAttack = AttackList.Instance.attackType[toUse.attackType];
+            }
+
+            armItem = toUse;
 			break;
 		case 3:
 			if ((legItem != null) && (legItem != toUse)) {

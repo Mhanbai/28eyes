@@ -143,6 +143,14 @@ public class Monster : MonoBehaviour {
 
             if (obstacleList.Count > 0)
             {
+                for (int i = 0; i < obstacleList.Count; i++)
+                {
+                    if (obstacleList[i] == null)
+                    {
+                        obstacleList.Remove(obstacleList[i]);
+                    }
+                }
+
                 foreach (Collider obs in obstacleList)
                 {
                     Vector3 toAdd = Avoid(obs.ClosestPointOnBounds(transform.position));
@@ -426,34 +434,4 @@ public class Monster : MonoBehaviour {
             obstacleList.Remove(obstacle);
         }
 	}
-
-	/*Vector3 FindFurthest(Vector3 furthestFrom) {
-		Vector3 furthestObstacle = furthestFrom;
-		float distance = 0.0f;
-		foreach (Collider obs in obstacleList) {
-			float compareDist = Vector3.Distance (furthestFrom, obs.transform.position);
-			if (compareDist > distance) {
-				distance = compareDist;
-				furthestObstacle = obs.transform.position;
-			}
-		}
-
-		return furthestObstacle;
-	}
-
-	Vector3 FindClosest(Vector3 pointOne, Vector3 pointTwo) {
-		Vector3 closestPoint = pointOne;
-		float distance = Vector3.Distance (transform.position, pointOne);
-		float compareDist = Vector3.Distance (transform.position, pointTwo);
-		if (compareDist < distance) {
-			closestPoint = pointTwo;
-		}
-
-		return closestPoint;
-	}
-
-    bool isLeft(Vector3 pointOne, Vector3 pointTwo, Vector3 queryPoint)
-    {
-        return ((pointTwo.x - pointOne.x) * (queryPoint.z - pointOne.z) - (pointTwo.z - pointOne.z) * (queryPoint.x - pointOne.x)) < 0;
-    }*/
 }

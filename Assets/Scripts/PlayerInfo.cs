@@ -225,7 +225,14 @@ public class PlayerInfo : MonoBehaviour {
 				}
 			}
 
-			armItem = toUse;
+            try
+            {
+                equippedAttack = AttackList.Instance.attackType[toUse.attackType];
+            }
+            catch
+            {}
+            
+            armItem = toUse;
 			break;
 		case 3:
 			if ((legItem != null) && (legItem != toUse)) {
@@ -255,6 +262,8 @@ public class PlayerInfo : MonoBehaviour {
 	}
 
 	public void Load(int health_in, Item headPart_in, Item bodyPart_in, Item armPart_in, Item legPart_in, int headSprite_in, int bodySprite_in, int armSprite_in, int legSprite_in) {
+        equippedAttack = AttackList.Instance.attackType[0];
+
         if (headPart_in != null)
         {
             UseItem(headPart_in);
@@ -276,7 +285,15 @@ public class PlayerInfo : MonoBehaviour {
 		armPart = armSprite_in;
 		legPart = legSprite_in;
 		currentHealth = health_in;
-	}
+
+        try
+        {
+            equippedAttack = AttackList.Instance.attackType[armPart_in.attackType];
+        } catch
+        {
+
+        }
+    }
 
 	public void Die() {
 		SceneManager.Instance.GameOver ();

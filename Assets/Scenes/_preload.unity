@@ -770,8 +770,13 @@ MonoBehaviour:
   poison: {fileID: 8300000, guid: b9a22d3ca292df549b8e0f3f81cadef0, type: 3}
   playerDie: {fileID: 8300000, guid: 58a0c4e6ae2349b46a246056dfcd6729, type: 3}
   backgroundMusic: {fileID: 8300000, guid: 007cd8682e86b024f8ff7a2057932037, type: 3}
+  menuMusic: {fileID: 8300000, guid: 1d6926e485a81b244bc508402799f2ed, type: 3}
   weaponSounds:
   - {fileID: 8300000, guid: df7133058f57cf74caf8beb9af041f3e, type: 3}
+  - {fileID: 8300000, guid: dc85ce62cd8e0da4195d038199981221, type: 3}
+  - {fileID: 8300000, guid: 1daebd513525d174cba10d33eae4edc5, type: 3}
+  - {fileID: 8300000, guid: 5a163e16be2b4364a99866442d7002ed, type: 3}
+  - {fileID: 8300000, guid: 8e63f2a62b527c54f9c26addc9022fed, type: 3}
   explosionSounds:
   - {fileID: 8300000, guid: c93bf9594d537c744a854db900095fe2, type: 3}
 --- !u!1 &1435033174

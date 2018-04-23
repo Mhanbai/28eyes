@@ -41,6 +41,7 @@ public class SoundManager : MonoBehaviour {
      public AudioClip poison;
      public AudioClip playerDie;
      public AudioClip backgroundMusic;
+     public AudioClip menuMusic;
 
     public AudioClip[] weaponSounds;
     public AudioClip[] explosionSounds;

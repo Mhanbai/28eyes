@@ -81,12 +81,45 @@ public class DataManager : MonoBehaviour {
 
     public void Reset()
     {
-        PlayerInfo.Instance.Load(100, null, null, null, null, 0, 0, 0, 0);
-        portal1Unlocked = false;
-        portal2Unlocked = false;
-        portal3Unlocked = false;
-
-        Save();
+        PlayerInfo.Instance.inventory = new Item[6];
+        if (PlayerInfo.Instance.headItem != null)
+        {
+            PlayerInfo.Instance.SetMaxHealth(PlayerInfo.Instance.MaxHealth() - PlayerInfo.Instance.headItem.healthChange);
+            PlayerInfo.Instance.SetMaxSpeed(PlayerInfo.Instance.MaxSpeed() + (PlayerInfo.Instance.MaxSpeed() * -PlayerInfo.Instance.headItem.speedChange));
+            PlayerInfo.Instance.headItem = null;
+            PlayerInfo.Instance.headPart = 0;
+        }
+        if (PlayerInfo.Instance.bodyItem != null)
+        {
+            PlayerInfo.Instance.SetMaxHealth(PlayerInfo.Instance.MaxHealth() - PlayerInfo.Instance.bodyItem.healthChange);
+            PlayerInfo.Instance.SetMaxSpeed(PlayerInfo.Instance.MaxSpeed() + (PlayerInfo.Instance.MaxSpeed() * -PlayerInfo.Instance.bodyItem.speedChange));
+            PlayerInfo.Instance.bodyItem = null;
+            PlayerInfo.Instance.bodyPart = 0;
+        }
+        if (PlayerInfo.Instance.armItem != null)
+        {
+            PlayerInfo.Instance.SetMaxHealth(PlayerInfo.Instance.MaxHealth() - PlayerInfo.Instance.armItem.healthChange);
+            PlayerInfo.Instance.SetMaxSpeed(PlayerInfo.Instance.MaxSpeed() + (PlayerInfo.Instance.MaxSpeed() * -PlayerInfo.Instance.armItem.speedChange));
+            PlayerInfo.Instance.armItem = null;
+            PlayerInfo.Instance.armPart = 0;
+        }
+        if (PlayerInfo.Instance.legItem != null)
+        {
+            PlayerInfo.Instance.SetMaxHealth(PlayerInfo.Instance.MaxHealth() - PlayerInfo.Instance.legItem.healthChange);
+            PlayerInfo.Instance.SetMaxSpeed(PlayerInfo.Instance.MaxSpeed() + (PlayerInfo.Instance.MaxSpeed() * -PlayerInfo.Instance.legItem.speedChange));
+            PlayerInfo.Instance.legItem = null;
+            PlayerInfo.Instance.legPart = 0;
+        }
+        PlayerInfo.Instance.SetCurrentHealth(PlayerInfo.Instance.MaxHealth());
+        PlayerInfo.Instance.ammoDiff = 0;
+        PlayerInfo.Instance.reloadDiff = 0.0f;
+        PlayerInfo.Instance.rangeDiff = 0.0f;
+        PlayerInfo.Instance.equippedAttack = AttackList.Instance.attackType[0];
+        PlayerInfo.Instance.headPart = 0;
+        PlayerInfo.Instance.armPart = 0;
+        PlayerInfo.Instance.bodyPart = 0;
+        PlayerInfo.Instance.legPart = 0;
+        DataManager.Instance.Save();
     }
 }
 

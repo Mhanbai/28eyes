@@ -75,7 +75,7 @@ MonoBehaviour:
   trajectoryType: 0
   range: 0
   damage: 0
-  sound: 0
+  sound: 1
 --- !u!212 &212428111138464370
 SpriteRenderer:
   m_ObjectHideFlags: 1

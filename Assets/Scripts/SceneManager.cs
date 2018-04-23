@@ -27,15 +27,22 @@ public class SceneManager : MonoBehaviour {
 		
 	void OnSceneLoaded(Scene scene, LoadSceneMode mode)
 	{
-		if ((scene.name != "_preload") && (scene.name != "_mainmenu") && (scene.name != "_death")) {
+        if (scene.name == "_mainmenu")
+        {
+            SoundManager.Instance.BGM.clip = SoundManager.Instance.menuMusic;
+            SoundManager.Instance.BGM.Play();
+        }
+
+        if ((scene.name != "_preload") && (scene.name != "_mainmenu") && (scene.name != "_death")) {
 			uiRef = GameObject.Instantiate (UI);
 			GameObject.Instantiate (DebugUI);
 			GameObject spawnPoint = GameObject.Find ("PlayerSpawnPoint");
 			GameObject avatar = GameObject.Instantiate (Player, spawnPoint.transform.position, Quaternion.identity);
 			avatar.name = "Player";
 			spawnPoint.SetActive (false);
-            if (scene.name != "_hubWorld")
+            if (scene.name == "_level2")
             {
+                SoundManager.Instance.BGM.Stop();
                 SoundManager.Instance.BGM.clip = SoundManager.Instance.backgroundMusic;
                 SoundManager.Instance.BGM.Play();
             }

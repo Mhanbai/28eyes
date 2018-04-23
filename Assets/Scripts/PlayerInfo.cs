@@ -111,6 +111,11 @@ public class PlayerInfo : MonoBehaviour {
 		}
 	}
 
+    public void SetCurrentHealth(int health_in)
+    {
+        currentHealth = health_in;
+    }
+
 	public bool IsRunningOrShooting() {
 		return playerIsActive;
 	}

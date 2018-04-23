@@ -35,10 +35,6 @@ public class CharController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		if (PlayerInfo.Instance.equippedAttack == null) {
-			PlayerInfo.Instance.equippedAttack = AttackList.Instance.attackType [0];
-		}
-
 		//Find the players Character Controller
 		characterController = GetComponent<CharacterController> ();
 		avatar = GameObject.Find ("Character");

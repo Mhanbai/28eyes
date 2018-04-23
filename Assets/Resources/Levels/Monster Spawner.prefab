@@ -35,8 +35,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4576736337180900}
-  - component: {fileID: 114656411548962148}
-  - component: {fileID: 114077324242136262}
   m_Layer: 0
   m_Name: Monster Spawner
   m_TagString: Untagged
@@ -202,20 +200,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 11.805355, y: 7.1793566, z: 3.428671}
   m_Center: {x: -0.11069465, y: -0.9148083, z: -0.46520996}
---- !u!114 &114077324242136262
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1580850266621694}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc70baf1a6aade742a2b99da17eaeb56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bottomLeftBoundary: {fileID: 1245097307781374}
-  topRightBoundary: {fileID: 1865547194507348}
-  ShowBoundaries: 1
 --- !u!114 &114365215110315256
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -229,21 +213,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   snapToGrid: 1
   snapValue: 10
---- !u!114 &114656411548962148
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1580850266621694}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ad3c3096285ab544bddd8dfb651d17f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  monsters:
-  - {fileID: 1749085855042546, guid: cf2e3b1850ccf724aa1d74c188c7f6a4, type: 2}
-  bottomLeftBoundary: {fileID: 1245097307781374}
-  topRightBoundary: {fileID: 1865547194507348}
 --- !u!114 &114659537855163442
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -287,8 +256,15 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b7e55bc86e6091f4682193d83d4d7c1e, type: 3}
   m_Color: {r: 0.26666668, g: 0.2627451, b: 0.227451, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0

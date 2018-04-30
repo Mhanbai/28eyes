@@ -37,12 +37,19 @@ public class DataManager : MonoBehaviour {
 			PlayerInfo.Instance.Load (data.health, data.headPart, data.bodyPart, data.armPart, 
 										data.legPart, data.headSprite, data.bodySprite, data.armSprite, data.legSprite);
 
-			PlayerInfo.Instance.inventory [0] = data.item1;
+			/*PlayerInfo.Instance.inventory [0] = data.item1;
 			PlayerInfo.Instance.inventory [1] = data.item2;
 			PlayerInfo.Instance.inventory [2] = data.item3;
 			PlayerInfo.Instance.inventory [3] = data.item4;
 			PlayerInfo.Instance.inventory [4] = data.item5;
-			PlayerInfo.Instance.inventory [5] = data.item6;
+			PlayerInfo.Instance.inventory [5] = data.item6;*/
+
+			PlayerInfo.Instance.inventory [0] = ItemList.Instance.levelOneItems[2];
+			PlayerInfo.Instance.inventory [1] = ItemList.Instance.levelTwoItems[1];
+			PlayerInfo.Instance.inventory [2] = ItemList.Instance.levelOneItems[4];
+			PlayerInfo.Instance.inventory [3] = ItemList.Instance.levelOneItems[0];
+			PlayerInfo.Instance.inventory [4] = ItemList.Instance.levelTwoItems[3];
+			PlayerInfo.Instance.inventory [5] = ItemList.Instance.levelFiveItems[0];
 
 			portal1Unlocked = data.portalOneUnlock;
 			portal2Unlocked = data.portalTwoUnlock;

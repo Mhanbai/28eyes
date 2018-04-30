@@ -704,7 +704,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UI: {fileID: 1048757785586186, guid: 5a417c92f919b1146b9c234521222b01, type: 2}
-  Player: {fileID: 1568304347010852, guid: 6b0c2c1e4a7c3a343ab3485f062b4caf, type: 2}
+  Player: {fileID: 1284773036435522, guid: b30e1f948f8cd11498bad3a1db1be467, type: 2}
   DebugUI: {fileID: 1128595373734696, guid: 820e881db11b18d4484d5ce6d0f459b8, type: 2}
   uiRef: {fileID: 1953337124154476, guid: 79e60daf1f8a7194783c34deaf174626, type: 2}
 --- !u!114 &1378583545
